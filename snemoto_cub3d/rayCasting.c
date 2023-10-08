@@ -6,8 +6,13 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/08 11:31:11 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/08 11:43:09 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-a
+#include "rayCasting.h"
+
+int main(void)
+{
+	return (0);
+}

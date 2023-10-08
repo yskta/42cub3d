@@ -6,7 +6,11 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/08 11:27:39 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/08 11:44:29 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef RAYCASTING_H
+# define RAYCASTING_H
+
+#endif
