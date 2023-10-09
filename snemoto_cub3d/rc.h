@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/09 18:04:49 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/09 20:16:15 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # define ROW 6
 # define COL 6
 # define ANGLE 2
-# define WINW 300
-# define WINH 300
-# define IMGLEN 100
+# define WINW 1000
+# define WINH 1000
+# define IMGLEN 10
 
 extern unsigned int map[ROW][COL];
 
@@ -38,6 +38,7 @@ typedef struct s_pos
 {
 	unsigned int	pos_x;
 	unsigned int	pos_y;
+	unsigned int	dis;
 	char			element;
 }	t_pos;
 
@@ -55,6 +56,7 @@ typedef struct s_vars
 	void	*mlx;
 	void	*win;
 	void	*img;
+	int		img_len;
 }	t_vars;
 
 void	get_pos(t_vars var, unsigned int map[ROW][COL]);

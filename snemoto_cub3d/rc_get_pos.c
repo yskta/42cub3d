@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/09 17:29:44 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/09 20:15:59 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	get_pos(t_vars var, unsigned int map[ROW][COL])
 	t_pos	*pos_wall_ahead;
 	t_pos	*pos_wall_left;
 	t_pos	*pos_wall_right;
+	unsigned int	dis;
 
 	pos = get_pos_here(var);
 	printf("X;%d Y;%d\n", pos->pos_x, pos->pos_y);
@@ -60,6 +61,10 @@ void	get_pos(t_vars var, unsigned int map[ROW][COL])
 	wallkind = AHEAD;
 	pos_wall_ahead = get_pos_wall(pos, map, wallkind);
 	printf("X;%d Y;%d\n", pos_wall_ahead->pos_x, pos_wall_ahead->pos_y);
+
+	dis = pos->pos_y - pos_wall_ahead->pos_y;
+	var.pos->dis = dis;
+	printf("dis;%d\n", dis);
 
 	wallkind = LEFT;
 	pos_wall_left = get_pos_wall(pos, map, wallkind);

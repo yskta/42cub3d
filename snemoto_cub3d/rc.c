@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/09 18:09:03 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/09 20:35:08 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,54 @@ unsigned int map[ROW][COL]=
 
 int	key_hook(int keycode, t_vars *var)
 {
-	if (keycode == 0x077) //w
-		var->pos->pos_y++;
-	else if (keycode == 0x061) //a
-		var->pos->pos_x--;
-	else if (keycode == 0x064) //d
-		var->pos->pos_x++;
-	else if (keycode == 0x073) //s
+	if (keycode == 0x077 && 0 < var->pos->pos_y - 1) //w
 		var->pos->pos_y--;
-	else if (keycode == 0x8fb) //left
-		var->dir->angle -= M_PI / ANGLE;
-	else if (keycode == 0x8fd) //right
+	else if (keycode == 0x061 && 0 < var->pos->pos_x - 1) //a
+		var->pos->pos_x--;
+	else if (keycode == 0x064 && var->pos->pos_x + 1 < ROW - 1) //d
+		var->pos->pos_x++;
+	else if (keycode == 0x073 && var->pos->pos_y + 1 < COL - 1) //s
+		var->pos->pos_y++;
+	else if (keycode == 0xFF51) //left
 		var->dir->angle += M_PI / ANGLE;
+	else if (keycode == 0xFF53) //right
+		var->dir->angle -= M_PI / ANGLE;
+	else
+		return (0);
+	get_pos(*var, map);
+	get_dir(*var);
 	return (0);
 }
 
 int	key_draw(t_vars *var)
 {
-	get_pos(*var, map);
-	get_dir(*var);
-	mlx_put_image_to_window(var->mlx, var->win, var->img, 100, 100);
+	unsigned int	row = 0;
+	unsigned int	col = 0;
+
+	while (row++ < WINW)
+	{
+		while (col++ < WINH)
+		{
+			if (col < WINH / 2)
+			{
+				if (WINW / 2 - var->pos->dis * 50 <= row && row <= WINW / 2 + var->pos->dis * 50 \
+					&& WINH / 2 - var->pos->dis * 50 <= col && col <= WINH / 2)
+					mlx_pixel_put(var->mlx, var->win, row, col, 0xFF0000);
+				else
+					mlx_pixel_put(var->mlx, var->win, row, col, 0x000000);			
+			}
+			else
+			{
+				if (WINW / 2 - var->pos->dis * 50 <= row && row <= WINW / 2 + var->pos->dis * 50 \
+					&& WINH / 2 <= col && col <= WINH / 2 + var->pos->dis * 50)
+					mlx_pixel_put(var->mlx, var->win, row, col, 0xFF0000);
+				else
+					mlx_pixel_put(var->mlx, var->win, row, col, 0x000000);			
+			}
+		}
+		col = 0;
+	}
+	// mlx_put_image_to_window(var->mlx, var->win, var->img, 500, 500);
 	return (0);
 }
 
@@ -52,7 +80,6 @@ int	main(void)
 	t_vars	var;
 	t_pos	*pos;
 	t_dir	*dir;
-	int	img_len;
 
 	pos = (t_pos *)malloc(sizeof(t_pos));
 	var.pos = pos;
@@ -69,10 +96,12 @@ int	main(void)
 	var.mlx = mlx_init();
 	var.win = mlx_new_window(var.mlx, WINW, WINH, "rc");
 
-	img_len = IMGLEN;
-	var.img = mlx_xpm_file_to_image(var.mlx, "./1.xpm", &img_len, &img_len);
+	get_pos(var, map);
+	mlx_pixel_put(var.mlx, var.win, var.pos->dis * 100, var.pos->dis * 100, 0xFF0000);
+	// var.img_len = IMGLEN;
+	// var.img = mlx_xpm_file_to_image(var.mlx, "./1.xpm", &(var.img_len), &(var.img_len));
 
-	mlx_key_hook(var.mlx, key_hook, &var);
+	mlx_key_hook(var.win, key_hook, &var);
 	mlx_loop_hook(var.mlx, key_draw, &var);
 	mlx_loop(var.mlx);
 	return (0);
