@@ -1,3 +1,4 @@
 .gitignore
 obj/
+minilibx-linux/
 cub3d

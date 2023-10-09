@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rayCasting.c                                       :+:      :+:    :+:   */
+/*   rc_get_pos.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/09 14:59:03 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/09 16:28:19 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "rayCasting.h"
+#include "rc.h"
 
-unsigned int map[MAPROW][MAPCOL]=
-{
-  {1,1,1,1,1,1},
-  {1,0,0,0,0,1},
-  {1,0,0,0,0,1},
-  {1,0,0,0,0,1},
-  {1,0,0,0,0,1},
-  {1,1,1,1,1,1}
-};
-
-t_pos	*get_pos(t_vars var)
+static t_pos	*get_pos_here(t_vars var)
 {
 	t_pos	*rv;
 
@@ -32,11 +22,11 @@ t_pos	*get_pos(t_vars var)
 	return (rv);
 }
 
-t_pos	*get_pos_wall(t_pos *pos, unsigned int map[MAPROW][MAPCOL], t_wall wallkind)
+static t_pos	*get_pos_wall(t_pos *pos, unsigned int map[ROW][COL], t_wall wallkind)
 {
-	t_pos			*rv;
-	int				row;
-	int				col;
+	t_pos	*rv;
+	int		row;
+	int		col;
 
 	rv = (t_pos *)malloc(sizeof(t_pos));
 	row = pos->pos_x;
@@ -50,26 +40,21 @@ t_pos	*get_pos_wall(t_pos *pos, unsigned int map[MAPROW][MAPCOL], t_wall wallkin
 		while ((map[row][col] + '0') != '0' && 0 < row)
 			row--;
 	else if (wallkind == RIGHT)
-		while ((map[row][col] + '0') != '0' && row < MAPROW - 1)
+		while ((map[row][col] + '0') != '0' && row < ROW - 1)
 			row++;
 	rv->pos_x = row;
 	return (rv);
 }
 
-int	main(void)
+void	get_pos(t_vars var)
 {
-	t_vars	var;
-	t_pos	*pos;
 	t_wall	wallkind;
+	t_pos	*pos;
 	t_pos	*pos_wall_ahead;
 	t_pos	*pos_wall_left;
 	t_pos	*pos_wall_right;
 
-	var.pos->pos_x = 2;
-	var.pos->pos_y = 4;
-	var.pos->element = 0;
-
-	pos = get_pos(var);
+	pos = get_pos_here(var);
 	printf("X;%d Y;%d\n", pos->pos_x, pos->pos_y);
 
 	wallkind = AHEAD;
@@ -83,6 +68,4 @@ int	main(void)
 	wallkind = RIGHT;
 	pos_wall_right = get_pos_wall(pos, map, wallkind);
 	printf("X;%d Y;%d\n", pos_wall_right->pos_x, pos_wall_right->pos_y);
-
-	return (0);
 }
