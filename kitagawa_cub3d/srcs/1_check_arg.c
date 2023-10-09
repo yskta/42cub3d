@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:41:13 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/09 20:34:13 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:00:56 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ bool    check_arg(int argc, char **argv, t_data *data)
 		ext_len--;
 		arg_len--;
 		if (argv[1][arg_len] != ext[ext_len])
-        {
-            data->judge_valid_map = false;
             return (false);
-        }
 	}
     return(true);
 }

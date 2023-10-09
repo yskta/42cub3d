@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/09 20:33:34 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:02:02 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 typedef struct s_map{
     char    **map;
+    ssize_t fd;
 }t_map;
 
 typedef struct s_texture{
@@ -50,4 +51,5 @@ typedef struct s_data{
 
 void	put_error_and_exit(char *str, t_data *data);
 bool    check_arg(int argc, char **argv, t_data *data);
+bool    read_map(char *argv, t_data *data);
 #endif
