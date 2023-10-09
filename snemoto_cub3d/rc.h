@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/09 17:08:18 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/09 18:04:49 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@
 # define ROW 6
 # define COL 6
 # define ANGLE 2
-# define WINW 1000
-# define WINH 1000
- 
+# define WINW 300
+# define WINH 300
+# define IMGLEN 100
+
 extern unsigned int map[ROW][COL];
 
 typedef enum e_wall
@@ -53,10 +54,11 @@ typedef struct s_vars
 	t_dir	*dir;
 	void	*mlx;
 	void	*win;
+	void	*img;
 }	t_vars;
 
-void	get_pos(t_vars var);
-void	get_dir(t_vars var, double diff);
+void	get_pos(t_vars var, unsigned int map[ROW][COL]);
+void	get_dir(t_vars var);
 
 // void	key_change_pos(void);
 // void	key_change_dir(void);

@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/09 16:28:19 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:29:44 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_pos	*get_pos_wall(t_pos *pos, unsigned int map[ROW][COL], t_wall wallki
 	return (rv);
 }
 
-void	get_pos(t_vars var)
+void	get_pos(t_vars var, unsigned int map[ROW][COL])
 {
 	t_wall	wallkind;
 	t_pos	*pos;
