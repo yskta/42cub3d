@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitaga <yokitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:32:13 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/09 20:09:10 by yokitaga         ###   ########.fr       */
+/*   Created: 2023/10/09 20:21:50 by yokitaga          #+#    #+#             */
+/*   Updated: 2023/10/09 20:28:00 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	put_error_and_exit(char *str, t_data *data)
-{
-	if (data && data->judge_valid_map == false)
-		free_map(data);
-	printf("%s\n", str);
-	exit (1);
-}
+#include <stddef.h>
+
+size_t			ft_strlen(const char *str);
+char			*ft_strchr(const char *s, int c);
+
+#endif

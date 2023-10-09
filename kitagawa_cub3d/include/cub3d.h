@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/09 19:39:55 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/09 20:33:34 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,22 @@
 
 typedef struct s_map{
     char    **map;
-    
 }t_map;
 
+typedef struct s_texture{
+    void		*texture_ptr;
+}t_texture;
+
 typedef struct s_data{
-    void    *mlx;
-    void    *mlx_win;
-    bool    judge_valid_map;
-    t_map   *map_data;
+    void        *mlx;
+    void        *mlx_win;
+    bool        judge_valid_map;
+    t_map       *map_data;
+    t_texture   north;
+    
     
 }t_data;
 
 void	put_error_and_exit(char *str, t_data *data);
-
+bool    check_arg(int argc, char **argv, t_data *data);
 #endif

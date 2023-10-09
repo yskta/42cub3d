@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitaga <yokitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:32:13 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/09 20:09:10 by yokitaga         ###   ########.fr       */
+/*   Created: 2023/10/09 20:20:16 by yokitaga          #+#    #+#             */
+/*   Updated: 2023/10/09 20:21:29 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "libft.h"
 
-void	put_error_and_exit(char *str, t_data *data)
+size_t	ft_strlen(const char *str)
 {
-	if (data && data->judge_valid_map == false)
-		free_map(data);
-	printf("%s\n", str);
-	exit (1);
+	size_t	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }
