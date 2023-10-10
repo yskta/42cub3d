@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/09 20:35:08 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 16:57:43 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ unsigned int map[ROW][COL]=
 
 int	key_hook(int keycode, t_vars *var)
 {
-	if (keycode == 0x077 && 0 < var->pos->pos_y - 1) //w
+	if (keycode == KEY_W && 0 < var->pos->pos_y - 1)
 		var->pos->pos_y--;
-	else if (keycode == 0x061 && 0 < var->pos->pos_x - 1) //a
-		var->pos->pos_x--;
-	else if (keycode == 0x064 && var->pos->pos_x + 1 < ROW - 1) //d
-		var->pos->pos_x++;
-	else if (keycode == 0x073 && var->pos->pos_y + 1 < COL - 1) //s
+	else if (keycode == KEY_S && var->pos->pos_y + 1 < COL - 1)
 		var->pos->pos_y++;
-	else if (keycode == 0xFF51) //left
+	else if (keycode == KEY_A && 0 < var->pos->pos_x - 1)
+		var->pos->pos_x--;
+	else if (keycode == KEY_D && var->pos->pos_x + 1 < ROW - 1)
+		var->pos->pos_x++;
+	else if (keycode == KEY_LEFT)
 		var->dir->angle += M_PI / ANGLE;
-	else if (keycode == 0xFF53) //right
+	else if (keycode == KEY_RIGHT)
 		var->dir->angle -= M_PI / ANGLE;
 	else
 		return (0);
