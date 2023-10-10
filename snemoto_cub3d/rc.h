@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 17:07:44 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:50:56 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define COL 6
 
 # define ANGLE 2
+
+# define WALL 50
 
 # define WINW 1000
 # define WINH 1000
@@ -49,9 +51,14 @@ typedef struct s_pos
 {
 	unsigned int	pos_x;
 	unsigned int	pos_y;
-	unsigned int	dis;
 	char			element;
 }	t_pos;
+
+typedef struct s_dis
+{
+	unsigned int	dis_x;
+	unsigned int	dis_y;
+}	t_dis;
 
 typedef struct s_dir
 {
@@ -64,6 +71,7 @@ typedef struct s_vars
 {
 	t_pos	*pos;
 	t_dir	*dir;
+	t_dis	*dis;
 	void	*mlx;
 	void	*win;
 	void	*img;
