@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 17:00:35 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:07:51 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,14 @@ int	key_draw(t_vars *var)
 	{
 		while (col++ < WINH)
 		{
-			if (col < WINH / 2)
-			{
-				if (WINW / 2 - var->pos->dis * 50 <= row && row <= WINW / 2 + var->pos->dis * 50 \
-					&& WINH / 2 - var->pos->dis * 50 <= col && col <= WINH / 2)
-					mlx_pixel_put(var->mlx, var->win, row, col, RED);
-				else
-					mlx_pixel_put(var->mlx, var->win, row, col, BLACK);			
-			}
+			if (WINW / 2 - var->pos->dis * 50 <= row && row <= WINW / 2 + var->pos->dis * 50 \
+				&& WINH / 2 - var->pos->dis * 50 <= col && col <= WINH / 2 + var->pos->dis * 50)
+				mlx_pixel_put(var->mlx, var->win, row, col, RED);
 			else
-			{
-				if (WINW / 2 - var->pos->dis * 50 <= row && row <= WINW / 2 + var->pos->dis * 50 \
-					&& WINH / 2 <= col && col <= WINH / 2 + var->pos->dis * 50)
-					mlx_pixel_put(var->mlx, var->win, row, col, RED);
-				else
-					mlx_pixel_put(var->mlx, var->win, row, col, BLACK);			
-			}
+				mlx_pixel_put(var->mlx, var->win, row, col, BLACK);			
 		}
 		col = 0;
 	}
-	// mlx_put_image_to_window(var->mlx, var->win, var->img, 500, 500);
 	return (0);
 }
 
@@ -97,9 +85,7 @@ int	main(void)
 	var.win = mlx_new_window(var.mlx, WINW, WINH, "rc");
 
 	get_pos(var, map);
-	mlx_pixel_put(var.mlx, var.win, var.pos->dis * 100, var.pos->dis * 100, 0xFF0000);
-	// var.img_len = IMGLEN;
-	// var.img = mlx_xpm_file_to_image(var.mlx, "./1.xpm", &(var.img_len), &(var.img_len));
+	mlx_pixel_put(var.mlx, var.win, var.pos->dis * 100, var.pos->dis * 100, RED);
 
 	mlx_key_hook(var.win, key_hook, &var);
 	mlx_loop_hook(var.mlx, key_draw, &var);

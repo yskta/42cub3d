@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 17:00:31 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:07:44 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 
 # define ROW 6
 # define COL 6
+
 # define ANGLE 2
+
 # define WINW 1000
 # define WINH 1000
-# define IMGLEN 10
 
 # define KEY_W 0x077
 # define KEY_S 0x073
