@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 16:57:33 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:00:31 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 # define KEY_D 0x064
 # define KEY_LEFT 0xFF51
 # define KEY_RIGHT 0xFF53
+
+# define RED 0xFF0000
+# define BLACK 0x000000
 
 extern unsigned int map[ROW][COL];
 

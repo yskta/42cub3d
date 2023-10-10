@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 16:57:43 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:00:35 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,17 @@ int	key_draw(t_vars *var)
 			{
 				if (WINW / 2 - var->pos->dis * 50 <= row && row <= WINW / 2 + var->pos->dis * 50 \
 					&& WINH / 2 - var->pos->dis * 50 <= col && col <= WINH / 2)
-					mlx_pixel_put(var->mlx, var->win, row, col, 0xFF0000);
+					mlx_pixel_put(var->mlx, var->win, row, col, RED);
 				else
-					mlx_pixel_put(var->mlx, var->win, row, col, 0x000000);			
+					mlx_pixel_put(var->mlx, var->win, row, col, BLACK);			
 			}
 			else
 			{
 				if (WINW / 2 - var->pos->dis * 50 <= row && row <= WINW / 2 + var->pos->dis * 50 \
 					&& WINH / 2 <= col && col <= WINH / 2 + var->pos->dis * 50)
-					mlx_pixel_put(var->mlx, var->win, row, col, 0xFF0000);
+					mlx_pixel_put(var->mlx, var->win, row, col, RED);
 				else
-					mlx_pixel_put(var->mlx, var->win, row, col, 0x000000);			
+					mlx_pixel_put(var->mlx, var->win, row, col, BLACK);			
 			}
 		}
 		col = 0;
