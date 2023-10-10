@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 18:21:43 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 19:29:37 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@
 # define KEY_LEFT 0xFF51
 # define KEY_RIGHT 0xFF53
 
-# define RED 0xFF0000
 # define BLACK 0x000000
+# define RED 0xFF0000
+# define BLUE 0x0000FF
 
 extern unsigned int map[ROW][COL];
 
@@ -47,12 +48,18 @@ typedef enum e_wall
 	RIGHT,
 }	t_wall;
 
-typedef struct s_pos
+typedef struct s_pos	t_pos;
+
+struct s_pos
 {
 	unsigned int	pos_x;
 	unsigned int	pos_y;
 	char			element;
-}	t_pos;
+	t_pos			*pos_here;
+	t_pos			*pos_wall_ahead;
+	t_pos			*pos_wall_left;
+	t_pos			*pos_wall_right;
+};
 
 typedef struct s_dir
 {
@@ -64,6 +71,8 @@ typedef struct s_dir
 typedef struct s_dis
 {
 	unsigned int	dis_x;
+	unsigned int	dis_left;
+	unsigned int	dis_right;
 	unsigned int	dis_y;
 	double			dis_angle;
 }	t_dis;

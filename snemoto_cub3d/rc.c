@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 18:21:52 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 19:30:44 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	main(void)
 
 	var.dis = (t_dis *)malloc(sizeof(t_dis));
 	var.dis->dis_x = 1;
+	var.dis->dis_left = 2;
+	var.dis->dis_right = 3;
 	var.dis->dis_y = 1;
 	var.dis->dis_angle = 0;
 
