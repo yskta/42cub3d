@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 17:50:56 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 18:21:43 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define ROW 6
 # define COL 6
 
-# define ANGLE 2
+# define ANGLE 4
 
 # define WALL 50
 
@@ -54,18 +54,19 @@ typedef struct s_pos
 	char			element;
 }	t_pos;
 
-typedef struct s_dis
-{
-	unsigned int	dis_x;
-	unsigned int	dis_y;
-}	t_dis;
-
 typedef struct s_dir
 {
 	double	dir_x;
 	double	dir_y;
 	double	angle;
 }	t_dir;
+
+typedef struct s_dis
+{
+	unsigned int	dis_x;
+	unsigned int	dis_y;
+	double			dis_angle;
+}	t_dis;
 
 typedef struct s_vars
 {
@@ -80,18 +81,7 @@ typedef struct s_vars
 
 void	get_pos(t_vars var, unsigned int map[ROW][COL]);
 void	get_dir(t_vars var);
-
-// void	key_change_pos(void);
-// void	key_change_dir(void);
-
-// void	calc_height(void);
-// void	calc_width(void);
-
-// void	draw_wall(void);
-// void	draw_ceiling(void);
-// void	draw_floor(void);
-
-// void	get_image(void);
-// void	draw_image(void);
+int		key_hook(int keycode, t_vars *var);
+int		key_draw(t_vars *var);
 
 #endif

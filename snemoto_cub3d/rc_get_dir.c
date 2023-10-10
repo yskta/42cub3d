@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 18:00:48 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/10 18:14:08 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	get_dir(t_vars var)
 
 	printf("X;%f Y;%f\n", var.dir->dir_x, var.dir->dir_y);
 	printf("angle;%f\n", var.dir->angle);
+	printf("dis_angle;%f\n", var.dis->dis_angle);
 
 	printf("---------------------\n");
 
