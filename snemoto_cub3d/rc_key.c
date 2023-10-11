@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/11 17:11:48 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:44:16 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,23 +71,20 @@ static void	key_draw_wall_ahead(t_vars *var)
 	row = 0;
 	row_min = WINW / 2 - var->dis->dis_y * WALL + var->dis->dis_angle * WALL - var->dis->dis_x * WALL;
 	row_max = WINW / 2 + var->dis->dis_y * WALL + var->dis->dis_angle * WALL - var->dis->dis_x * WALL;
-	col = 0;
 	col_min = WINH / 2 - var->dis->dis_y * WALL;
 	col_max = WINH / 2 + var->dis->dis_y * WALL;
 	while (row++ < WINW)
 	{
+		col = 0;
 		while (col++ < WINH)
 		{
 			if (row < MAPL || row > MAPR)
 				mlx_pixel_put(var->mlx, var->win, row, col, BLACK);			
-			else if (row_min == row || row == row_max || col_min == col || col == col_max)
-				mlx_pixel_put(var->mlx, var->win, row, col, BLUE);
 			else if (row_min < row && row < row_max && col_min < col && col < col_max)
 				mlx_pixel_put(var->mlx, var->win, row, col, RED);
 			else
 				mlx_pixel_put(var->mlx, var->win, row, col, BLACK);			
 		}
-		col = 0;
 	}
 }
 
@@ -97,21 +94,38 @@ static void	key_draw_map_range(t_vars *var)
 	unsigned int	col;
 
 	row = 0;
-	col = 0;
 	while (row++ < WINW)
 	{
-		if (row == MAPL || row == MAPR)
+		col = 0;
+		while (col++ < WINH)
 		{
-			while (col++ < WINH)
+			if (row == MAPL || row == MAPR)
 				mlx_pixel_put(var->mlx, var->win, row, col, RED);
-			col = 0;			
 		}
+	}
+}
+
+static void	key_draw_grid(t_vars *var)
+{
+	unsigned int	row;
+	unsigned int	col;
+
+	row = MAPL + WALL;
+	while (row < MAPR)
+	{
+		col = 0;
+		while (col++ < WINH)
+		{
+			mlx_pixel_put(var->mlx, var->win, row, col, BLUE);
+		}
+		row += WALL;
 	}
 }
 
 int	key_draw(t_vars *var)
 {
 	key_draw_map_range(var);
+	key_draw_grid(var);
 	key_draw_wall_ahead(var);
 	return (0);
 }
