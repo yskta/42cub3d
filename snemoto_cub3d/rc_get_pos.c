@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 19:33:01 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:47:17 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static t_pos	*get_pos_wall(t_pos *pos, unsigned int map[ROW][COL], t_wall wallki
 
 void	get_pos(t_vars var, unsigned int map[ROW][COL])
 {
-	t_wall	wallkind;
 	t_pos	*pos;
 	t_pos	*pos_wall_ahead;
 	t_pos	*pos_wall_left;
 	t_pos	*pos_wall_right;
+	t_wall	wallkind;
 
 	pos = get_pos_here(var);
 	var.pos->pos_here = pos;
@@ -63,10 +63,10 @@ void	get_pos(t_vars var, unsigned int map[ROW][COL])
 	var.pos->pos_wall_ahead = pos_wall_ahead;
 	printf("AHEAD X;%d Y;%d\n", pos_wall_ahead->pos_x, pos_wall_ahead->pos_y);
 
-	printf("dis_x;%d\n", var.dis->dis_x);
-	printf("dis_y;%d\n", var.dis->dis_y);
-	printf("dis_left;%d\n", var.dis->dis_left);
-	printf("dis_right;%d\n", var.dis->dis_right);
+	printf("dis_x;%d\n", var.pos->dis->dis_x);
+	printf("dis_y;%d\n", var.pos->dis->dis_y);
+	printf("dis_left;%d\n", var.pos->dis->dis_left);
+	printf("dis_right;%d\n", var.pos->dis->dis_right);
 
 	wallkind = LEFT;
 	pos_wall_left = get_pos_wall(pos, map, wallkind);
