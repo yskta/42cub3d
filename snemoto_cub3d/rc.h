@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 19:29:37 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:16:21 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@
 # define ROW 6
 # define COL 6
 
+extern unsigned int map[ROW][COL];
+
+# define WALL 100
+
+# define WINW WALL * 10
+# define WINH WALL * 10
+
+#define MAPL WINW / 2 - ROW / 2 * WALL
+#define MAPR WINW / 2 + ROW / 2 * WALL
+
 # define ANGLE 4
-
-# define WALL 50
-
-# define WINW 1000
-# define WINH 1000
 
 # define KEY_W 0x077
 # define KEY_S 0x073
@@ -38,8 +43,6 @@
 # define BLACK 0x000000
 # define RED 0xFF0000
 # define BLUE 0x0000FF
-
-extern unsigned int map[ROW][COL];
 
 typedef enum e_wall
 {

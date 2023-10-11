@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/10 19:45:45 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:11:48 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	key_hook(int keycode, t_vars *var)
 	return (0);
 }
 
-static void	key_draw_one_wall(t_vars *var)
+static void	key_draw_wall_ahead(t_vars *var)
 {
 	unsigned int	row;
 	unsigned int	row_min;
@@ -69,8 +69,8 @@ static void	key_draw_one_wall(t_vars *var)
 	unsigned int	col_max;
 
 	row = 0;
-	row_min = WINW / 2 - var->dis->dis_y * WALL - var->dis->dis_angle * WALL + var->dis->dis_x * WALL;
-	row_max = WINW / 2 + var->dis->dis_y * WALL - var->dis->dis_angle * WALL + var->dis->dis_x * WALL;
+	row_min = WINW / 2 - var->dis->dis_y * WALL + var->dis->dis_angle * WALL - var->dis->dis_x * WALL;
+	row_max = WINW / 2 + var->dis->dis_y * WALL + var->dis->dis_angle * WALL - var->dis->dis_x * WALL;
 	col = 0;
 	col_min = WINH / 2 - var->dis->dis_y * WALL;
 	col_max = WINH / 2 + var->dis->dis_y * WALL;
@@ -78,7 +78,9 @@ static void	key_draw_one_wall(t_vars *var)
 	{
 		while (col++ < WINH)
 		{
-			if (row_min == row || row == row_max || col_min == col || col == col_max)
+			if (row < MAPL || row > MAPR)
+				mlx_pixel_put(var->mlx, var->win, row, col, BLACK);			
+			else if (row_min == row || row == row_max || col_min == col || col == col_max)
 				mlx_pixel_put(var->mlx, var->win, row, col, BLUE);
 			else if (row_min < row && row < row_max && col_min < col && col < col_max)
 				mlx_pixel_put(var->mlx, var->win, row, col, RED);
@@ -89,27 +91,27 @@ static void	key_draw_one_wall(t_vars *var)
 	}
 }
 
+static void	key_draw_map_range(t_vars *var)
+{
+	unsigned int	row;
+	unsigned int	col;
+
+	row = 0;
+	col = 0;
+	while (row++ < WINW)
+	{
+		if (row == MAPL || row == MAPR)
+		{
+			while (col++ < WINH)
+				mlx_pixel_put(var->mlx, var->win, row, col, RED);
+			col = 0;			
+		}
+	}
+}
+
 int	key_draw(t_vars *var)
 {
-	// unsigned int	row;
-	// unsigned int	col;
-	// unsigned int	row_left;
-	// unsigned int	row_right;
-
-
-	// row = 0;
-	// row_left = WINW / 2 - var->dis->dis_y * WALL + var->dis->dis_x * WALL + var->dis->dis_left * WALL;
-	// row_right = WINW / 2 - var->dis->dis_y * WALL + var->dis->dis_x * WALL - var->dis->dis_right * WALL;
-	// col = 0;
-	// while (row++ < WINW)
-	// {
-	// 	if (row_left == row || row == row_right)
-	// 	{
-	// 		while (col++ < WINH)
-	// 			mlx_pixel_put(var->mlx, var->win, row, col, RED);
-	// 		col = 0;			
-	// 	}
-	// }
-	key_draw_one_wall(var);
+	key_draw_map_range(var);
+	key_draw_wall_ahead(var);
 	return (0);
 }
