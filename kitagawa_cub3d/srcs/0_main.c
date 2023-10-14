@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 15:36:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:07:35 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     if (read_map(argv[1], data) == false)
         put_error_and_exit("error in read map", data);
     parse_read_data(data);
+    free(data);
     return (0);
 }
 

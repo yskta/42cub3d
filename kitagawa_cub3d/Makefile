@@ -6,14 +6,14 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/10/14 15:48:03 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/10/14 16:08:13 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 SRCS_DIR		= ./srcs/
 SRCS 			= $(addprefix $(SRCS_DIR),\
@@ -21,7 +21,7 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 			1_check_arg.c		\
 			2_read_map.c		\
 			3_parse_read_data.c \
-			utils.c )
+			utils.c)
 
 OBJS = $(SRCS:%.c=%.o)
 

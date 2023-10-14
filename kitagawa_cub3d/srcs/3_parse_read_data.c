@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 15:18:53 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:07:29 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,16 @@ void	parse_read_data(t_data *data)
 	int i;
 	
 	i = 0;
-	while (data->map_data->read_data[i])
+	while (data->map_data->read_data[i] != NULL)
 	{
 		printf("%s\n", data->map_data->read_data[i]);
 		i++;
 	}
+
+	while (data->map_data->read_data[i] != NULL)
+	{
+		free(data->map_data->read_data[i]);
+		i++;
+	}
+	free(data->map_data->read_data);
 }
