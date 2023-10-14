@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/14 14:43:11 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:35:16 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,17 @@ int	key_hook(int keycode, t_vars *var)
 	{
 		var->pos->pos_x--;
 		var->pos->dis->dis_x--;
-		// var->pos->dis->dis_left--;
-		// var->pos->dis->dis_right++;
 	}
 	else if (keycode == KEY_D && var->pos->pos_x + 1 < ROW - 1)
 	{
 		var->pos->pos_x++;
 		var->pos->dis->dis_x++;
-		// var->pos->dis->dis_left++;
-		// var->pos->dis->dis_right--;
 	}
 	else if (keycode == KEY_LEFT)
 	{
 		var->dir->angle += M_PI / ANGLE;
+		var->dir->dir_x = cos(var->dir->angle);
+		var->dir->dir_y = sin(var->dir->angle);
 		var->pos->dis->dis_angle += M_PI / ANGLE;
 		if (var->pos->dis->dis_angle == 2 * M_PI)
 			var->pos->dis->dis_angle = 0;
@@ -63,14 +61,16 @@ int	key_hook(int keycode, t_vars *var)
 	else if (keycode == KEY_RIGHT)
 	{
 		var->dir->angle -= M_PI / ANGLE;
+		var->dir->dir_x = cos(var->dir->angle);
+		var->dir->dir_y = sin(var->dir->angle);
 		var->pos->dis->dis_angle -= M_PI / ANGLE;		
 		if (var->pos->dis->dis_angle == -2 * M_PI)
 			var->pos->dis->dis_angle = 0;
 	}
 	else
 		return (0);
-	get_pos(*var, map);
-	get_dir(*var);
+	print_pos(*var);
+	print_dir(*var);
 	key_draw_clear(var);
 	return (0);
 }

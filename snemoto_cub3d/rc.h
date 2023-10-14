@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/14 17:01:33 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:36:54 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,6 @@
 # include <stdlib.h>
 # include <math.h>
 # include "minilibx-linux/mlx.h"
-
-# define ROW 6
-# define COL 6
-
-extern unsigned int map[ROW][COL];
-
-# define WALL 100
-
-# define WINW WALL * 10
-# define WINH WALL * 10
-
-#define MAPL WINW / 2 - ROW / 2 * WALL
-#define MAPR WINW / 2 + ROW / 2 * WALL
-
-# define ANGLE 2
 
 # define KEY_W 0x077
 # define KEY_S 0x073
@@ -45,6 +30,21 @@ extern unsigned int map[ROW][COL];
 # define BLUE 0x0000FF
 # define YELLOW 0x00FF00
 
+# define ROW 6
+# define COL 6
+
+extern unsigned int map[ROW][COL];
+
+# define WALL 100
+
+# define WINH WALL * 10
+# define WINW WINH * 2
+
+#define MAPL WINW / 2 - ROW / 2 * WALL
+#define MAPR WINW / 2 + ROW / 2 * WALL
+
+# define ANGLE 8
+
 typedef struct s_pos	t_pos;
 
 typedef struct s_dir
@@ -57,8 +57,6 @@ typedef struct s_dir
 typedef struct s_dis
 {
 	unsigned int	dis_x;
-	// unsigned int	dis_left;
-	// unsigned int	dis_right;
 	unsigned int	dis_y;
 	double			dis_angle;
 }	t_dis;
@@ -69,10 +67,6 @@ struct s_pos
 	unsigned int	pos_x;
 	unsigned int	pos_y;
 	t_pos			*pos_here;
-	t_pos			*pos_wall_ahead;
-	// char			element;
-	// t_pos			*pos_wall_left;
-	// t_pos			*pos_wall_right;
 };
 
 typedef struct s_vars
@@ -84,15 +78,8 @@ typedef struct s_vars
 	void	*img;
 }	t_vars;
 
-typedef enum e_wall
-{
-	AHEAD,
-	LEFT,
-	RIGHT,
-}	t_wall;
-
-void	get_pos(t_vars var, unsigned int map[ROW][COL]);
-void	get_dir(t_vars var);
+void	print_pos(t_vars var);
+void	print_dir(t_vars var);
 
 int		key_hook(int keycode, t_vars *var);
 int		key_draw(t_vars *var);

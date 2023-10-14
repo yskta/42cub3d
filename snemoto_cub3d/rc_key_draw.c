@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/14 17:09:24 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:27:12 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	key_draw_wall_horizontal(t_vars *var, t_pos *pos)
 	row_l = WINW / 2 - row / 2 * WALL - pos->dis->dis_y * WALL + pos->dis->dis_angle * WALL - pos->dis->dis_x * WALL;
 	if (row_l <= MAPL)
 		row_l = MAPL;
-	row_r = WINW / 2 + (ROW - row) / 2 * WALL + pos->dis->dis_y * WALL + pos->dis->dis_angle * WALL - pos->dis->dis_x * WALL;
+	row_r = WINW / 2 + (ROW - 1 - row) / 2 * WALL + pos->dis->dis_y * WALL + pos->dis->dis_angle * WALL - pos->dis->dis_x * WALL;
 	if (row_r >= MAPR)
 		row_r = MAPR;
 	row = MAPL;
