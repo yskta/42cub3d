@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/14 14:42:24 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/14 15:59:18 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ extern unsigned int map[ROW][COL];
 # define BLACK 0x000000
 # define RED 0xFF0000
 # define BLUE 0x0000FF
+# define YELLOW 0x00FF00
 
 typedef struct s_pos	t_pos;
 
