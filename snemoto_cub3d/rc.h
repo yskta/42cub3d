@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/11 19:09:32 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/14 14:42:24 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ typedef struct s_dir
 typedef struct s_dis
 {
 	unsigned int	dis_x;
-	unsigned int	dis_left;
-	unsigned int	dis_right;
+	// unsigned int	dis_left;
+	// unsigned int	dis_right;
 	unsigned int	dis_y;
 	double			dis_angle;
 }	t_dis;
@@ -67,11 +67,11 @@ struct s_pos
 	t_dis			*dis;
 	unsigned int	pos_x;
 	unsigned int	pos_y;
-	char			element;
 	t_pos			*pos_here;
 	t_pos			*pos_wall_ahead;
-	t_pos			*pos_wall_left;
-	t_pos			*pos_wall_right;
+	// char			element;
+	// t_pos			*pos_wall_left;
+	// t_pos			*pos_wall_right;
 };
 
 typedef struct s_vars
