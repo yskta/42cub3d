@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_check_arg.c                                      :+:      :+:    :+:   */
+/*   3_parse_read_data.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:41:13 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 15:35:52 by yokitaga         ###   ########.fr       */
+/*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
+/*   Updated: 2023/10/14 15:18:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-bool    check_arg(int argc, char **argv)
+void	parse_read_data(t_data *data)
 {
-    char    *ext;
-    size_t  ext_len;
-    size_t  arg_len;
-
-    if (argc != 2)
-        return (false);
-    ext = ".cub";
-    ext_len = 4;
-    arg_len = ft_strlen(argv[1]);
-    if (ft_strchr(argv[1], '.') == NULL || arg_len <= ext_len)
-		return (false);
-	while (ext_len)
+	int i;
+	
+	i = 0;
+	while (data->map_data->read_data[i])
 	{
-		ext_len--;
-		arg_len--;
-		if (argv[1][arg_len] != ext[ext_len])
-            return (false);
+		printf("%s\n", data->map_data->read_data[i]);
+		i++;
 	}
-    return(true);
 }

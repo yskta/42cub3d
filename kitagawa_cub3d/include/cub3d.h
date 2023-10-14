@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 15:00:38 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:36:05 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_data{
 }t_data;
 
 void	put_error_and_exit(char *str, t_data *data);
-bool    check_arg(int argc, char **argv, t_data *data);
+bool    check_arg(int argc, char **argv);
 bool    read_map(char *argv, t_data *data);
+void	parse_read_data(t_data *data);
 #endif
