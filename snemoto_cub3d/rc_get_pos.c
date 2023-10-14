@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/14 14:22:39 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/14 16:56:49 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,16 @@ void	get_pos(t_vars var, unsigned int map[ROW][COL])
 
 	pos = get_pos_here(var);
 	var.pos->pos_here = pos;
-	// printf("HERE X;%d Y;%d\n", pos->pos_x, pos->pos_y);
+	printf("HERE X;%d Y;%d\n", pos->pos_x, pos->pos_y);
 
 	wallkind = AHEAD;
 	pos_wall_ahead = get_pos_wall(pos, map, wallkind);
 	var.pos->pos_wall_ahead = pos_wall_ahead;
-	// printf("AHEAD X;%d Y;%d\n", pos_wall_ahead->pos_x, pos_wall_ahead->pos_y);
+	printf("AHEAD X;%d Y;%d\n", pos_wall_ahead->pos_x, pos_wall_ahead->pos_y);
 
-	// printf("dis_x;%d\n", var.pos->dis->dis_x);
-	// printf("dis_y;%d\n", var.pos->dis->dis_y);
+	printf("dis_x;%d\n", var.pos->dis->dis_x);
+	printf("dis_y;%d\n", var.pos->dis->dis_y);
+
 	// printf("dis_left;%d\n", var.pos->dis->dis_left);
 	// printf("dis_right;%d\n", var.pos->dis->dis_right);
 
@@ -78,5 +79,5 @@ void	get_pos(t_vars var, unsigned int map[ROW][COL])
 	// var.pos->pos_wall_right = pos_wall_right;
 	// printf("RIGHT X;%d Y;%d\n", pos_wall_right->pos_x, pos_wall_right->pos_y);
 
-	// printf("---------------------\n");
+	printf("---------------------\n");
 }

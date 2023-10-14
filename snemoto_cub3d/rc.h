@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/14 15:59:18 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/14 17:01:33 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ extern unsigned int map[ROW][COL];
 #define MAPL WINW / 2 - ROW / 2 * WALL
 #define MAPR WINW / 2 + ROW / 2 * WALL
 
-# define ANGLE 4
+# define ANGLE 2
 
 # define KEY_W 0x077
 # define KEY_S 0x073
