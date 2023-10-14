@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:32:13 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 14:55:26 by yokitaga         ###   ########.fr       */
+/*   Created: 2023/10/14 14:24:40 by yokitaga          #+#    #+#             */
+/*   Updated: 2023/10/14 14:25:05 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "libft.h"
 
-void	put_error_and_exit(char *str, t_data *data)
+size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
-	if (data)
-		free(data);
-	printf("%s\n", str);
-	exit (1);
+	size_t	i;
+	size_t	count;
+
+	i = 0;
+	count = ft_strlen(src);
+	if (n != 0)
+	{
+		while (src[i] != '\0' && i < (n - 1))
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (count);
 }
