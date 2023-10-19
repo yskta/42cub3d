@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 17:26:02 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 00:35:20 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 
+# define NO "NO"
+# define SO "SO"
+# define WE "WE"
+# define EA "EA"
+# define F "F"
+# define C "C"
+
 # define KEY_LEFT        0xff51 
 # define KEY_UP          0xff52  
 # define KEY_RIGHT       0xff53  
@@ -32,39 +39,42 @@
 # define KEY_W 119
 
 typedef struct s_map{
-	char	**read_data;
-	char	**map;
+	char	**read_data; //mallocする
+	char	**map; //mallocする
 	ssize_t	fd;
 }t_map;
 
 typedef struct s_texture{
-	char	*path;
+	char	*path;//東西南北それぞれmallocする
 	void	*texture_ptr;
 }t_texture;
 
-typedef struct s_floor{
+typedef struct s_floor_or_ceiling{
+	char	*before_split;
+	char	**after_split;
 	int		r;
 	int		g;
 	int		b;
-}t_floor;
+}t_floor_or_ceiling;
 
 typedef struct s_data{
-	void		*mlx;
-	void		*mlx_win;
-	bool		judge_valid_map;
-	t_map		map_data;
-	t_texture	north;
-	t_texture	south;
-	t_texture	west;
-	t_texture	east;
-	t_floor		floor;
-}t_data;
+	void					*mlx;
+	void					*mlx_win;
+	bool					judge_valid_map;
+	t_map					map_data;
+	t_texture				north;
+	t_texture				south;
+	t_texture				west;
+	t_texture				east;
+	t_floor_or_ceiling		floor;
+	t_floor_or_ceiling		ceiling;
+}t_data;//mallocする
 
 bool	check_arg(int argc, char **argv);
 bool	read_map(char *argv, t_data *data);
-void	parse_read_data(t_data *data);
+bool	parse_read_data(t_data *data);
 
-void	free_read_data(t_data *data);
+void	free_two_dimensional_array(char **array);
 void	put_error_and_exit(char *str, t_data *data);
 
 #endif
