@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 16:48:07 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/14 17:26:02 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,39 @@
 # define KEY_W 119
 
 typedef struct s_map{
-    char    **read_data;
-    char    **map;
-    ssize_t fd;
+	char	**read_data;
+	char	**map;
+	ssize_t	fd;
 }t_map;
 
 typedef struct s_texture{
-    void		*texture_ptr;
+	char	*path;
+	void	*texture_ptr;
 }t_texture;
 
+typedef struct s_floor{
+	int		r;
+	int		g;
+	int		b;
+}t_floor;
+
 typedef struct s_data{
-    void        *mlx;
-    void        *mlx_win;
-    bool        judge_valid_map;
-    t_map       map_data;
-    t_texture   north;
-    t_texture   south;
-    t_texture   west;
-    t_texture   east;
+	void		*mlx;
+	void		*mlx_win;
+	bool		judge_valid_map;
+	t_map		map_data;
+	t_texture	north;
+	t_texture	south;
+	t_texture	west;
+	t_texture	east;
+	t_floor		floor;
 }t_data;
 
-void	put_error_and_exit(char *str, t_data *data);
-bool    check_arg(int argc, char **argv);
-bool    read_map(char *argv, t_data *data);
+bool	check_arg(int argc, char **argv);
+bool	read_map(char *argv, t_data *data);
 void	parse_read_data(t_data *data);
+
+void	free_read_data(t_data *data);
+void	put_error_and_exit(char *str, t_data *data);
+
 #endif
