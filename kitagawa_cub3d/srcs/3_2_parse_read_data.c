@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 11:32:06 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:13:43 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,17 @@ bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j)
 		while (data->map_data.read_data[i][j] == ' ')
 			j++;
 		data->ceiling.before_split = ft_strdup(&data->map_data.read_data[i][j]);
-		data->ceiling.after_split = ft_split(data->floor.before_split, ',');
-		data->ceiling.r = ft_atoi(data->floor.after_split[0]);
-		data->ceiling.g = ft_atoi(data->floor.after_split[1]);
-		data->ceiling.b = ft_atoi(data->floor.after_split[2]);
-		free_two_dimensional_array(data->floor.after_split);
-		free(data->floor.before_split);
+		data->ceiling.after_split = ft_split(data->ceiling.before_split, ',');
+		data->ceiling.r = ft_atoi(data->ceiling.after_split[0]);
+		data->ceiling.g = ft_atoi(data->ceiling.after_split[1]);
+		data->ceiling.b = ft_atoi(data->ceiling.after_split[2]);
+		free_two_dimensional_array(data->ceiling.after_split);
+		free(data->ceiling.before_split);
 		if (data->ceiling.r < 0 || data->ceiling.r > 255 || data->ceiling.g < 0 || data->ceiling.g > 255 || data->ceiling.b < 0 || data->ceiling.b > 255)
 			return (false);
 	}
+	printf ("r: %d, g: %d, b: %d\n", data->floor.r, data->floor.g, data->floor.b);
+	printf ("r: %d, g: %d, b: %d\n", data->ceiling.r, data->ceiling.g, data->ceiling.b);
 	return (true);
 }
 

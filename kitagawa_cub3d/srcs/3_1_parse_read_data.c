@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 11:29:54 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:17:58 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,31 @@ bool	parse_all_identifier(t_data *data)
 	while (data->map_data.read_data[i] != NULL)
 	{
 		j = 0;
+		printf("index: %zu\n", i);
 		if (data->map_data.read_data[i][j] == '1')
 		{
 			i++;
+			printf("2\n");
 			continue;
 		}
 		while (data->map_data.read_data[i][j] != '\0')
 		{
 			if (data->map_data.read_data[i][j] == ' ')
-				j++;
-			else if (juduge_identifer(&data->map_data.read_data[i][j]) == true)
 			{
-				parse_each_identifier(data, i, j);
+				while (data->map_data.read_data[i][j] == ' ')
+					j++;
+				if (data->map_data.read_data[i][j] == '\0')
+					break ;
+			}
+			if (juduge_identifer(&data->map_data.read_data[i][j]) == true)
+			{
+				printf("1\n");
+				if (parse_each_identifier(data, i, j) == false)
+					return (false);
 				break ;
 			}
-			else
-				return (false);
+			else if (data->map_data.read_data[i][j] != '1')
+				break ;
 		}
 		i++;
 	}
@@ -84,9 +93,10 @@ bool	parse_read_data(t_data *data)
 			free(data->west.path);
 		if (data->east.path)
 			free(data->east.path);
+		printf("error in parse_all_identifier\n");
 		return (false);
 	}
-	if (parse_map(data) == false)
+	else if (parse_map(data) == false)
 	{
 		//t_data *data以外でmallocしたものをfreeする
 		free_two_dimensional_array(data->map_data.read_data);
