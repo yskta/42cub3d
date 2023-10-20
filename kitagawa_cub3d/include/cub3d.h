@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 00:35:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:11:48 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_map{
 	char	**read_data; //mallocする
 	char	**map; //mallocする
 	ssize_t	fd;
+	size_t 	read_data_height;
+	size_t	map_height;
 }t_map;
 
 typedef struct s_texture{
@@ -71,8 +73,18 @@ typedef struct s_data{
 }t_data;//mallocする
 
 bool	check_arg(int argc, char **argv);
+
 bool	read_map(char *argv, t_data *data);
+bool	parse_all_identifier(t_data *data);
+bool	parse_map(t_data *data);
 bool	parse_read_data(t_data *data);
+
+bool	juduge_identifer(char *str);
+bool	parse_texture(t_data *data, size_t i, size_t j);
+bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j);
+bool	parse_each_identifer(t_data *data, size_t i, size_t j);
+
+bool 	check_valid_map(t_data *data);
 
 void	free_two_dimensional_array(char **array);
 void	put_error_and_exit(char *str, t_data *data);

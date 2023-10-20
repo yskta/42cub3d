@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:43:39 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 16:49:02 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:56:51 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ bool    read_map(char *argv, t_data *data)
 {
     char    *read_data;
     char    *line;
-    
+
+    data->map_data.read_data_height = 0;
     data->map_data.fd = open(argv, O_RDONLY);
     if (data->map_data.fd == -1)
         return (false);
@@ -27,6 +28,7 @@ bool    read_map(char *argv, t_data *data)
         if (line == NULL)
             break ;
         read_data = ft_strjoin_for_gnl(read_data, line);
+        data->map_data.read_data_height++;
         free(line);
     }
     close(data->map_data.fd);
