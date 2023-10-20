@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/10/14 16:08:13 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/10/20 11:28:32 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 			0_main.c		\
 			1_check_arg.c		\
 			2_read_map.c		\
-			3_parse_read_data.c \
+			3_1_parse_read_data.c \
+			3_2_parse_read_data.c \
+			3_3_parse_read_data.c \
 			utils.c)
 
 OBJS = $(SRCS:%.c=%.o)

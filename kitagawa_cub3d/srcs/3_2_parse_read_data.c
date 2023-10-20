@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 10:39:09 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:32:06 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,11 @@ bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j)
 	return (true);
 }
 
-bool	parse_each_identifer(t_data *data, size_t i, size_t j)
+bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 {
 	if (data->map_data.read_data[i][j] == 'N' || data->map_data.read_data[i][j] == 'S' || data->map_data.read_data[i][j] == 'W' || data->map_data.read_data[i][j] == 'E')
 		return (parse_texture(data, i, j));
 	else if (data->map_data.read_data[i][j] == 'F' || data->map_data.read_data[i][j] == 'C')
 		return (parse_floor_or_ceiling(data, i, j));
+	return (true);
 }

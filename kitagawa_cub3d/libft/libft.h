@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:21:50 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 10:29:59 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:35:00 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <unistd.h>
 
 int		ft_atoi(const char	*str);
+int		ft_isdigit(int c);
 char	**ft_split(char const *s, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *src);
