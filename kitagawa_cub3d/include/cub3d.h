@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 11:30:26 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 23:52:43 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "../libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysymdef.h>
 
 # define NO "NO"
 # define SO "SO"
@@ -27,11 +30,14 @@
 # define F "F"
 # define C "C"
 
-# define KEY_LEFT        0xff51 
-# define KEY_UP          0xff52  
-# define KEY_RIGHT       0xff53  
-# define KEY_DOWN        0xff54
-# define KEY_ESC         0xff1b
+# define IMG_HEIGHT		50
+# define IMG_WIDTH		50
+
+# define KEY_LEFT		0xff51 
+# define KEY_UP			0xff52  
+# define KEY_RIGHT		0xff53  
+# define KEY_DOWN		0xff54
+# define KEY_ESC		0xff1b
 
 # define KEY_A 97
 # define KEY_D 100
@@ -72,21 +78,28 @@ typedef struct s_data{
 	t_floor_or_ceiling		ceiling;
 }t_data;//mallocする
 
-bool	check_arg(int argc, char **argv);
+bool		check_arg(int argc, char **argv);
 
-bool	read_map(char *argv, t_data *data);
-bool	parse_all_identifier(t_data *data);
-bool	parse_map(t_data *data);
-bool	parse_read_data(t_data *data);
+bool		read_map(char *argv, t_data *data);
+bool		parse_all_identifier(t_data *data);
+bool		parse_map(t_data *data);
+bool		parse_read_data(t_data *data);
 
-bool	juduge_identifer(char *str);
-bool	parse_texture(t_data *data, size_t i, size_t j);
-bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j);
-bool	parse_each_identifier(t_data *data, size_t i, size_t j);
+bool		juduge_identifer(char *str);
+bool		parse_texture(t_data *data, size_t i, size_t j);
+bool		parse_floor_or_ceiling(t_data *data, size_t i, size_t j);
+bool		parse_each_identifier(t_data *data, size_t i, size_t j);
 
-bool 	check_valid_map(t_data *data);
+bool 		check_valid_map(t_data *data);
 
-void	free_two_dimensional_array(char **array);
-void	put_error_and_exit(char *str, t_data *data);
+bool		init_other_data(t_data *data);
+bool		init_mlx(t_data *data);
+t_texture	xpm_file_to_texture(void *mlx, char *path, t_data *data);
+bool		init_texture(t_data *data);
+
+void		free_two_dimensional_array(char **array);
+void		free_map_data_and_texture(t_data *data);
+
+void		put_error_and_exit(char *str, t_data *data);
 
 #endif

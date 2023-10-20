@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 12:13:43 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 23:14:15 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,6 @@ bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j)
 		if (data->ceiling.r < 0 || data->ceiling.r > 255 || data->ceiling.g < 0 || data->ceiling.g > 255 || data->ceiling.b < 0 || data->ceiling.b > 255)
 			return (false);
 	}
-	printf ("r: %d, g: %d, b: %d\n", data->floor.r, data->floor.g, data->floor.b);
-	printf ("r: %d, g: %d, b: %d\n", data->ceiling.r, data->ceiling.g, data->ceiling.b);
 	return (true);
 }
 

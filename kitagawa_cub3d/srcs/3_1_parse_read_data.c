@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 12:17:58 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/20 23:18:20 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,30 +82,12 @@ bool	parse_read_data(t_data *data)
 {
 	if (parse_all_identifier(data) == false)
 	{	
-		//t_data *data以外でmallocしたものをfreeする
-		free_two_dimensional_array(data->map_data.read_data);
-		//ここのファイルでmallocしたものをfreeする
-		if (data->north.path)
-			free(data->north.path);
-		if (data->south.path)
-			free(data->south.path);
-		if (data->west.path)
-			free(data->west.path);
-		if (data->east.path)
-			free(data->east.path);
-		printf("error in parse_all_identifier\n");
+		free_map_data_and_texture(data);
 		return (false);
 	}
 	else if (parse_map(data) == false)
 	{
-		//t_data *data以外でmallocしたものをfreeする
-		free_two_dimensional_array(data->map_data.read_data);
-		free_two_dimensional_array(data->map_data.map);
-		//ここのファイルでmallocしたものをfreeする
-		free(data->north.path);
-		free(data->south.path);
-		free(data->west.path);
-		free(data->east.path);
+		free_map_data_and_texture(data);
 		return (false);
 	}
 	return (true);
