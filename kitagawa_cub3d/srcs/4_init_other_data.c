@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 23:57:32 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/21 15:47:42 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ bool	init_mlx(t_data *data)
 	if (data->mlx == NULL)
 		return (false);
 	//TODO：多分これ引数修正する
-	data->mlx_win = mlx_new_window(data->mlx, data->map.width * IMG_WIDTH, \
-			data->map.height * IMG_HEIGHT, "cub3d");
+	data->mlx_win = mlx_new_window(data->mlx, WINW, WINH, "cub3d");
 	if (data->mlx_win == NULL)
 	{
 		free(data->mlx_win);
@@ -45,20 +44,16 @@ bool	init_mlx(t_data *data)
 	return (true);
 }
 
-t_texture xpm_file_to_texture(void *mlx, char *path, t_data *data)
-{
-	t_texture	texture;
-
-	texture.texture_ptr = mlx_xpm_file_to_image(mlx, path, &texture.x, &texture.y);
-	return (texture);
-}
-
 bool	init_texture(t_data *data)
 {
-	data->north = xpm_file_to_texture(data->mlx, data->north.path, data);
-	data->south = xpm_file_to_texture(data->mlx, data->south.path, data);
-	data->west = xpm_file_to_texture(data->mlx, data->west.path, data);
-	data->east = xpm_file_to_texture(data->mlx, data->east.path, data);
+	data->north.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->north.path, \
+			&data->north.x, &data->north.y);
+	data->south.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->south.path, \
+			&data->south.x, &data->south.y);
+	data->west.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->west.path, \
+			&data->west.x, &data->west.y);
+	data->east.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->east.path, \
+			&data->east.x, &data->east.y);
 	if (data->north.texture_ptr == NULL || data->south.texture_ptr == NULL || \
 			data->west.texture_ptr == NULL || data->east.texture_ptr == NULL)
 	{

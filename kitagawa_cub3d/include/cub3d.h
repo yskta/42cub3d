@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 23:52:43 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/21 15:46:29 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
-# include <X11/X.h>
-# include <X11/keysymdef.h>
+//# include <X11/X.h>
+//# include <X11/keysymdef.h>
 
 # define NO "NO"
 # define SO "SO"
@@ -30,8 +30,13 @@
 # define F "F"
 # define C "C"
 
-# define IMG_HEIGHT		50
-# define IMG_WIDTH		50
+# define TXT_HEIGHT		50
+# define TXT_WIDTH		50
+
+# define WALL 100
+
+# define WINH WALL * 10
+# define WINW WINH * 2
 
 # define KEY_LEFT		0xff51 
 # define KEY_UP			0xff52  
@@ -55,6 +60,8 @@ typedef struct s_map{
 typedef struct s_texture{
 	char	*path;//東西南北それぞれmallocする
 	void	*texture_ptr;
+	int		x;
+	int		y;
 }t_texture;
 
 typedef struct s_floor_or_ceiling{
@@ -99,6 +106,8 @@ bool		init_texture(t_data *data);
 
 void		free_two_dimensional_array(char **array);
 void		free_map_data_and_texture(t_data *data);
+void		destroy_textures(t_data *data);
+void		free_and_destroy_all(t_data *data);
 
 void		put_error_and_exit(char *str, t_data *data);
 
