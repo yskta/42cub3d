@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/21 15:46:29 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/21 17:31:35 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stdbool.h>
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
-//# include <X11/X.h>
-//# include <X11/keysymdef.h>
+# include <X11/X.h>
+# include <X11/keysymdef.h>
 
 # define NO "NO"
 # define SO "SO"
