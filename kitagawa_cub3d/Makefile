@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/10/21 15:28:34 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/10/21 16:17:29 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,15 +29,15 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 
 OBJS = $(SRCS:%.c=%.o)
 
-#MLX_DIR = ./minilibx-linux
-#MLX_LIB = -lmlx_Linux -lXext -lX11
-#MLX_INCLUDE = $(addprefix -I, $(MLX_DIR))
+MLX_DIR = ./minilibx-linux
+MLX_LIB = -lmlx_Linux -lXext -lX11
+MLX_INCLUDE = $(addprefix -I, $(MLX_DIR))
 
 LIB_DIR = ./libft
 LIB_LIB = -lft
 LIB_INCLUDE = $(addprefix -I, $(LIB_DIR))
 
-all: lib $(NAME)
+all: mlx lib $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(LIB_DIR) $(LIB_LIB)
@@ -45,7 +45,7 @@ $(NAME): $(OBJS)
 %.o:	%.c
 	$(CC) $(CFLAGS) -c $(MLX_INCLUDE) $(LIB_INCLUDE) $< -o $@
 
-#mlx:make -C $(MLX_DIR)
+mlx:make -C $(MLX_DIR)
 
 lib:
 	make -C $(LIB_DIR)
