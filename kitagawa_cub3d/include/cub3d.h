@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/21 17:31:35 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/21 17:33:36 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ bool 		check_valid_map(t_data *data);
 
 bool		init_other_data(t_data *data);
 bool		init_mlx(t_data *data);
-t_texture	xpm_file_to_texture(void *mlx, char *path, t_data *data);
 bool		init_texture(t_data *data);
 
 void		free_two_dimensional_array(char **array);
