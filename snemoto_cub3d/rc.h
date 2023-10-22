@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 11:04:46 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 11:15:51 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_dir
 	double	dir_x;
 	double	dir_y;
 	double	angle;
+	int		color;
 }	t_dir;
 
 typedef struct s_dis
