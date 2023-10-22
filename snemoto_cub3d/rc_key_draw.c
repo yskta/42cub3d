@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 12:39:35 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 13:37:11 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,15 @@ static void	key_draw_wall(t_vars *var)
 			col_l -= vertical;
 			col_h += vertical;
 		}
+		col = 0;
+		while (col < col_l)
+			mlx_pixel_put(var->mlx, var->win, row, col++, FLOOR);
 		col = col_l;
-		while (var->dir->color != BLACK && col < col_h)
+		while (col <= col_h)
 			mlx_pixel_put(var->mlx, var->win, row, col++, var->dir->color);
+		col = col_h;
+		while (col < WINH)
+			mlx_pixel_put(var->mlx, var->win, row, col++, CEILING);
 		row++;
 	}
 }

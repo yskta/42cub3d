@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 11:42:18 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 13:39:50 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define YELLOW 0x00FF00
 # define BLUE 0x0000FF
 # define GREEN 0xFFFF00
+
+# define CEILING 0xC8C8C8
+# define FLOOR 0xA1A1A1
 
 # define ROW 6
 # define COL 6
