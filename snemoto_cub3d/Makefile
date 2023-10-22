@@ -6,7 +6,7 @@
 #    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 13:47:31 by snemoto           #+#    #+#              #
-#    Updated: 2023/10/09 17:01:12 by snemoto          ###   ########.fr        #
+#    Updated: 2023/10/22 16:31:12 by snemoto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@
 # **************************************************************************** #
 
 NAME	= cub3d
-SRCS	= $(shell echo *.c)
+# SRCS	= $(shell echo *.c)
+SRCS	= raycaster.c
 OBJDIR	= obj/
 OBJS	= $(SRCS:%.c=$(OBJDIR)%.o)
 

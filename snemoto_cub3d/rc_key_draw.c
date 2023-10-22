@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 13:37:11 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 14:26:24 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static unsigned int	calc_row_r(t_vars *var)
 	unsigned int	row_r;
 	
 	row_r = WINW / 2 \
-			+ (ROW - 1 - var->pos->pos_x) / 2 * WALL \
+			+ ((ROW - 1) - var->pos->pos_x) / 2 * WALL \
 			- var->pos->dis->dis_x * WALL \
 			+ var->pos->dis->dis_y * WALL \
 			+ var->dir->angle * WALL;
@@ -45,9 +45,9 @@ static double	calc_vertical(t_vars *var, unsigned int row_l, unsigned int row_r,
 	double	vertical;
 
 	if (var->dir->angle < 0)
-		vertical = (row_r - row) * fabs(sin(var->dir->angle));
+		vertical = (row_r - row) / 2 * fabs(sin(var->dir->angle));
 	else if (0 < var->dir->angle)
-		vertical = (row - row_l) * fabs(sin(var->dir->angle));
+		vertical = (row - row_l) / 2 * fabs(sin(var->dir->angle));
 	else
 		vertical = 0;
 	return (vertical);
@@ -80,7 +80,7 @@ static void	key_draw_wall(t_vars *var)
 		}
 		else if (row_l <= row && row <= row_r)
 		{
-			var->dir->color = YELLOW;
+			var->dir->color = PURPLE;
 			vertical = calc_vertical(var, row_l, row_r, row);
 			col_l -= vertical;
 			col_h += vertical;			

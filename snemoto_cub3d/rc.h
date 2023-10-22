@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 13:39:50 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 16:41:35 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define WHITE 0xFFFFFF
 
 # define RED 0xFF0000
-# define YELLOW 0x00FF00
+# define GREEN 0x00FF00
 # define BLUE 0x0000FF
-# define GREEN 0xFFFF00
+# define PURPLE 0xFF00FF
 
 # define CEILING 0xC8C8C8
 # define FLOOR 0xA1A1A1
@@ -52,7 +52,7 @@ extern unsigned int map[ROW][COL];
 
 # define ANGLE 16
 
-typedef struct s_pos	t_pos;
+/* ************************************************************************** */
 
 typedef struct s_dir
 {
@@ -68,12 +68,12 @@ typedef struct s_dis
 	unsigned int	dis_y;
 }	t_dis;
 
-struct s_pos
+typedef struct s_pos
 {
 	t_dis			*dis;
 	unsigned int	pos_x;
 	unsigned int	pos_y;
-};
+}	t_pos;
 
 typedef struct s_vars
 {
@@ -83,6 +83,38 @@ typedef struct s_vars
 	void	*win;
 	void	*img;
 }	t_vars;
+
+/* ************************************************************************** */
+
+typedef struct s_n_pos
+{
+	double	pos_x;
+	double	pos_y;
+}	t_n_pos;
+
+typedef struct s_n_dir
+{
+	double	dir_x;
+	double	dir_y;
+}	t_n_dir;
+
+typedef struct s_n_plane
+{
+	double	plane_x;
+	double	plane_y;
+}	t_n_plane;
+
+typedef struct s_n_vars
+{
+	t_n_pos	*pos;
+	t_n_dir	*dir;
+	t_n_plane	*plane;
+	void	*mlx;
+	void	*win;
+	void	*img;
+}	t_n_vars;
+
+/* ************************************************************************** */
 
 int		key_hook(int keycode, t_vars *var);
 int		key_draw(t_vars *var);
