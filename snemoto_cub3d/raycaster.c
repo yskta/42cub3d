@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 16:47:31 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 16:55:54 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,38 +24,29 @@ unsigned int map[ROW][COL]=
 
 static int	n_key_hook(int keycode, t_n_vars *var)
 {
+	double	sign = 1;
 	double	move = 1;
 	double	rot = M_PI / ANGLE;
 	double	old_dir_x = var->dir->dir_x;
 	double	old_plane_x = var->plane->plane_x;
 
-	if (keycode == KEY_W)
+	if (keycode == KEY_W || keycode == KEY_S)
 	{
-		if (map[(int)(var->pos->pos_x + var->dir->dir_x * move)][(int)var->pos->pos_x])
-			var->pos->pos_x += var->dir->dir_x * move;
-		if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + var->dir->dir_x * move)])
-			var->pos->pos_y += var->dir->dir_y * move;
+		if (keycode == KEY_S)
+			sign = -1;
+		if (map[(int)(var->pos->pos_x + sign * var->dir->dir_x * move)][(int)var->pos->pos_x])
+			var->pos->pos_x += sign * var->dir->dir_x * move;
+		if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + sign * var->dir->dir_x * move)])
+			var->pos->pos_y += sign * var->dir->dir_y * move;
 	}
-	else if (keycode == KEY_S)
+	else if (keycode == KEY_A || keycode == KEY_D)
 	{
-		if (map[(int)(var->pos->pos_x - var->dir->dir_x * move)][(int)var->pos->pos_x])
-			var->pos->pos_x -= var->dir->dir_x * move;
-		if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y - var->dir->dir_x * move)])
-			var->pos->pos_y -= var->dir->dir_y * move;
-	}
-	else if (keycode == KEY_A)
-	{
-		if (map[(int)(var->pos->pos_x + var->dir->dir_x * move)][(int)var->pos->pos_x])
-			var->pos->pos_x += var->dir->dir_x * move;
-		if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y - var->dir->dir_x * move)])
-			var->pos->pos_y -= var->dir->dir_y * move;
-	}
-	else if (keycode == KEY_D)
-	{
-		if (map[(int)(var->pos->pos_x - var->dir->dir_x * move)][(int)var->pos->pos_x])
-			var->pos->pos_x -= var->dir->dir_x * move;
-		if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + var->dir->dir_x * move)])
-			var->pos->pos_y += var->dir->dir_y * move;
+		if (keycode == KEY_D)
+			sign = -1;
+		if (map[(int)(var->pos->pos_x + sign * var->dir->dir_x * move)][(int)var->pos->pos_x])
+			var->pos->pos_x += sign * var->dir->dir_x * move;
+		if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y - sign * var->dir->dir_x * move)])
+			var->pos->pos_y -= sign * var->dir->dir_y * move;
 	}
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 	{
