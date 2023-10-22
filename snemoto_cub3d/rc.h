@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/14 17:36:54 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 10:10:50 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_dis
 {
 	unsigned int	dis_x;
 	unsigned int	dis_y;
-	double			dis_angle;
 }	t_dis;
 
 struct s_pos
