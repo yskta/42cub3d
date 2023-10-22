@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 11:23:20 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 11:44:21 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ int	key_hook(int keycode, t_vars *var)
 	else if (keycode == KEY_LEFT)
 	{
 		var->dir->angle += M_PI / ANGLE;
-		if (var->dir->angle == M_PI / 2)
-			var->dir->angle = 0;
+		if (var->dir->angle >= M_PI)
+			var->dir->angle = M_PI / ANGLE;
 		var->dir->dir_x = cos(var->dir->angle);
 		var->dir->dir_y = sin(var->dir->angle);
 	}
 	else if (keycode == KEY_RIGHT)
 	{
 		var->dir->angle -= M_PI / ANGLE;
-		if (var->dir->angle == -1 * M_PI / 2)
-			var->dir->angle = 0;
+		if (var->dir->angle <= -1 * M_PI)
+			var->dir->angle = M_PI / ANGLE;
 		var->dir->dir_x = cos(var->dir->angle);
 		var->dir->dir_y = sin(var->dir->angle);
 	}

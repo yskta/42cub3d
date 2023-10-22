@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 11:24:38 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 12:39:35 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,19 @@ static unsigned int	calc_row_r(t_vars *var)
 	return (row_r);
 }
 
+static double	calc_vertical(t_vars *var, unsigned int row_l, unsigned int row_r, unsigned int row)
+{
+	double	vertical;
+
+	if (var->dir->angle < 0)
+		vertical = (row_r - row) * fabs(sin(var->dir->angle));
+	else if (0 < var->dir->angle)
+		vertical = (row - row_l) * fabs(sin(var->dir->angle));
+	else
+		vertical = 0;
+	return (vertical);
+}
+
 static void	key_draw_wall(t_vars *var)
 {
 	unsigned int	row;
@@ -60,21 +73,21 @@ static void	key_draw_wall(t_vars *var)
 		col_h = WINH / 2 + var->pos->dis->dis_y * WALL;
 		if (MAPL < row && row < row_l)
 		{
-			var->dir->color = NORTH;
+			var->dir->color = RED;
 			vertical = (row_l - row) * fabs(cos(var->dir->angle));
 			col_l -= vertical;
 			col_h += vertical;
 		}
 		else if (row_l <= row && row <= row_r)
 		{
-			var->dir->color = EAST;
-			vertical = (row_r - row) * fabs(sin(var->dir->angle));
+			var->dir->color = YELLOW;
+			vertical = calc_vertical(var, row_l, row_r, row);
 			col_l -= vertical;
 			col_h += vertical;			
 		}
 		else if (row_r < row && row < MAPR)
 		{
-			var->dir->color = SOUTH;
+			var->dir->color = GREEN;
 			vertical = (row - row_r) * fabs(cos(var->dir->angle));
 			col_l -= vertical;
 			col_h += vertical;

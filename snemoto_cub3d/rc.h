@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 11:15:51 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 11:42:18 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@
 # define KEY_RIGHT 0xFF53
 
 # define BLACK 0x000000
+# define WATER 0x00FFFF
+# define WHITE 0xFFFFFF
 
-# define NORTH 0xFF0000
-# define EAST 0x0000FF
-# define SOUTH 0x00FF00
-# define WEST 0x00FFFF
+# define RED 0xFF0000
+# define YELLOW 0x00FF00
+# define BLUE 0x0000FF
+# define GREEN 0xFFFF00
 
 # define ROW 6
 # define COL 6

@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 11:27:48 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 11:40:37 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	key_draw_map_range(t_vars *var)
 	{
 		color = BLACK;
 		if (row == MAPL || row == MAPR)
-			color = SOUTH;
+			color = WATER;
 		col = 0;
 		while (color != BLACK && col < WINH)
 			mlx_pixel_put(var->mlx, var->win, row, col++, color);
@@ -59,7 +59,7 @@ void	key_draw_grid(t_vars *var)
 	{
 		col = 0;
 		while (col < WINH)
-			mlx_pixel_put(var->mlx, var->win, row, col++, NORTH);
+			mlx_pixel_put(var->mlx, var->win, row, col++, WHITE);
 		row += WALL;
 	}
 }
@@ -101,7 +101,7 @@ int	main(void)
 	var.dir = (t_dir *)malloc(sizeof(t_dir));;
 	var.dir->dir_x = 1;
 	var.dir->dir_y = 0;
-	var.dir->color = EAST;
+	var.dir->color = BLUE;
 	var.dir->angle = atan(var.dir->dir_y / var.dir->angle);
 
 	var.mlx = mlx_init();
