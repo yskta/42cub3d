@@ -6,11 +6,39 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 10:54:32 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 11:03:04 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rc.h"
+
+static unsigned int	calc_row_l(t_vars *var, t_pos *pos)
+{
+	unsigned int	row_l;
+	
+	row_l = WINW / 2 \
+			- pos->pos_x / 2 * WALL \
+			- pos->dis->dis_x * WALL \
+			- pos->dis->dis_y * WALL \
+			+ var->dir->angle * WALL;
+	if (row_l <= MAPL)
+		row_l = MAPL;
+	return (row_l);
+}
+
+static unsigned int	calc_row_r(t_vars *var, t_pos *pos)
+{
+	unsigned int	row_r;
+	
+	row_r = WINW / 2 \
+			+ (ROW - 1 - pos->pos_x) / 2 * WALL \
+			- pos->dis->dis_x * WALL \
+			+ pos->dis->dis_y * WALL \
+			+ var->dir->angle * WALL;
+	if (row_r >= MAPR)
+		row_r = MAPR;
+	return (row_r);
+}
 
 static void	key_draw_wall(t_vars *var, t_pos *pos)
 {
@@ -23,17 +51,9 @@ static void	key_draw_wall(t_vars *var, t_pos *pos)
 	int				color;
 	double			vertical;
 
-	row = pos->pos_x;
-	row_l = WINW / 2 - row / 2 * WALL - pos->dis->dis_y * WALL \
-		- pos->dis->dis_x * WALL + var->dir->angle * WALL;
-	if (row_l <= MAPL)
-		row_l = MAPL;
-	row_r = WINW / 2 + (ROW - 1 - row) / 2 * WALL + pos->dis->dis_y * WALL \
-		- pos->dis->dis_x * WALL + var->dir->angle * WALL;
-	if (row_r >= MAPR)
-		row_r = MAPR;
+	row_l = calc_row_l(var, pos);
+	row_r = calc_row_r(var, pos);
 	row = MAPL;
-	vertical = 0;
 	while (MAPL <= row && row <= MAPR)
 	{
 		color = BLACK;
@@ -49,6 +69,7 @@ static void	key_draw_wall(t_vars *var, t_pos *pos)
 		else if (row_l <= row && row <= row_r)
 		{
 			color = NORTH;
+			vertical = 0;
 			col_l -= vertical;
 			col_h += vertical;			
 		}

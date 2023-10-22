@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 10:53:11 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 11:04:46 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ extern unsigned int map[ROW][COL];
 #define MAPL WINW / 2 - ROW / 2 * WALL
 #define MAPR WINW / 2 + ROW / 2 * WALL
 
-# define ANGLE 8
+# define ANGLE 16
 
 typedef struct s_pos	t_pos;
 
@@ -67,7 +67,6 @@ struct s_pos
 	t_dis			*dis;
 	unsigned int	pos_x;
 	unsigned int	pos_y;
-	t_pos			*pos_here;
 };
 
 typedef struct s_vars
