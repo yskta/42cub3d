@@ -6,13 +6,13 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 10:08:22 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 10:54:32 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rc.h"
 
-static void	key_draw_wall_horizontal(t_vars *var, t_pos *pos)
+static void	key_draw_wall(t_vars *var, t_pos *pos)
 {
 	unsigned int	row;
 	unsigned int	row_l;
@@ -33,6 +33,7 @@ static void	key_draw_wall_horizontal(t_vars *var, t_pos *pos)
 	if (row_r >= MAPR)
 		row_r = MAPR;
 	row = MAPL;
+	vertical = 0;
 	while (MAPL <= row && row <= MAPR)
 	{
 		color = BLACK;
@@ -40,17 +41,21 @@ static void	key_draw_wall_horizontal(t_vars *var, t_pos *pos)
 		col_h = WINH / 2 + pos->dis->dis_y * WALL;
 		if (MAPL < row && row < row_l)
 		{
-			color = YELLOW;
-			vertical = (row_l - row) * fabs(var->dir->dir_y);
+			color = WEST;
+			vertical = (row_l - row) * fabs(sin(var->dir->angle));
 			col_l -= vertical;
 			col_h += vertical;
 		}
-		else if (row_l < row && row < row_r)
-			color = RED;
+		else if (row_l <= row && row <= row_r)
+		{
+			color = NORTH;
+			col_l -= vertical;
+			col_h += vertical;			
+		}
 		else if (row_r < row && row < MAPR)
 		{
-			color = YELLOW;
-			vertical = (row - row_r) * fabs(var->dir->dir_y);
+			color = EAST;
+			vertical = (row - row_r) * fabs(sin(var->dir->angle));
 			col_l -= vertical;
 			col_h += vertical;
 		}
@@ -61,46 +66,13 @@ static void	key_draw_wall_horizontal(t_vars *var, t_pos *pos)
 	}
 }
 
-static void	key_draw_map_range(t_vars *var)
-{
-	unsigned int	row;
-	unsigned int	col;
-	int				color;
-
-	row = 0;
-	while (row++ < WINW)
-	{
-		color = BLACK;
-		if (row == MAPL || row == MAPR)
-			color = RED;
-		col = 0;
-		while (color != BLACK && col < WINH)
-			mlx_pixel_put(var->mlx, var->win, row, col++, color);
-	}
-}
-
-static void	key_draw_grid(t_vars *var)
-{
-	unsigned int	row;
-	unsigned int	col;
-
-	row = MAPL + WALL;
-	while (row < MAPR)
-	{
-		col = 0;
-		while (col < WINH)
-			mlx_pixel_put(var->mlx, var->win, row, col++, BLUE);
-		row += WALL;
-	}
-}
-
 int	key_draw(t_vars *var)
 {
 	t_pos	*pos;
 
 	pos = var->pos;
-	key_draw_wall_horizontal(var, pos);
-	key_draw_map_range(var);
-	key_draw_grid(var);
+	key_draw_wall(var, pos);
+	key_draw_map_range(var); //not require
+	key_draw_grid(var); //not require
 	return (0);
 }

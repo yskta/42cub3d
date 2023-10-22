@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 09:32:20 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 10:56:02 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_pos	*init_pos(unsigned int row, unsigned int col)
 	pos->dis = (t_dis *)malloc(sizeof(t_dis));
 	pos->dis->dis_x = row - 1;
 	pos->dis->dis_y = COL - 1 - col;
-	pos->dis->dis_angle = M_PI / ANGLE;
 	return (pos);
 }
 

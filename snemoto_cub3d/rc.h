@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/22 10:10:50 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/22 10:53:11 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@
 # define KEY_RIGHT 0xFF53
 
 # define BLACK 0x000000
-# define RED 0xFF0000
-# define BLUE 0x0000FF
-# define YELLOW 0x00FF00
+
+# define NORTH 0xFF0000
+# define EAST 0x0000FF
+# define SOUTH 0x00FF00
+# define WEST 0x00FFFF
 
 # define ROW 6
 # define COL 6
@@ -77,10 +79,12 @@ typedef struct s_vars
 	void	*img;
 }	t_vars;
 
-void	print_pos(t_vars var);
-void	print_dir(t_vars var);
-
 int		key_hook(int keycode, t_vars *var);
 int		key_draw(t_vars *var);
+
+void	print_pos(t_vars var);
+void	print_dir(t_vars var);
+void	key_draw_grid(t_vars *var);
+void	key_draw_map_range(t_vars *var);
 
 #endif
