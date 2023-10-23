@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/23 19:24:19 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/10/23 20:02:01 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	key_draw_clear(t_vars *var)
 	unsigned int	col;
 
 	row = 0;
-	col = 0;
 	while (row < screenWidth)
 	{
 		col = 0;
@@ -50,15 +49,6 @@ int	key_hook(int keycode, t_vars *var)
 		if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + sign * var->dir->dir_y * move)] == 0)
 			var->pos->pos_y += sign * var->dir->dir_y * move;
 	}
-	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-	{
-		if (keycode == KEY_RIGHT)
-			rot *= -1;
-		var->dir->dir_x = var->dir->dir_x * cos(rot) - var->dir->dir_y * sin(rot);
-		var->dir->dir_y = old_dir_x * sin(rot) + var->dir->dir_y * cos(rot);
-		var->plane->plane_x = var->plane->plane_x * cos(rot) - var->plane->plane_y * sin(rot);
-		var->plane->plane_y = old_plane_x * sin(rot) + var->plane->plane_y * cos(rot);
-	}
 	else if (keycode == KEY_A || keycode == KEY_D)
 	{
 		angle_x = var->dir->dir_x * cos(M_PI / 2) - var->dir->dir_y * sin(M_PI / 2);
@@ -69,6 +59,15 @@ int	key_hook(int keycode, t_vars *var)
 			var->pos->pos_x += angle_x * sign * move;
 		if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + angle_y * sign * move)] == 0)
 			var->pos->pos_y += angle_y * sign * move;
+	}
+	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
+	{
+		if (keycode == KEY_RIGHT)
+			rot *= -1;
+		var->dir->dir_x = var->dir->dir_x * cos(rot) - var->dir->dir_y * sin(rot);
+		var->dir->dir_y = old_dir_x * sin(rot) + var->dir->dir_y * cos(rot);
+		var->plane->plane_x = var->plane->plane_x * cos(rot) - var->plane->plane_y * sin(rot);
+		var->plane->plane_y = old_plane_x * sin(rot) + var->plane->plane_y * cos(rot);
 	}
 	else
 		return (0);
