@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/24 23:54:51 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/24 23:55:44 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
     printf("south: %s\n", data->south.path);
     printf("west: %s\n", data->west.path);
     printf("east: %s\n", data->east.path);
-    printf("F: %d, %d, %d\n", data->floor.red, data->floor.green, data->floor.blue);
-    printf("C: %d, %d, %d\n", data->ceiling.red, data->ceiling.green, data->ceiling.blue);
+    printf("F: %d, %d, %d\n", data->floor.r, data->floor.g, data->floor.b);
+    printf("C: %d, %d, %d\n", data->ceiling.r, data->ceiling.g, data->ceiling.b);
     //render_map(data);
     //mlx_key_hook(data->mlx_win, Expose, ExposureMask, render_map, data);
 	//mlx_loop_hook(data->mlx_win, KeyPress, KeyPressMask, key_action, data);
