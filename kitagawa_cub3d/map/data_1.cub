@@ -1,13 +1,13 @@
-NO ./path_1
-SO ./path_2
-WE ./path_3
-EA ./path_4
+NO ./texture/north.xpm
+SO ./texture/south.xpm
+WE ./texture/west.xpm
+EA ./texture/east.xpm
 
 F 220,100,0
 C 200,0,100
 
 11111111111
-11000000001
+10000000001
 10000000011
 10000000011
 11111111111
