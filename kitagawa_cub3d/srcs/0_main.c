@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/24 23:52:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/24 23:52:57 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
         put_error_and_exit("error in parse read data", data);
     if (init_other_data(data) == false)
         put_error_and_exit("error in init other data", data);
-    render_map(data);
+    //render_map(data);
     //mlx_key_hook(data->mlx_win, Expose, ExposureMask, render_map, data);
 	//mlx_loop_hook(data->mlx_win, KeyPress, KeyPressMask, key_action, data);
 	mlx_hook(data->mlx_win, DestroyNotify, ButtonPressMask, close_program, data);
