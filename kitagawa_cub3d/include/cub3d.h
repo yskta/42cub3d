@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/21 17:33:36 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/21 17:51:41 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define TXT_HEIGHT		50
 # define TXT_WIDTH		50
 
+//壁関係は変更する可能性あり
 # define WALL 100
 
 # define WINH WALL * 10
@@ -102,6 +103,8 @@ bool 		check_valid_map(t_data *data);
 bool		init_other_data(t_data *data);
 bool		init_mlx(t_data *data);
 bool		init_texture(t_data *data);
+
+int			close_program(t_data *data);
 
 void		free_two_dimensional_array(char **array);
 void		free_map_data_and_texture(t_data *data);
