@@ -195,7 +195,6 @@ int main(int /*argc*/, char */*argv*/[])
       //Calculate height of line to draw on screen
       int lineHeight = (int)(h / perpWallDist);
 
-
       int pitch = 100;
 
       //calculate lowest and highest pixel to fill in current stripe
