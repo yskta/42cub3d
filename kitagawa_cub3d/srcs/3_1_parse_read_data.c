@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 23:18:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/25 19:47:32 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ bool	parse_all_identifier(t_data *data)
 	return (true);
 }
 
+//要修正
 bool	parse_map(t_data *data)
 {
 	size_t	i;
@@ -62,6 +63,7 @@ bool	parse_map(t_data *data)
 		if (ft_strchr(data->map_data.read_data[i], '1') != NULL)
 		{
 			data->map_data.map_height = data->map_data.read_data_height - i;
+			printf("map_height: %d\n", data->map_data.map_height);
 			data->map_data.map = malloc(sizeof(char *) * (data->map_data.map_height + 1));
 			while (data->map_data.read_data[i] != NULL)
 			{
