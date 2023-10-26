@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 00:23:33 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 00:26:23 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ bool	parse_map(t_data *data)
 			while (data->map_data.read_data[i] != NULL)
 			{
 				data->map_data.map[i] = ft_strdup(data->map_data.read_data[i]);
+				printf("map[%d]: %s\n", i, data->map_data.map[i]);
 				i++;
 			}
 			data->map_data.map[i] = NULL;
