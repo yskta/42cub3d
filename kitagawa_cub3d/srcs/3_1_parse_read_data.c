@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 00:12:29 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 00:16:15 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ bool	parse_map(t_data *data)
 			data->map_data.map[i] = NULL;
 			break ;
 		}
+		i++;
+	}
+	i = 0;
+	while (data->map_data.map[i] != NULL)
+	{
+		printf("%s\n", data->map_data.map[i]);
 		i++;
 	}
 	if (check_valid_map(data) == false)
