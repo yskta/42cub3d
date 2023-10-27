@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 10:10:39 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 10:12:48 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,15 @@ bool	parse_all_identifier(t_data *data)
 }
 
 //要修正
-
 bool	judge_space_or_wall(char *line)
 {
 	size_t	i;
 
+	i = 0;
+	while (line[i] == ' ')
+		i++;
+	if (line[i] == '\0')
+		return (false);
 	i = 0;
 	while (line[i] != '\0')
 	{
