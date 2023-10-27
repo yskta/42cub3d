@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 23:20:09 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:21:44 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	check_valid_map(t_data *data)
 	// copied_map = copy_map_contents(data);
 	if(data->map_data.map[0] == NULL)
 		return (false);
-	if (check_row(data) == false))
+	if (check_row(data) == false)
 		return (false);
 	// if (check_line(data) == false)
 	// 	return (false);
