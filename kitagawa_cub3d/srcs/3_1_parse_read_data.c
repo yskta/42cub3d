@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 23:01:51 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:06:26 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ bool	parse_map(t_data *data)
 	i = 0;
 	while (data->map_data.read_data[i] != NULL)
 	{
-		printf("data->map_data.read_data[%zu] = %s\n", i, data->map_data.read_data[i]);
 		if (judge_space_or_wall(data->map_data.read_data[i]) == true)
 		{
 			data->map_data.map_height = data->map_data.read_data_height - i;
