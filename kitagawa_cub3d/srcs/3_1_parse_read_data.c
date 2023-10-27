@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 23:29:05 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:39:29 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	parse_all_identifier(t_data *data)
 	{
 		j = 0;
 		printf("data->map_data.read_data[%zu] = %s\n", i, data->map_data.read_data[i]);
-		if (data->map_data.read_data[i][j] == '1')
+		if (ft_strchr(data->map_data.read_data[i], '1') != NULL)
 		{
 			i++;
 			continue;
