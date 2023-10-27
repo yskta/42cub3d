@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 23:39:29 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:41:41 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ bool	parse_all_identifier(t_data *data)
 	while (data->map_data.read_data[i] != NULL)
 	{
 		j = 0;
-		printf("data->map_data.read_data[%zu] = %s\n", i, data->map_data.read_data[i]);
 		if (ft_strchr(data->map_data.read_data[i], '1') != NULL)
 		{
 			i++;
@@ -56,7 +55,6 @@ bool	judge_space_or_wall(char *line)
 	size_t	i;
 
 	i = 0;
-	printf("line = %s\n", line);
 	while (line[i] != '\0')
 	{
 		if (line[i] == ' ' || line[i] == '1')
