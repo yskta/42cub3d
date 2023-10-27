@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/21 17:51:41 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:38:56 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define TXT_WIDTH		50
 
 //壁関係は変更する可能性あり
-# define WALL 100
+# define WALL 10
 
 # define WINH WALL * 10
 # define WINW WINH * 2
