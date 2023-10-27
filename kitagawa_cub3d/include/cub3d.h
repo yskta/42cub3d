@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 09:38:56 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:43:52 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 //壁関係は変更する可能性あり
 # define WALL 10
 
-# define WINH WALL * 10
-# define WINW WINH * 2
+# define WINH WALL * 1
+# define WINW WINH * 1
 
 # define KEY_LEFT		0xff51 
 # define KEY_UP			0xff52  
