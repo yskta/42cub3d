@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 00:31:35 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:29:43 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ bool	parse_all_identifier(t_data *data)
 	while (data->map_data.read_data[i] != NULL)
 	{
 		j = 0;
-		printf("index: %zu\n", i);
 		if (data->map_data.read_data[i][j] == '1')
 		{
 			i++;
-			printf("2\n");
 			continue;
 		}
 		while (data->map_data.read_data[i][j] != '\0')
@@ -39,7 +37,6 @@ bool	parse_all_identifier(t_data *data)
 			}
 			if (juduge_identifer(&data->map_data.read_data[i][j]) == true)
 			{
-				printf("1\n");
 				if (parse_each_identifier(data, i, j) == false)
 					return (false);
 				break ;
