@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 22:31:26 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:01:51 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,11 @@ bool	parse_map(t_data *data)
 		printf("data->map_data.read_data[%zu] = %s\n", i, data->map_data.read_data[i]);
 		if (judge_space_or_wall(data->map_data.read_data[i]) == true)
 		{
-			printf ("i = %zu\n", i);
 			data->map_data.map_height = data->map_data.read_data_height - i;
-			printf ("map_height = %zu\n", data->map_data.map_height);
 			data->map_data.map = malloc(sizeof(char *) * (data->map_data.map_height + 1));
 			j = 0;
 			while (data->map_data.read_data[i] != NULL)
 			{
-				printf("data->map_data.read_data[%zu] = %s\n", i, data->map_data.read_data[i]);
 				data->map_data.map[j] = ft_strdup(data->map_data.read_data[i]);
 				i++;
 				j++;

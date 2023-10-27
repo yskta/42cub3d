@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 09:27:28 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 23:03:49 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ int main(int argc, char *argv[])
         put_error_and_exit("error in parse read data", data);
     if (init_other_data(data) == false)
         put_error_and_exit("error in init other data", data);
+    int i = 0;
+    while (data->map_data.map[i] != NULL)
+    {
+        printf("%s\n", data->map_data.map[i]);
+        i++;
+    }
     //render_map(data);
     //mlx_key_hook(data->mlx_win, Expose, ExposureMask, render_map, data);
 	//mlx_loop_hook(data->mlx_win, KeyPress, KeyPressMask, key_action, data);
