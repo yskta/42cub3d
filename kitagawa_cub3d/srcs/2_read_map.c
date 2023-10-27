@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:43:39 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 00:11:42 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/27 09:31:31 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ bool    read_map(char *argv, t_data *data)
         data->map_data.read_data_height++;
         free(line);
     }
-    printf("read_data_height: %ld\n", data->map_data.read_data_height);
     close(data->map_data.fd);
     data->map_data.read_data = ft_split(read_data, '\n');
     return (true);
