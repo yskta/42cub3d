@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 18:57:17 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 19:18:29 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,12 +197,14 @@ void		convert_space_to_X(char **map);
 bool		init_other_data(t_data *data);
 bool		init_mlx(t_data *data);
 bool		init_texture(t_data *data);
+bool		init_pos_dir_plane(t_data *data);
 
 int			close_program(t_data *data);
 
 void		free_two_dimensional_array(char **array);
 void		free_map_data_and_texture(t_data *data);
 void		destroy_textures(t_data *data);
+void		free_pos_dir_plane(t_data *data);
 void		free_and_destroy_all(t_data *data);
 
 void		put_error_and_exit(char *str, t_data *data);

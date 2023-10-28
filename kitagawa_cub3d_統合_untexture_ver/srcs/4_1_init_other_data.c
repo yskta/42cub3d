@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   4_init_other_data.c                                :+:      :+:    :+:   */
+/*   4_1_init_other_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 18:58:01 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 19:21:04 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ bool	init_other_data(t_data *data)
 		free(data->mlx);
 		return (false);
 	}
+	if (init_pos_dir_plane(data) == false)
+	{
+		destroy_textures(data);
+		free_map_data_and_texture(data);
+		mlx_destroy_window(data->mlx, data->mlx_win);
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+		free_pos_dir_plane(data);
+		return (false);
+	}
 	printf("init_other_data success\n");
 	return (true);
 }
@@ -37,7 +47,6 @@ bool	init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (false);
-	//TODO：多分これ引数修正する
 	data->mlx_win = mlx_new_window(data->mlx, screenWidth, screenHeight, "cub3d");
 	if (data->mlx_win == NULL)
 	{

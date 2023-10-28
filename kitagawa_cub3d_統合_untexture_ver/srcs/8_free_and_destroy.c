@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:43:54 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/21 15:48:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 19:19:29 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ void	destroy_textures(t_data *data)
 		mlx_destroy_image(data->mlx, data->east.texture_ptr);
 }
 
+void	free_pos_dir_plane(t_data *data)
+{
+	if (data->pos != NULL)
+		free(data->pos);
+	if (data->dir != NULL)
+		free(data->dir);
+	if (data->plane != NULL)
+		free(data->plane);
+}
+
 void	free_and_destroy_all(t_data *data)
 {
 	destroy_textures(data);
@@ -60,5 +70,6 @@ void	free_and_destroy_all(t_data *data)
 	mlx_destroy_window(data->mlx, data->mlx_win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
+	free_pos_dir_plane(data);
 	free(data);
 }
