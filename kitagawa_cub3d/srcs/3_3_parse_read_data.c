@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 16:51:06 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:54:20 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,22 @@ bool	check_rightside_wall(char	**map)
 	while (map[i + 1] != NULL)
 	{
 		size_t next_len = ft_strlen(map[i + 1]);
-		if (next_len > right_end_wall_index && map[i + 1][right_end_wall_index] == 'X')
+		if (right_end_wall_index + 1 > next_len)
+		{
+			while (right_end_wall_index > 0)
+			{
+				if (map[i][right_end_wall_index - 1] == '1')
+					right_end_wall_index--;
+				else
+					break ;
+			}
+			if (right_end_wall_index + 1 > next_len)
+			{
+				printf("invalid_map in rightsidewall\n");
+				return (false);
+			}
+		}
+		if (map[i + 1][right_end_wall_index] == 'X')
 		{
 			printf("map[i]: %s\n", map[i]);
 			printf("map[i + 1]: %s\n", map[i + 1]);
@@ -162,7 +177,7 @@ bool	check_rightside_wall(char	**map)
 			else
 				i++;
 		}
-		else if (next_len > right_end_wall_index && map[i + 1][right_end_wall_index] == '0')
+		else if (map[i + 1][right_end_wall_index] == '0')
 		{
 			printf("map[i]: %s\n", map[i]);
 			printf("map[i + 1]: %s\n", map[i + 1]);
