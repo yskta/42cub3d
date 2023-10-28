@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 10:45:39 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 11:52:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ bool	parse_all_identifier(t_data *data)
 	while (data->map_data.read_data[i] != NULL)
 	{
 		j = 0;
+		if (ft_strchr(data->map_data.read_data[i], '1') == NULL)
+		{
+			i++;
+			continue ;
+		}
 		while (data->map_data.read_data[i][j] != '\0')
 		{
 			if (data->map_data.read_data[i][j] == ' ')
