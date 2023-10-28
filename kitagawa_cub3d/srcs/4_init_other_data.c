@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 14:54:08 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:11:52 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ bool	init_other_data(t_data *data)
 		free(data->mlx);
 		return (false);
 	}
+	printf("init_other_data success\n");
 	return (true);
 }
 
