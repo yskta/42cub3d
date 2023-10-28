@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 16:37:23 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:38:52 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ bool	check_leftside_wall(char	**map)
 		else
 			i++;
 	}
-	printf("valid_map\n");
+	printf("valid_map in leftsidewall\n");
 	return (true);
 }
 
@@ -177,7 +177,7 @@ bool	check_rightside_wall(char	**map)
 		else
 			i++;
 	}
-	printf("valid_map\n");
+	printf("valid_map in rightsidewall\n");
 	return (true);
 }
 
