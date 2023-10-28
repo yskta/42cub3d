@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:43:39 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 23:25:44 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:48:12 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ bool    read_map(char *argv, t_data *data)
     //     printf("%s\n", data->map_data.read_data[i]);
     //     i++;
     // }
+    convert_space_to_X(data->map_data.read_data);
     free(read_data);
     return (true);
 }

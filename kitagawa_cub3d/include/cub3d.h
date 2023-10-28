@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/27 09:43:52 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:45:24 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ bool		parse_floor_or_ceiling(t_data *data, size_t i, size_t j);
 bool		parse_each_identifier(t_data *data, size_t i, size_t j);
 
 bool 		check_valid_map(t_data *data);
+void		convert_space_to_X(char **map);
 
 bool		init_other_data(t_data *data);
 bool		init_mlx(t_data *data);

@@ -6,26 +6,25 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 15:25:16 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:46:16 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-
-void	convert_space_to_X(char **copied_map)
+void	convert_space_to_X(char **map)
 {
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	while (copied_map[i] != NULL)
+	while (map[i] != NULL)
 	{
 		j = 0;
-		while (copied_map[i][j] != '\0')
+		while (map[i][j] != '\0')
 		{
-			if (copied_map[i][j] == ' ')
-				copied_map[i][j] = 'X';
+			if (map[i][j] == ' ')
+				map[i][j] = 'X';
 			j++;
 		}
 		i++;
@@ -45,7 +44,6 @@ char	**copy_map_contents(t_data *data)
 		i++;
 	}
 	copied_map[i] = NULL;
-	convert_space_to_X(copied_map);
 	return (copied_map);
 }
 
