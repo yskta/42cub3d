@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 15:31:56 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:33:37 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	judge_space_or_wall(char *line)
 
 	i = 0;
 	printf("line:%s\n", line);
-	while (line[i] != '\0' && (line[i] == ' ' || line[i] == '1'))
+	while (line[i] == ' ' || line[i] == '1')
 		i++;
 	if (line[i] == '\0')
 		return (true);
