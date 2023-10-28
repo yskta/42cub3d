@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 16:38:52 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:44:19 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ bool	check_leftside_wall(char	**map)
 			//左橋の壁のindexを探す。
 			while(left_end_wall_index > 0)
 			{
-				if (map[i][left_end_wall_index - 1] == '1' && map[i + 1][left_end_wall_index - 1] == '0')
+				if (map[i][left_end_wall_index - 1] == '1' && map[i + 1][left_end_wall_index] == '0')
 					left_end_wall_index--;
 				else
 					break ;
@@ -100,7 +100,7 @@ bool	check_leftside_wall(char	**map)
 			//ここの時点で、left_end_wall_indexは左端の壁のindexになっている。
 			if (map[i + 1][left_end_wall_index] != '1')
 			{
-				printf("invalid_map\n");
+				printf("invalid_map in leftsidewall\n");
 				return (false);
 			}
 			else
@@ -110,11 +110,11 @@ bool	check_leftside_wall(char	**map)
 		{
 			printf("map[i]: %s\n", map[i]);
 			printf("map[i + 1]: %s\n", map[i + 1]);
-			while(map[i][left_end_wall_index + 1] == '1' && map[i + 1][left_end_wall_index + 1] == 'X')
+			while(map[i][left_end_wall_index + 1] == '1' && map[i + 1][left_end_wall_index] == 'X')
 				left_end_wall_index++;
 			if (map[i + 1][left_end_wall_index] != '1')
 			{
-				printf("invalid_map\n");
+				printf("invalid_map in leftsidewall\n");
 				return (false);
 			}
 			else
@@ -149,12 +149,12 @@ bool	check_rightside_wall(char	**map)
 			printf("map[i]: %s\n", map[i]);
 			printf("map[i + 1]: %s\n", map[i + 1]);
 			//右端の壁のindexを探す。
-			while(right_end_wall_index > 0 && map[i][right_end_wall_index - 1] == '1' && map[i + 1][right_end_wall_index - 1] == 'X')
+			while(right_end_wall_index > 0 && map[i][right_end_wall_index - 1] == '1' && map[i + 1][right_end_wall_index] == 'X')
 				right_end_wall_index--;
 			//ここの時点で、right_end_wall_indexは右端の壁のindexになっている。
 			if (map[i + 1][right_end_wall_index] != '1')
 			{
-				printf("invalid_map\n");
+				printf("invalid_map in rightsidewall\n");
 				return (false);
 			}
 			else
@@ -164,11 +164,11 @@ bool	check_rightside_wall(char	**map)
 		{
 			printf("map[i]: %s\n", map[i]);
 			printf("map[i + 1]: %s\n", map[i + 1]);
-			while(map[i][right_end_wall_index + 1] == '1' && map[i + 1][right_end_wall_index + 1] == '0')
+			while(map[i][right_end_wall_index + 1] == '1' && map[i + 1][right_end_wall_index] == '0')
 				right_end_wall_index++;
 			if (map[i + 1][right_end_wall_index] != '1')
 			{
-				printf("invalid_map\n");
+				printf("invalid_map in rightsidewall\n");
 				return (false);
 			}
 			else
