@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 16:54:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:12:05 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,48 @@ char	**copy_map_contents(t_data *data)
 // 	}
 // 	return (true);
 // }
+
+bool	check_top_line(char	**map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (map[i][j] != '\0')
+	{
+		if (map[i][j] != '1' && map[i][j] != 'X')
+		{
+			printf("invalid_map in top_line\n");
+			return (false);
+		}
+		j++;
+	}
+	printf("valid_map in top_line\n");
+	return (true);
+}
+
+bool	check_bottom_line(char	**map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (map[i + 1] != NULL)
+		i++;
+	while (map[i][j] != '\0')
+	{
+		if (map[i][j] != '1' && map[i][j] != 'X')
+		{
+			printf("invalid_map in bottom_line\n");
+			return (false);
+		}
+		j++;
+	}
+	printf("valid_map in bottom_line\n");
+	return (true);
+}
 
 bool	check_leftside_wall(char	**map)
 {
@@ -198,6 +240,42 @@ bool	check_rightside_wall(char	**map)
 	return (true);
 }
 
+bool	check_num_of_player_and_invalid_char(char	**map)
+{
+	size_t	i;
+	size_t	j;
+	size_t	num_of_player;
+
+	i = 0;
+	num_of_player = 0;
+	while (map[i] != NULL)
+	{
+		j = 0;
+		while (map[i][j] != '\0')
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
+				num_of_player++;
+			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'X')
+				return (false);
+			j++;
+		}
+		i++;
+	}
+	if (num_of_player == 1)
+		return (true);
+	else
+		return (false);
+}
+
+bool	check_playable_map(t_data *data)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	return (true);
+}
+
 bool	check_valid_map(t_data *data)
 {
 	char **copied_map;
@@ -226,12 +304,32 @@ bool	check_valid_map(t_data *data)
 	// 	printf("data->map_data.map[k]:%s\n", data->map_data.map[k]);
 	// 	k++;
 	// }
+	if (check_top_line(copied_map) == false)
+	{
+		free_two_dimensional_array(copied_map);
+		return (false);
+	}
+	if (check_bottom_line(copied_map) == false)
+	{
+		free_two_dimensional_array(copied_map);
+		return (false);
+	}
 	if (check_leftside_wall(copied_map) == false)
 	{
 		free_two_dimensional_array(copied_map);
 		return (false);
 	}
 	if (check_rightside_wall(copied_map) == false)
+	{
+		free_two_dimensional_array(copied_map);
+		return (false);
+	}
+	if (check_num_of_player_and_invalid_char(copied_map) == false)
+	{
+		free_two_dimensional_array(copied_map);
+		return (false);
+	}
+	if (check_playable_map(data) == false)
 	{
 		free_two_dimensional_array(copied_map);
 		return (false);
