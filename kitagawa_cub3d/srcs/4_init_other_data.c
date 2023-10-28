@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/21 15:47:42 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 14:45:07 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ bool	init_texture(t_data *data)
 	if (data->north.texture_ptr == NULL || data->south.texture_ptr == NULL || \
 			data->west.texture_ptr == NULL || data->east.texture_ptr == NULL)
 	{
-		destroy_textures(data);
+		// destroy_textures(data);
 		return (false);
 	}
 	return (true);
