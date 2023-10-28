@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 10:48:01 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:52:09 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ bool	check_line(char	**map)
 				else
 					break ;
 			}
+			printf("left_end_wall_index = %zu\n", left_end_wall_index);
 			//ここの時点で、left_end_wall_indexは左端の壁のindexになっている。
 			if (map[i + 1][left_end_wall_index] != '1')
 			{
