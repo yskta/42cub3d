@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 10:52:09 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:53:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ bool	check_line(char	**map)
 	while (map[0][j] == 'X')//1行目の左端の壁のindexを探す。
 		j++;
 	left_end_wall_index = j;
+	printf("left_end_wall_index = %zu\n", left_end_wall_index);
 	while(map[i + 1] != NULL)//2行目以降の左端の壁
 	{
 		if (map[i + 1][left_end_wall_index] == '0')
@@ -113,6 +114,7 @@ bool	check_line(char	**map)
 		else
 			i++;
 	}
+	printf("valid_map\n");
 	return (true);
 	
 }
