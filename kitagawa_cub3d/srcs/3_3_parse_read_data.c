@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 17:54:59 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:58:44 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,7 +273,7 @@ bool	check_num_of_player_and_invalid_char(char	**map)
 	}
 }
 
-bool	check_playable_map(t_data *data)
+bool	check_playable_map(char **map)
 {
 	size_t	i;
 	size_t	j;
@@ -281,12 +281,12 @@ bool	check_playable_map(t_data *data)
 	size_t	player_pos_y;
 
 	i = 0;
-	while (data->map_data.map[i] != NULL)
+	while (map[i] != NULL)
 	{
 		j = 0;
-		while (data->map_data.map[i][j] != '\0')
+		while (map[i][j] != '\0')
 		{
-			if (data->map_data.map[i][j] == 'N' || data->map_data.map[i][j] == 'S' || data->map_data.map[i][j] == 'W' || data->map_data.map[i][j] == 'E')
+			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
 			{
 				player_pos_x = j;
 				player_pos_y = i;
@@ -298,22 +298,19 @@ bool	check_playable_map(t_data *data)
 	printf("player_pos_x = %zu\n", player_pos_x);
 	printf("player_pos_y = %zu\n", player_pos_y);
 	//playerの周りが1か0かどうかだけみれば、playableかどうかわかる。
-	if (data->map_data.map[player_pos_y - 1][player_pos_x] == '1' || data->map_data.map[player_pos_y - 1][player_pos_x] == '0')
+	if (map[player_pos_y - 1][player_pos_x] == '1' || map[player_pos_y - 1][player_pos_x] == '0')
 	{
-		if (data->map_data.map[player_pos_y + 1][player_pos_x] == '1' || data->map_data.map[player_pos_y + 1][player_pos_x] == '0')
+		if (map[player_pos_y + 1][player_pos_x] == '1' || map[player_pos_y + 1][player_pos_x] == '0')
 		{
-			if (data->map_data.map[player_pos_y][player_pos_x - 1] == '1' || data->map_data.map[player_pos_y][player_pos_x - 1] == '0')
+			if (map[player_pos_y][player_pos_x - 1] == '1' || map[player_pos_y][player_pos_x - 1] == '0')
 			{
-				if (data->map_data.map[player_pos_y][player_pos_x + 1] == '1' || data->map_data.map[player_pos_y][player_pos_x + 1] == '0')
+				if (map[player_pos_y][player_pos_x + 1] == '1' || map[player_pos_y][player_pos_x + 1] == '0')
 					return (true);
 			}
 		}
 	}
-	else
-	{
-		printf("invalid_map in playable_map\n");
-		return (false);
-	}
+	printf("invalid_map in playable_map\n");
+	return (false);
 }
 
 bool	check_valid_map(t_data *data)
@@ -368,7 +365,7 @@ bool	check_valid_map(t_data *data)
 		free_two_dimensional_array(copied_map);
 		return (false);
 	}
-	if (check_playable_map(data) == false)
+	if (check_playable_map(copied_map) == false)
 	{
 		free_two_dimensional_array(copied_map);
 		return (false);
