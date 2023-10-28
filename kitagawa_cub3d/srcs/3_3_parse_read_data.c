@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 15:52:48 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:59:23 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char	**copy_map_contents(t_data *data)
 		i++;
 	}
 	copied_map[i] = NULL;
+	convert_space_to_X(copied_map);
 	return (copied_map);
 }
 
@@ -142,20 +143,23 @@ bool	check_valid_map(t_data *data)
 		return (false);
 	// if (check_row(data) == false)
 	// 	return (false);
-	int k = 0;
-	while (data->map_data.read_data[k] != NULL)
-	{
-		printf("data->map_data.read_data[k]:%s\n", data->map_data.read_data[k]);
-		k++;
-	}
-	k = 0;
-	while (data->map_data.map[k] != NULL)
-	{
-		printf("data->map_data.map[k]:%s\n", data->map_data.map[k]);
-		k++;
-	}
+	// int k = 0;
+	// while (data->map_data.read_data[k] != NULL)
+	// {
+	// 	printf("data->map_data.read_data[k]:%s\n", data->map_data.read_data[k]);
+	// 	k++;
+	// }
+	// k = 0;
+	// while (data->map_data.map[k] != NULL)
+	// {
+	// 	printf("data->map_data.map[k]:%s\n", data->map_data.map[k]);
+	// 	k++;
+	// }
 	if (check_line(copied_map) == false)
+	{
+		free_two_dimensional_array(copied_map);
 		return (false);
+	}
 	free_two_dimensional_array(copied_map);
 	return (true);
 }

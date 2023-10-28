@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 15:49:23 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:57:23 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ bool	parse_all_identifier(t_data *data)
 		j = 0;
 		while (data->map_data.read_data[i][j] != '\0')
 		{
-			if (data->map_data.read_data[i][j] == 'X')
+			if (data->map_data.read_data[i][j] == ' ')
 			{
-				while (data->map_data.read_data[i][j] == 'X')
+				while (data->map_data.read_data[i][j] == ' ')
 					j++;
 				if (data->map_data.read_data[i][j] == '\0')
 					break ;
@@ -49,16 +49,13 @@ bool	judge_space_or_wall(char *line)
 	size_t	i;
 
 	i = 0;
-	printf("line:%s\n", line);
-	if (line[i] == 0x20)
-		printf("line[i]:space\n");
-	else
-		printf("line[i]:%c\n", line[i]);
-	while (line[i] == 'X' || line[i] == '1')
-	{
-		printf("line[i]:%c\n", line[i]);
+	// printf("line:%s\n", line);
+	// if (line[i] == 0x20)
+	// 	printf("line[i]:space\n");
+	// else
+	// 	printf("line[i]:%c\n", line[i]);
+	while (line[i] == ' ' || line[i] == '1')
 		i++;
-	}
 	if (line[i] == '\0')
 		return (true);
 	else
