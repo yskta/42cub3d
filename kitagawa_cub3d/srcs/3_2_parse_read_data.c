@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/20 23:14:15 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 14:57:15 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,31 @@ bool	parse_texture(t_data *data, size_t i, size_t j)
 {
 	if (data->map_data.read_data[i][j] == 'N')
 	{
-		while (data->map_data.read_data[i][j] != 't')
+		while (data->map_data.read_data[i][j] != '.')
 			j++;
 		data->north.path = ft_strdup(&data->map_data.read_data[i][j]);
+		printf("north.path: %s\n", data->north.path);
 	}
 	else if (data->map_data.read_data[i][j] == 'S')
 	{
-		while (data->map_data.read_data[i][j] != 't')
+		while (data->map_data.read_data[i][j] != '.')
 			j++;
 		data->south.path = ft_strdup(&data->map_data.read_data[i][j]);
+		printf("south.path: %s\n", data->south.path);
 	}
 	else if (data->map_data.read_data[i][j] == 'W')
 	{
-		while (data->map_data.read_data[i][j] != 't')
+		while (data->map_data.read_data[i][j] != '.')
 			j++;
 		data->west.path = ft_strdup(&data->map_data.read_data[i][j]);
+		printf("west.path: %s\n", data->west.path);
 	}
 	else if (data->map_data.read_data[i][j] == 'E')
 	{
-		while (data->map_data.read_data[i][j] != 't')
+		while (data->map_data.read_data[i][j] != '.')
 			j++;
 		data->east.path = ft_strdup(&data->map_data.read_data[i][j]);
+		printf("east.path: %s\n", data->east.path);
 	}
 	else
 		return (false);

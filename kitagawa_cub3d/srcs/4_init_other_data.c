@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 14:45:07 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 14:54:08 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ bool	init_other_data(t_data *data)
 	}
 	if (init_texture(data) == false)
 	{
+		destroy_textures(data);
+		free_map_data_and_texture(data);
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		mlx_destroy_display(data->mlx);
-		free_map_data_and_texture(data);
+		free(data->mlx);
 		return (false);
 	}
 	return (true);
@@ -56,9 +58,6 @@ bool	init_texture(t_data *data)
 			&data->east.x, &data->east.y);
 	if (data->north.texture_ptr == NULL || data->south.texture_ptr == NULL || \
 			data->west.texture_ptr == NULL || data->east.texture_ptr == NULL)
-	{
-		// destroy_textures(data);
 		return (false);
-	}
 	return (true);
 }
