@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 10:47:02 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 10:48:01 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ bool	check_line(char	**map)
 	size_t	i;
 	size_t	j;
 	size_t	left_end_wall_index;
-	size_t	right_end_wall_index;
+	//size_t	right_end_wall_index;
 
 	i = 0;
 	j = 0;
