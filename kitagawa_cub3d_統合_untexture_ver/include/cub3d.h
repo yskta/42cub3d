@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 17:54:23 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:57:17 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,45 @@
 # define TXT_WIDTH		50
 
 //壁関係は変更する可能性あり
-# define WALL 10
+// # define WALL 10
 
-# define WINH WALL * 1
-# define WINW WINH * 1
+// # define WINH WALL * 1
+// # define WINW WINH * 1
 
-# define KEY_LEFT		0xff51 
-# define KEY_UP			0xff52  
-# define KEY_RIGHT		0xff53  
+# define KEY_W 0x077
+# define KEY_S 0x073
+# define KEY_A 0x061
+# define KEY_D 0x064
+# define KEY_LEFT		0xff51
+# define KEY_UP			0xff52
+# define KEY_RIGHT		0xff53
 # define KEY_DOWN		0xff54
 # define KEY_ESC		0xff1b
 
-# define KEY_A 97
-# define KEY_D 100
-# define KEY_S 115
-# define KEY_W 119
+// # define KEY_A 97
+// # define KEY_D 100
+// # define KEY_S 115
+// # define KEY_W 119
+
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
+# define RED 0xFF0000
+# define GREEN 0x00FF00
+# define BLUE 0x0000FF
+# define PURPLE 0xFF00FF
+
+# define screenWidth 1280
+# define screenHeight 960
+# define mapWidth 24
+# define mapHeight 24
+
+# define ANGLE 16
+
+/* ************************************************************************** */
+
+extern int map[mapWidth][mapHeight];
+
+/* ************************************************************************** */
 
 //nemotoさん分追加ここから
 typedef struct s_pos
@@ -82,11 +106,11 @@ typedef struct s_side_dist
 	double	side_dist_y;
 }	t_side_dist;
 
-// typedef struct	s_map
-// {
-// 	int	map_x;
-// 	int	map_y;
-// }	t_map;
+typedef struct	s_map_pos
+{
+	int	map_x;
+	int	map_y;
+}	t_map_pos;
 
 typedef struct	s_delta_dist
 {
@@ -136,13 +160,22 @@ typedef struct s_data{
 	t_floor_or_ceiling		floor;
 	t_floor_or_ceiling		ceiling;
 	//nemotoさん分追加ここから
-	// t_pos					*pos;
-	// t_dir					*dir;
-	// t_plane					*plane;
-	// t_step					*step;
-	// t_side_dist				*side_dist;
-	// t_delta_dist			*delta_dist;
-	// t_ray_dir				*ray_dir;
+	t_pos					*pos;
+	t_dir					*dir;
+	t_plane					*plane;
+	t_step					*step;
+	t_side_dist				*side_dist;
+	t_delta_dist			*delta_dist;
+	t_ray_dir				*ray_dir;
+	t_map_pos				*map_pos;
+	double					camera_x;
+	double					perp_wall_dist;
+	bool					hit;
+	bool					side;
+	int						line_height;
+	int						draw_start;
+	int						draw_end;
+	int						color;
 	//ここまで
 }t_data;//mallocする
 

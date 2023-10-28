@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 18:11:52 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:58:01 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool	init_mlx(t_data *data)
 	if (data->mlx == NULL)
 		return (false);
 	//TODO：多分これ引数修正する
-	data->mlx_win = mlx_new_window(data->mlx, WINW, WINH, "cub3d");
+	data->mlx_win = mlx_new_window(data->mlx, screenWidth, screenHeight, "cub3d");
 	if (data->mlx_win == NULL)
 	{
 		free(data->mlx_win);
