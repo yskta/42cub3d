@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 11:52:53 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 14:59:27 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ bool	parse_all_identifier(t_data *data)
 			}
 			if (juduge_identifer(&data->map_data.read_data[i][j]) == true)
 			{
+				printf("data->map_data.read_data[i][j]: %c\n", data->map_data.read_data[i][j]);
 				if (parse_each_identifier(data, i, j) == false)
 					return (false);
 				break ;
