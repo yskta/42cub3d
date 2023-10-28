@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 17:17:28 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:19:24 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,7 +256,10 @@ bool	check_num_of_player_and_invalid_char(char	**map)
 			if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
 				num_of_player++;
 			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'X')
+			{
+				printf("invalid_map invalid_char\n");
 				return (false);
+			}
 			j++;
 		}
 		i++;
@@ -264,7 +267,10 @@ bool	check_num_of_player_and_invalid_char(char	**map)
 	if (num_of_player == 1)
 		return (true);
 	else
+	{
+		printf("invalid_map num_of_player\n");
 		return (false);
+	}
 }
 
 // bool	check_playable_map(t_data *data)
