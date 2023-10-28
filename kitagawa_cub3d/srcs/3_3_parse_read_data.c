@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 15:12:13 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:15:37 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ bool	check_line(char	**map)
 	{
 		if (map[i + 1][left_end_wall_index] == '0')
 		{
+			printf("map[i]: %s\n", map[i]);
+			printf("map[i + 1]: %s\n", map[i + 1]);
 			//左橋の壁のindexを探す。
 			while(left_end_wall_index > 0)
 			{
@@ -107,6 +109,8 @@ bool	check_line(char	**map)
 		}
 		else if (map[i + 1][left_end_wall_index] == 'X')
 		{
+			printf("map[i]: %s\n", map[i]);
+			printf("map[i + 1]: %s\n", map[i + 1]);
 			while(map[i][left_end_wall_index + 1] == '1')
 				left_end_wall_index++;
 			if (map[i + 1][left_end_wall_index] != '1')
