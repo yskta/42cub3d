@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 17:42:51 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:54:23 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ typedef struct s_side_dist
 	double	side_dist_y;
 }	t_side_dist;
 
-typedef struct	s_map
-{
-	int	map_x;
-	int	map_y;
-}	t_map;
+// typedef struct	s_map
+// {
+// 	int	map_x;
+// 	int	map_y;
+// }	t_map;
 
 typedef struct	s_delta_dist
 {
