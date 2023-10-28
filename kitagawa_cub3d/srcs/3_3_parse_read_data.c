@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 14:48:06 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:12:13 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,12 @@ bool	check_line(char	**map)
 	i = 0;
 	j = 0;
 	//左端を見ていく。
-	
-	int	k = 0;
-	while (map[k] != NULL)
-	{
-		printf("%s\n", map[k]);
-		k++;
-	}
+	// int	k = 0;
+	// while (map[k] != NULL)
+	// {
+	// 	printf("%s\n", map[k]);
+	// 	k++;
+	// }
 	while (map[0][j] == 'X')//1行目の左端の壁のindexを探す。
 		j++;
 	left_end_wall_index = j;
@@ -121,6 +120,7 @@ bool	check_line(char	**map)
 		else
 			i++;
 	}
+	printf("valid_map\n");
 	return (true);
 }
 
