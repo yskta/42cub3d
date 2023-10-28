@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 17:58:44 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:08:58 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,9 +298,13 @@ bool	check_playable_map(char **map)
 	printf("player_pos_x = %zu\n", player_pos_x);
 	printf("player_pos_y = %zu\n", player_pos_y);
 	//playerの周りが1か0かどうかだけみれば、playableかどうかわかる。
-	if (map[player_pos_y - 1][player_pos_x] == '1' || map[player_pos_y - 1][player_pos_x] == '0')
+	size_t above_line_len = ft_strlen(map[player_pos_y - 1]);
+	size_t under_line_len = ft_strlen(map[player_pos_y + 1]);
+	printf("above_line_len = %zu\n", above_line_len);
+	printf("under_line_len = %zu\n", under_line_len);
+	if ((above_line_len > player_pos_x + 1) && ([player_pos_y - 1][player_pos_x] == '1' || map[player_pos_y - 1][player_pos_x] == '0'))
 	{
-		if (map[player_pos_y + 1][player_pos_x] == '1' || map[player_pos_y + 1][player_pos_x] == '0')
+		if ((under_line_len > player_pos_x + 1) && (map[player_pos_y + 1][player_pos_x] == '1' || map[player_pos_y + 1][player_pos_x] == '0'))
 		{
 			if (map[player_pos_y][player_pos_x - 1] == '1' || map[player_pos_y][player_pos_x - 1] == '0')
 			{
