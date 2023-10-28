@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 16:44:19 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:51:06 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,13 +138,15 @@ bool	check_rightside_wall(char	**map)
 	//右端を見ていく。
 	while (map[0][j] != '\0')//1行目の右端の壁のindexを探す。
 		j++;
+	j--;
 	while (map[0][j] == 'X')//1行目の右端の壁のindexを探す。
 		j--;
 	right_end_wall_index = j;
 	printf("right_end_wall_index = %zu\n", right_end_wall_index);
 	while (map[i + 1] != NULL)
 	{
-		if (map[i + 1][right_end_wall_index] == 'X')
+		size_t next_len = ft_strlen(map[i + 1]);
+		if (next_len > right_end_wall_index && map[i + 1][right_end_wall_index] == 'X')
 		{
 			printf("map[i]: %s\n", map[i]);
 			printf("map[i + 1]: %s\n", map[i + 1]);
@@ -160,7 +162,7 @@ bool	check_rightside_wall(char	**map)
 			else
 				i++;
 		}
-		else if (map[i + 1][right_end_wall_index] == '0')
+		else if (next_len > right_end_wall_index && map[i + 1][right_end_wall_index] == '0')
 		{
 			printf("map[i]: %s\n", map[i]);
 			printf("map[i + 1]: %s\n", map[i + 1]);
