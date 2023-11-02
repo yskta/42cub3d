@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/02 23:57:05 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:58:15 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int	key_draw(t_data *data)
 		col = data->draw_start;
 		while (col < (unsigned int)data->draw_end)
 		{
-			mlx_pixel_put(data->mlx, data->win, row, col, data->color);
+			mlx_pixel_put(data->mlx, data->mlx_win, row, col, data->color);
 			++col;
 		}
 		++row;
