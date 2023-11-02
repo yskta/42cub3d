@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 19:29:26 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:39:22 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,8 @@ bool		init_texture(t_data *data);
 bool		init_pos_dir_plane(t_data *data);
 
 int			key_draw(t_vars *var);
+
+int			key_hook(int keycode, t_vars *var);
 
 int			close_program(t_data *data);
 
