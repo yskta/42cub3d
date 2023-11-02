@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/02 23:47:31 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:57:05 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static	void	calc_three(t_data *data)
 			data->map_pos->map_y += data->step->step_y;
 			data->side = true;
 		}
-		if (map_pos[data->map_pos->map_x][data->map_pos->map_y] > 0)
+		if (data->map_data.map[data->map_pos->map_x][data->map_pos->map_y] > 0)
 			data->hit = true;
 	}
 	if (data->side == false)
@@ -94,7 +94,7 @@ static void	draw_init(t_data *data)
 	if (data->draw_end >= screenHeight)
 		data->draw_end = screenHeight - 1;
 	// need change switch statement
-	switch (map_pos[data->map_pos->map_x][data->map_pos->map_y])
+	switch (data->map_data.map[data->map_pos->map_x][data->map_pos->map_y])
 	{
 		case 1: data->color = RED; break ;
 		case 2: data->color = GREEN; break ;
