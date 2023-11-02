@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/03 01:30:53 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/03 01:31:48 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
         put_error_and_exit("error in init other data", data);
     mlx_key_hook(data->mlx_win, key_hook, data);
     mlx_loop_hook(data->mlx_win, key_draw, data);
-	//mlx_hook(data->mlx_win, DestroyNotify, ButtonPressMask, close_program, data);
+	mlx_hook(data->mlx_win, DestroyNotify, ButtonPressMask, close_program, data);
 	mlx_loop(data->mlx);
     free_and_destroy_all(data);
     return (0);

@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/02 23:59:56 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/03 01:32:26 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	key_hook(int keycode, t_data *data)
 	double	old_dir_x = data->dir->dir_x;
 	double	old_plane_x = data->plane->plane_x;
 
+	printf("keycode: %d\n", keycode);
 	if (keycode == KEY_W || keycode == KEY_S)
 	{
 		if (keycode == KEY_S)
