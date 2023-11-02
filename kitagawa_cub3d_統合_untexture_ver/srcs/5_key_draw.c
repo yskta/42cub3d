@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/03 01:29:14 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/03 01:29:58 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ int	key_draw(t_data *data)
 	row = 0;
 	while (row < (unsigned int)screenWidth)
 	{
-		printf("row: %d\n", row);
 		data->camera_x = 2 * row / (double)screenWidth - 1;
 		calc_one(data);
 		calc_two(data);
