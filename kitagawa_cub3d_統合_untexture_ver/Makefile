@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/02 23:52:56 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/03 01:25:31 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ LIB_INCLUDE = $(addprefix -I, $(LIB_DIR))
 all: mlx lib $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB) -lm
 
 %.o:	%.c
 	$(CC) $(CFLAGS) -c $(MLX_INCLUDE) $(LIB_INCLUDE) $< -o $@
