@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/02 23:50:08 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:59:56 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	key_draw_clear(t_data *data)
 		col = 0;
 		while (col < screenHeight)
 		{
-			mlx_pixel_put(data->mlx, data->win, row, col, BLACK);
+			mlx_pixel_put(data->mlx, data->mlx_win, row, col, BLACK);
 			++col;
 		}
 		++row;
