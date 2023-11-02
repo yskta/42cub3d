@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/10/21 17:50:16 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/02 23:52:56 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,10 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 			3_1_parse_read_data.c \
 			3_2_parse_read_data.c \
 			3_3_parse_read_data.c \
-			4_init_other_data.c \
+			4_1_init_other_data.c \
+			4_2_init_other_data.c \
+			5_key_draw.c \
+			6_key_hook.c \
 			7_end_program.c \
 			8_free_and_destroy.c \
 			9_utils.c)
