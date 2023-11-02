@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/02 23:58:15 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/02 23:59:14 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static	void	calc_one(t_data *data)
 {
 	data->hit = false;
 	data->side = false;
-	data->map_pos = (t_map *)malloc(sizeof(t_map));
+	data->map_pos = (t_map_pos *)malloc(sizeof(t_map_pos));
 	data->map_pos->map_x = (int)data->pos->pos_x;
 	data->map_pos->map_y = (int)data->pos->pos_y;
 	data->ray_dir = (t_ray_dir *)malloc(sizeof(t_ray_dir));
