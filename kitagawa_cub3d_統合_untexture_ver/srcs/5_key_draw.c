@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/03 01:32:42 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/04 00:21:19 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ static void	draw_init(t_data *data)
 	switch (data->map_data.map[data->map_pos->map_x][data->map_pos->map_y])
 	{
 		case 1: data->color = RED; break ;
-		case 2: data->color = GREEN; break ;
-		case 3: data->color = BLUE; break ;
-		case 4: data->color = WHITE; break ;
+		// case 2: data->color = GREEN; break ;
+		// case 3: data->color = BLUE; break ;
+		// case 4: data->color = WHITE; break ;
 		default: data->color = PURPLE; break ;
 	}
 	if (data->side == true)
