@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/23 19:58:53 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/04 08:15:11 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static	void	calc_one(t_vars	*var)
 		var->delta_dist->delta_dist_y = 1e30;
 	else
 		var->delta_dist->delta_dist_y = fabs(1 / var->ray_dir->ray_dir_y);
+	var->step = (t_step *)malloc(sizeof(t_step));
+	var->side_dist = (t_side_dist *)malloc(sizeof(t_side_dist));
 }
 
 static	void	calc_two(t_vars	*var)
 {
-	var->step = (t_step *)malloc(sizeof(t_step));
-	var->side_dist = (t_side_dist *)malloc(sizeof(t_side_dist));
 	if (var->ray_dir->ray_dir_x < 0)
 	{
 		var->step->step_x = -1;
@@ -82,28 +82,22 @@ static	void	calc_three(t_vars *var)
 		var->perp_wall_dist = var->side_dist->side_dist_x - var->delta_dist->delta_dist_x;
 	else
 		var->perp_wall_dist = var->side_dist->side_dist_y - var->delta_dist->delta_dist_y;
-	var->line_height = (int)(screenHeight / var->perp_wall_dist);
 }
 
 static void	draw_init(t_vars *var)
 {
-	var->draw_start = -1 * var->line_height / 2 + screenHeight / 2;
+	var->line_height = (int)(SCREEN_H / var->perp_wall_dist);
+	var->draw_start = -1 * var->line_height / 2 + SCREEN_H / 2;
 	if (var->draw_start < 0)
 		var->draw_start = 0;
-	var->draw_end = var->line_height / 2 + screenHeight / 2;
-	if (var->draw_end >= screenHeight)
-		var->draw_end = screenHeight - 1;
-	// need change switch statement
-	switch (map[var->map->map_x][var->map->map_y])
-	{
-		case 1: var->color = RED; break ;
-		case 2: var->color = GREEN; break ;
-		case 3: var->color = BLUE; break ;
-		case 4: var->color = WHITE; break ;
-		default: var->color = PURPLE; break ;
-	}
+	var->draw_end = var->line_height / 2 + SCREEN_H / 2;
+	if (var->draw_end >= SCREEN_H)
+		var->draw_end = SCREEN_H - 1;
+	var->color = BLUE;
+	if (map[var->map->map_x][var->map->map_y])
+		var->color = RED;
 	if (var->side == true)
-		var->color /= 2;
+		var->color /= 3;
 }
 
 int	key_draw(t_vars *var)
@@ -112,9 +106,9 @@ int	key_draw(t_vars *var)
 	unsigned int	col;
 
 	row = 0;
-	while (row < (unsigned int)screenWidth)
+	while (row < (unsigned int)SCREEN_W)
 	{
-		var->camera_x = 2 * row / (double)screenWidth - 1;
+		var->camera_x = 2 * row / (double)SCREEN_W - 1;
 		calc_one(var);
 		calc_two(var);
 		calc_three(var);

@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/10/23 20:03:04 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/04 08:16:53 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@
 # define BLUE 0x0000FF
 # define PURPLE 0xFF00FF
 
-# define screenWidth 1280
-# define screenHeight 960
-# define mapWidth 24
-# define mapHeight 24
+# define SCREEN_W 1280
+# define SCREEN_H 960
+# define MAP_W 24
+# define MAP_H 24
 
 # define ANGLE 16
 
 /* ************************************************************************** */
 
-extern int map[mapWidth][mapHeight];
+extern int	map[MAP_W][MAP_H];
 
 /* ************************************************************************** */
 
@@ -76,19 +76,19 @@ typedef struct s_side_dist
 	double	side_dist_y;
 }	t_side_dist;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	int	map_x;
 	int	map_y;
 }	t_map;
 
-typedef struct	s_delta_dist
+typedef struct s_delta_dist
 {
 	double	delta_dist_x;
 	double	delta_dist_y;
 }	t_delta_dist;
 
-typedef struct	s_ray_dir
+typedef struct s_ray_dir
 {
 	double	ray_dir_x;
 	double	ray_dir_y;
