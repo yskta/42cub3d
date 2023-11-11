@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:52:49 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/11 18:45:25 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
-# define RED 0xFF0000
-# define GREEN 0x00FF00
-# define BLUE 0x0000FF
-# define PURPLE 0xFF00FF
 
 # define SCREEN_W 1280
 # define SCREEN_H 960

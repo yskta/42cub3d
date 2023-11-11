@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:17:32 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/11 18:45:22 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ static void	key_draw_clear(t_vars *var)
 	unsigned int	row;
 	unsigned int	col;
 
+	var->color = BLACK;
 	row = 0;
 	while (row < SCREEN_W)
 	{
 		col = 0;
 		while (col < SCREEN_H)
 		{
-			mlx_pixel_put(var->mlx, var->win, row, col, BLACK);
+			mlx_pixel_put(var->mlx, var->win, row, col, var->color);
 			++col;
 		}
 		++row;

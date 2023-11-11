@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:00:01 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 09:03:25 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/11 18:46:12 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int map[MAP_W][MAP_H]=
 int	main(void)
 {
 	t_vars	var;
+
+  var.color = BLACK;
 
 	var.pos = (t_pos *)malloc(sizeof(t_pos));
 	var.pos->pos_x = 22;

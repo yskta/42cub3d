@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:15:11 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/11 18:45:31 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,8 @@ static void	draw_init(t_vars *var)
 	var->draw_end = var->line_height / 2 + SCREEN_H / 2;
 	if (var->draw_end >= SCREEN_H)
 		var->draw_end = SCREEN_H - 1;
-	var->color = BLUE;
 	if (map[var->map->map_x][var->map->map_y])
-		var->color = RED;
+		var->color = WHITE;
 	if (var->side == true)
 		var->color /= 3;
 }
@@ -117,6 +116,7 @@ int	key_draw(t_vars *var)
 		while (col < (unsigned int)var->draw_end)
 		{
 			mlx_pixel_put(var->mlx, var->win, row, col, var->color);
+			// mlx_put_image_to_window(var->mlx, var->win, var->texture->n, row, col);
 			++col;
 		}
 		++row;
