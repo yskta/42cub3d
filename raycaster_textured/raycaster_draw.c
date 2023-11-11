@@ -6,13 +6,13 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/11 18:45:31 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/11 18:59:03 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
 
-static	void	calc_one(t_vars	*var)
+static	void	calc_init(t_vars	*var)
 {
 	var->hit = false;
 	var->side = false;
@@ -35,7 +35,7 @@ static	void	calc_one(t_vars	*var)
 	var->side_dist = (t_side_dist *)malloc(sizeof(t_side_dist));
 }
 
-static	void	calc_two(t_vars	*var)
+static	void	calc_side_dist(t_vars	*var)
 {
 	if (var->ray_dir->ray_dir_x < 0)
 	{
@@ -59,7 +59,7 @@ static	void	calc_two(t_vars	*var)
 	}
 }
 
-static	void	calc_three(t_vars *var)
+static	void	calc_hit_wall(t_vars *var)
 {
 	while (var->hit == false)
 	{
@@ -75,7 +75,7 @@ static	void	calc_three(t_vars *var)
 			var->map->map_y += var->step->step_y;
 			var->side = true;
 		}
-		if (map[var->map->map_x][var->map->map_y] > 0)
+		if (map[var->map->map_x][var->map->map_y] != 0)
 			var->hit = true;
 	}
 	if (var->side == false)
@@ -108,9 +108,9 @@ int	key_draw(t_vars *var)
 	while (row < (unsigned int)SCREEN_W)
 	{
 		var->camera_x = 2 * row / (double)SCREEN_W - 1;
-		calc_one(var);
-		calc_two(var);
-		calc_three(var);
+		calc_init(var);
+		calc_side_dist(var);
+		calc_hit_wall(var);
 		draw_init(var);
 		col = var->draw_start;
 		while (col < (unsigned int)var->draw_end)
