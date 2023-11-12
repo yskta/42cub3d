@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/11 18:45:25 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/12 14:59:17 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,16 @@ typedef struct s_tex
 	void	*w;
 }	t_tex;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	char	*dst;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+}	t_img;
+
 /* ************************************************************************** */
 
 typedef struct s_vars
@@ -125,10 +135,17 @@ typedef struct s_vars
 	int				draw_start;
 	int				draw_end;
 	int				color;
+/* ************************************************************************** */
+	t_tex			*texture;
+	t_img			*img;
+	double			wall_x;
+	int				tex_x;
+	int				tex_y;
+	double			tex_step;
+	double			tex_pos;
+/* ************************************************************************** */
 	void			*mlx;
 	void			*win;
-	void			*img;
-	t_tex			*texture;
 }	t_vars;
 
 /* ************************************************************************** */
