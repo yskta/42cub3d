@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/12 14:59:17 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/12 16:52:02 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,31 @@ typedef struct s_ray_dir
 
 /* ************************************************************************** */
 
-typedef struct s_tex
+typedef struct s_tex_dir
 {
 	void	*n;
 	void	*s;
 	void	*e;
 	void	*w;
+}	t_tex_dir;
+
+typedef struct s_tex
+{
+	t_tex_dir	*dir;
+	char		*addr;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
 }	t_tex;
 
 typedef struct s_img
 {
 	void	*img;
 	char	*addr;
-	char	*dst;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
+	char	*dst;
 }	t_img;
 
 /* ************************************************************************** */
