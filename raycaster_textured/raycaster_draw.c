@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/12 16:50:01 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/12 17:08:55 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ static	void	calc_hit_wall(t_vars *var)
 static void	draw_init(t_vars *var)
 {
 	var->line_height = (int)(SCREEN_H / var->perp_wall_dist);
-	var->draw_start = -1 * var->line_height / 2 + SCREEN_H / 2;
+	var->draw_start = -var->line_height / 2 + SCREEN_H / 2 + PITCH;
 	if (var->draw_start < 0)
 		var->draw_start = 0;
-	var->draw_end = var->line_height / 2 + SCREEN_H / 2;
+	var->draw_end = var->line_height / 2 + SCREEN_H / 2 + PITCH;
 	if (var->draw_end >= SCREEN_H)
 		var->draw_end = SCREEN_H - 1;
 }
@@ -112,10 +112,12 @@ static	void draw_tex(t_vars *var)
 		var->wall_x = var->pos->pos_x + var->perp_wall_dist * var->ray_dir->ray_dir_x;
 	var->wall_x -= floor(var->wall_x);
 	var->tex_x = (int)(var->wall_x * (double)TEX_W);
-	if ((var->side == false && var->ray_dir->ray_dir_x > 0) || (var->side == true && var->ray_dir->ray_dir_y < 0))
+	if (var->side == false && var->ray_dir->ray_dir_x > 0)
+		var->tex_x = TEX_W - var->tex_x - 1;
+	else if (var->side == true && var->ray_dir->ray_dir_y < 0)
 		var->tex_x = TEX_W - var->tex_x - 1;
 	var->tex_step = 1.0 * TEX_H / var->line_height;
-	var->tex_pos = (var->draw_start - SCREEN_H / 2 + var->line_height / 2) * var->tex_step;
+	var->tex_pos = (var->draw_start - SCREEN_H / 2 + var->line_height / 2 - PITCH) * var->tex_step;
 }
 
 int	key_draw(t_vars *var)
@@ -140,13 +142,15 @@ int	key_draw(t_vars *var)
 		{
 			var->tex_y = (int)var->tex_pos & (TEX_H - 1);
 			var->color = *(unsigned int *)(var->texture->addr + var->tex_y * var->img->size_line + var->tex_x * (var->img->bits_per_pixel / 8));
+			if (var->side == true)
+				var->color /= 3;
 			var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
 			*(unsigned int *)var->img->dst = var->color;
 			var->tex_pos += var->tex_step;
 			++col;
 		}
-		++row;
 		free_calc(var);
+		++row;
 	}
 	mlx_put_image_to_window(var->mlx, var->win, var->img->img, 0, 0);
 	free(var->img);
