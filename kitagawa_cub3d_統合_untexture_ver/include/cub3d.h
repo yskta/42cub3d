@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 17:33:32 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:33:39 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,8 @@
 
 # define SCREEN_W 1280
 # define SCREEN_H 960
-//# define mapWidth 24
-//# define mapHeight 24
 
 # define ANGLE 16
-
-// /* ************************************************************************** */
-
-// extern int map[mapWidth][mapHeight];
-
-// /* ************************************************************************** */
 
 //nemotoさん分追加ここから
 typedef struct s_first_player_pos
