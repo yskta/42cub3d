@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 01:39:45 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 01:58:51 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	draw_init(t_data *data)
 		data->draw_end = SCREEN_H - 1;
 	data->color = BLUE;
 	if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y])
-		data->color = RED;
+		data->color = BLUE;
 	if (data->side == true)
 		data->color /= 3;
 }
