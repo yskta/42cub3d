@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 02:30:48 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:35:44 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,16 @@ int main(int argc, char *argv[])
         put_error_and_exit("error in parse read data", data);
     if (init_other_data(data) == false)
         put_error_and_exit("error in init other data", data);
-    //仮で4_2_init_other_data.cの処理をここで行う
-    data->cur_pos = (t_cur_pos *)malloc(sizeof(t_cur_pos));
-	data->dir = (t_dir *)malloc(sizeof(t_dir));
-	data->plane = (t_plane *)malloc(sizeof(t_plane));
-	if (data->cur_pos == NULL || data->dir == NULL || data->plane == NULL)
-		return (false);
-    data->cur_pos->pos_x = 22;
-    data->cur_pos->pos_y = 12;
-    data->dir->dir_x = 0;
-    data->dir->dir_y = 1;
-    data->plane->plane_x = 0;
-    data->plane->plane_y = 0.66;
+    ////
+    printf ("data->cur_pos->pos_x in main= %f\n", data->cur_pos->pos_x);
+	printf ("data->cur_pos->pos_y in main = %f\n", data->cur_pos->pos_y);
+    int k = 0;
+	while (data->map_data.map[k] != NULL)
+	{
+		printf("%s\n", data->map_data.map[k]);
+		k++;
+	}
+    ////
     printf("start raycasting\n");
     mlx_key_hook(data->mlx_win, key_hook, data);
     mlx_loop_hook(data->mlx, key_draw, data);
