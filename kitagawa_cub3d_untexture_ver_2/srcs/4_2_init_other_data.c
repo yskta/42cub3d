@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 23:41:00 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 00:02:38 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ bool	init_pos_dir_plane(t_data *data)
 	size_t	i;
 	size_t	j;
 
-	data->first_player_pos = (t_first_player_pos *)malloc(sizeof(t_first_player_pos));
+	data->cur_pos = (t_cur_pos *)malloc(sizeof(t_cur_pos));
 	data->dir = (t_dir *)malloc(sizeof(t_dir));
 	data->plane = (t_plane *)malloc(sizeof(t_plane));
-	if (data->first_player_pos == NULL || data->dir == NULL || data->plane == NULL)
+	if (data->cur_pos == NULL || data->dir == NULL || data->plane == NULL)
 		return (false);
 	i = 0;
 	while (data->map_data.map[i] != NULL)
@@ -69,15 +69,11 @@ bool	init_pos_dir_plane(t_data *data)
 		i++;
 	}
 	// printf("for debug in init_pos_dir_plane\n");
-	// printf("data->first_player_pos->pos_x = %f\n", data->first_player_pos->pos_x);
-	// printf("data->first_player_pos->pos_y = %f\n", data->first_player_pos->pos_y);
 	// printf("data->dir->dir_x = %f\n", data->dir->dir_x);
 	// printf("data->dir->dir_y = %f\n", data->dir->dir_y);
 	// printf("data->plane->plane_x = %f\n", data->plane->plane_x);
 	// printf("data->plane->plane_y = %f\n", data->plane->plane_y);
-	// printf ("data->map_data.map[i][j]: %c\n", data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y]);
-	data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y] = '0';
-	//printf ("data->map_data.map[i][j]: %c\n", data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y]);
+	data->map_data.map[(int)data->cur_pos->pos_x][(int)data->cur_pos->pos_y] = '0';
 	int k = 0;
 	while (data->map_data.map[k] != NULL)
 	{
