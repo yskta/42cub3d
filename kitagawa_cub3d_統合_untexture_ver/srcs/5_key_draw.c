@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 18:44:32 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:47:05 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,15 @@ static	void	calc_three(t_data	*data)
 		}
 	}
 	if (data->side == false)
+	{
+		printf ("data->side:false\n");
 		data->perp_wall_dist = data->side_dist->side_dist_x - data->delta_dist->delta_dist_x;
+	}
 	else
+	{
+		printf ("data->side:true\n");
 		data->perp_wall_dist = data->side_dist->side_dist_y - data->delta_dist->delta_dist_y;
+	}
 }
 
 static void	draw_init(t_data	*data)
