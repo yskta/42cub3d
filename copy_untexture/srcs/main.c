@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:00:01 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:14:30 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 02:09:39 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycaster.h"
+#include "../iclude/raycaster.h"
 
 int map[MAP_W][MAP_H]=
 {

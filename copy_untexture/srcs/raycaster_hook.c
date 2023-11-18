@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_hook.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:17:32 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 02:10:04 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycaster.h"
+#include "../iclude/raycaster.h"
 
 static void	key_draw_clear(t_vars *var)
 {

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
+#    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/09 13:47:31 by snemoto           #+#    #+#              #
-#    Updated: 2023/10/23 18:59:50 by snemoto          ###   ########.fr        #
+#    Updated: 2023/11/19 02:14:32 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,53 +14,43 @@
 # Variables																	   #
 # **************************************************************************** #
 
-NAME	= cub3d
-SRCS	= $(shell echo *.c)
-OBJDIR	= obj/
-OBJS	= $(SRCS:%.c=$(OBJDIR)%.o)
+NAME = cub3d
 
-CC		= cc
-RM		= rm -f
-RMD		= rm -rf
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
-CFLAGS	= -Wall -Wextra -Werror -I include -I/usr/X11/include
-MLX_PATH = minilibx-linux
-MLX_INCLUDE = libmlx_Darwin.a
+SRCS_DIR		= ./srcs/
+SRCS 			= $(addprefix $(SRCS_DIR),\
+			main.c		\
+			raycaster_draw.c		\
+			raycaster_hook.c)
 
-X11_PATH = -L/usr/X11/include/../lib
-X11_INCLUDE = -lX11 -lXext
+OBJS = $(SRCS:%.c=%.o)
+
+MLX_DIR = ./minilibx-linux
+MLX_LIB = -lmlx_Linux -lXext -lX11
+MLX_INCLUDE = $(addprefix -I, $(MLX_DIR))
 
 # **************************************************************************** #
 # General Rules																   #
 # **************************************************************************** #
 
-all:	$(OBJDIR) $(NAME)
+all: mlx $(NAME)
 
-$(OBJDIR):
-		mkdir -p obj
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(MLX_DIR) $(MLX_LIB) -lm
 
-$(OBJDIR)%.o: %.c
-		$(CC) $(CFLAGS) -c -o $@ $<
+%.o:	%.c
+	$(CC) $(CFLAGS) -c $(MLX_INCLUDE) $< -o $@
 
-# $(NAME): $(OBJS)
-# 		$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-
-$(NAME): ${OBJS}
-		cd "$(PWD)/${MLX_PATH}" && make
-		${CC} ${CFLAGS} \
-			${X11_PATH} ${X11_INCLUDE} \
-			$(PWD)/${MLX_PATH}/${MLX_INCLUDE} \
-			$(OBJS) \
-			-o $(NAME)
+mlx:
+	make -C $(MLX_DIR)
 
 clean:
-		${RMD} $(OBJDIR)
+	make clean -C $(LIB_DIR)
+	rm -r $(OBJS)
 
-fclean:	clean
-		${RM} ${NAME}
+fclean: clean
+	rm -r $(NAME)
 
-re:		fclean all
-
-bonus:	all
-
-.PHONY: all clean fclean re bonus
+re: fclean all

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_draw.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:15:11 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 02:10:00 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycaster.h"
+#include "../iclude/raycaster.h"
 
 static	void	calc_one(t_vars	*var)
 {
