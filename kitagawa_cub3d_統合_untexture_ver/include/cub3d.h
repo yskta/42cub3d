@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/02 23:53:48 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/04 00:34:13 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,8 @@
 # define F "F"
 # define C "C"
 
-# define TXT_HEIGHT		50
-# define TXT_WIDTH		50
-
-//壁関係は変更する可能性あり
-// # define WALL 10
-
-// # define WINH WALL * 1
-// # define WINW WINH * 1
+// # define TXT_HEIGHT		50
+// # define TXT_WIDTH		50
 
 # define KEY_W 0x077
 # define KEY_S 0x073
@@ -49,11 +43,6 @@
 # define KEY_RIGHT		0xff53
 # define KEY_DOWN		0xff54
 # define KEY_ESC		0xff1b
-
-// # define KEY_A 97
-// # define KEY_D 100
-// # define KEY_S 115
-// # define KEY_W 119
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
