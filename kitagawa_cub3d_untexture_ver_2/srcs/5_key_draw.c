@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 03:29:36 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 03:33:50 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ static	void	calc_three(t_data *data)
 
 static void	draw_init(t_data *data)
 {
-	//ここのdata->perp_wall_distに0が入るケースあり。原因は不明
 	data->line_height = (int)(SCREEN_H / data->perp_wall_dist);
 	data->draw_start = -1 * data->line_height / 2 + SCREEN_H / 2;
 	if (data->draw_start < 0)
@@ -111,16 +110,16 @@ int	key_draw(t_data *data)
 	{
 		data->camera_x = 2 * row / (double)SCREEN_W - 1;
 		calc_one(data);
-		printf ("data->camera_x:%f\n", data->camera_x);
-		printf ("data->ray_dir->ray_dir_x:%f\n", data->ray_dir->ray_dir_x);
-		printf ("data->ray_dir->ray_dir_y:%f\n", data->ray_dir->ray_dir_y);
+		// printf ("data->camera_x:%f\n", data->camera_x);
+		// printf ("data->ray_dir->ray_dir_x:%f\n", data->ray_dir->ray_dir_x);
+		// printf ("data->ray_dir->ray_dir_y:%f\n", data->ray_dir->ray_dir_y);
 		calc_two(data);
-		printf ("data->delta_dist->delta_dist_x:%f\n", data->delta_dist->delta_dist_x);
-		printf ("data->delta_dist->delta_dist_y:%f\n", data->delta_dist->delta_dist_y);
-		printf ("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
-		printf ("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
+		// printf ("data->delta_dist->delta_dist_x:%f\n", data->delta_dist->delta_dist_x);
+		// printf ("data->delta_dist->delta_dist_y:%f\n", data->delta_dist->delta_dist_y);
+		// printf ("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
+		// printf ("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
 		calc_three(data);
-		printf("data->perp_wall_dist:%f\n", data->perp_wall_dist);
+		//printf("data->perp_wall_dist:%f\n", data->perp_wall_dist);
 		draw_init(data);
 		//printf("data->line_height:%d\n", data->line_height);
 		col = data->draw_start;
