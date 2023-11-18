@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:16:53 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 02:17:48 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdbool.h>
-# include "minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysymdef.h>
 
 # define KEY_W 0x077
 # define KEY_S 0x073
