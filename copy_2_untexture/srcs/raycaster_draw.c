@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 03:09:28 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 03:10:45 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	key_draw(t_vars *var)
 		calc_one(var);
 		calc_two(var);
 		calc_three(var);
-		printf("data->perp_wall_dist:%f\n", data->perp_wall_dist);
+		printf("var->perp_wall_dist:%f\n", var->perp_wall_dist);
 		draw_init(var);
 		col = var->draw_start;
 		while (col < (unsigned int)var->draw_end)
