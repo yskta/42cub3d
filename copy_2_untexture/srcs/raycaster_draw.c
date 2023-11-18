@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 03:13:22 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 03:14:37 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,10 @@ int	key_draw(t_vars *var)
 		var->camera_x = 2 * row / (double)SCREEN_W - 1;
 		calc_one(var);
 		calc_two(var);
-		printf ("data->delta_dist->delta_dist_x:%f\n", data->delta_dist->delta_dist_x);
-		printf ("data->delta_dist->delta_dist_y:%f\n", data->delta_dist->delta_dist_y);
-		printf ("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
-		printf ("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
+		printf ("data->delta_dist->delta_dist_x:%f\n", var->delta_dist->delta_dist_x);
+		printf ("data->delta_dist->delta_dist_y:%f\n", var->delta_dist->delta_dist_y);
+		printf ("data->side_dist->side_dist_x:%f\n", var->side_dist->side_dist_x);
+		printf ("data->side_dist->side_dist_y:%f\n", var->side_dist->side_dist_y);
 		calc_three(var);
 		//printf("var->perp_wall_dist:%f\n", var->perp_wall_dist);
 		draw_init(var);
