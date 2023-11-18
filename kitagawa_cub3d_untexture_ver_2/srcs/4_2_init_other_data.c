@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 00:21:06 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 00:24:38 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ bool	init_pos_dir_plane(t_data *data)
 				data->cur_pos->pos_y = (double)j;
 				if (data->map_data.map[i][j] == 'N')
 				{
-					data->dir->dir_x = 1;
-					data->dir->dir_y = 0;
+					data->dir->dir_x = 0;
+					data->dir->dir_y = 1;
 					data->plane->plane_x = 0;
 					data->plane->plane_y = 0.66;
 				}
