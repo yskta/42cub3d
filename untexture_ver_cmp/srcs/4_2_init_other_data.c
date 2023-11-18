@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 18:56:18 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 03:20:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ bool	init_pos_dir_plane(t_data *data)
 	size_t	i;
 	size_t	j;
 
-	data->first_player_pos = (t_first_player_pos *)malloc(sizeof(t_first_player_pos));
+	data->cur_pos = (t_cur_pos *)malloc(sizeof(t_cur_pos));
 	data->dir = (t_dir *)malloc(sizeof(t_dir));
 	data->plane = (t_plane *)malloc(sizeof(t_plane));
-	if (data->first_player_pos == NULL || data->dir == NULL || data->plane == NULL)
+	if (data->cur_pos == NULL || data->dir == NULL || data->plane == NULL)
 		return (false);
 	i = 0;
 	while (data->map_data.map[i] != NULL)
@@ -29,11 +29,11 @@ bool	init_pos_dir_plane(t_data *data)
 		j = 0;
 		while (data->map_data.map[i][j] != '\0')
 		{
-			if (data->map_data.map[i][j] == 'N' || data->map_data.map[i][j] == 'S' || \
+			if (data->map_data.map[i][j] == 'N' || data->map_data.map[i][j] == 'S' ||
 			data->map_data.map[i][j] == 'E' || data->map_data.map[i][j] == 'W')
 			{
-				data->first_player_pos->pos_x = (double)i;
-				data->first_player_pos->pos_y = (double)j;
+				data->cur_pos->pos_x = (double)i;
+				data->cur_pos->pos_y = (double)j;
 				if (data->map_data.map[i][j] == 'N')
 				{
 					data->dir->dir_x = -1;
@@ -69,20 +69,11 @@ bool	init_pos_dir_plane(t_data *data)
 		i++;
 	}
 	// printf("for debug in init_pos_dir_plane\n");
-	// printf("data->first_player_pos->pos_x = %f\n", data->first_player_pos->pos_x);
-	// printf("data->first_player_pos->pos_y = %f\n", data->first_player_pos->pos_y);
 	// printf("data->dir->dir_x = %f\n", data->dir->dir_x);
 	// printf("data->dir->dir_y = %f\n", data->dir->dir_y);
 	// printf("data->plane->plane_x = %f\n", data->plane->plane_x);
 	// printf("data->plane->plane_y = %f\n", data->plane->plane_y);
-	// printf ("data->map_data.map[i][j]: %c\n", data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y]);
-	data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y] = '0';
-	//printf ("data->map_data.map[i][j]: %c\n", data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y]);
-	int k = 0;
-	while (data->map_data.map[k] != NULL)
-	{
-		printf("%s\n", data->map_data.map[k]);
-		k++;
-	}
+	//TODO：外す必要あるかも
+	data->map_data.map[(int)data->cur_pos->pos_x][(int)data->cur_pos->pos_y] = '0';
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 19:11:55 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 23:51:22 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@
 # define F "F"
 # define C "C"
 
-// # define TXT_HEIGHT		50
-// # define TXT_WIDTH		50
-
 # define KEY_W 0x077
 # define KEY_S 0x073
 # define KEY_A 0x061
@@ -51,17 +48,17 @@
 # define BLUE 0x0000FF
 # define PURPLE 0xFF00FF
 
-# define SCREEN_W 720
-# define SCREEN_H 720
+# define SCREEN_W 1280
+# define SCREEN_H 960
 
 # define ANGLE 16
 
 //nemotoさん分追加ここから
-typedef struct s_first_player_pos
+typedef struct s_cur_pos
 {
 	double	pos_x;
 	double	pos_y;
-}	t_first_player_pos;
+}	t_cur_pos;
 
 typedef struct s_dir
 {
@@ -87,11 +84,11 @@ typedef struct s_side_dist
 	double	side_dist_y;
 }	t_side_dist;
 
-typedef struct	s_player_pos_for_calc
+typedef struct s_box_pos_for_calc
 {
-	int	pos_x;
-	int	pos_y;
-}	t_player_pos_for_calc;
+	int	map_x;
+	int	map_y;
+}	t_box_pos_for_calc;
 
 typedef struct	s_delta_dist
 {
@@ -141,14 +138,14 @@ typedef struct s_data{
 	t_floor_or_ceiling		floor;
 	t_floor_or_ceiling		ceiling;
 	//nemotoさん分追加ここから
-	t_first_player_pos		*first_player_pos;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
+	t_cur_pos				*cur_pos;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
 	t_dir					*dir;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
 	t_plane					*plane;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
-	t_step					*step;
+	t_step					*step;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり。
 	t_side_dist				*side_dist;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
 	t_delta_dist			*delta_dist;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
 	t_ray_dir				*ray_dir;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
-	t_player_pos_for_calc	*player_current_pos;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
+	t_box_pos_for_calc		*box_pos;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
 	double					camera_x;
 	double					perp_wall_dist;
 	bool					hit;//calc_one関数で初期化

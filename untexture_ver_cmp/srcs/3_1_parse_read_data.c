@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/04 00:31:38 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:35:07 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ bool	parse_map(t_data *data)
 		i++;
 	}
 	convert_space_to_X(data->map_data.map);
+	//一旦外す
 	if (check_valid_map(data) == false)
 		return (false);
 	return (true);

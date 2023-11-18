@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 19:23:25 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 03:41:57 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static void	key_w_s(t_data *data, int keycode)
 	move = 1;
 	if (keycode == KEY_S)
 		sign = -1;
-	if (data->map_data.map[(int)(data->first_player_pos->pos_x + sign * data->dir->dir_x * move)][(int)data->first_player_pos->pos_y] == 0)
-		data->first_player_pos->pos_x += sign * data->dir->dir_x * move;
-	if (data->map_data.map[(int)data->first_player_pos->pos_x][(int)(data->first_player_pos->pos_y + sign * data->dir->dir_y * move)] == 0)
-		data->first_player_pos->pos_y += sign * data->dir->dir_y * move;
+	if (data->map_data.map[(int)(data->cur_pos->pos_x + sign * data->dir->dir_x * move)][(int)data->cur_pos->pos_y] == '0')
+		data->cur_pos->pos_x += sign * data->dir->dir_x * move;
+	if (data->map_data.map[(int)data->cur_pos->pos_x][(int)(data->cur_pos->pos_y + sign * data->dir->dir_y * move)] == '0')
+		data->cur_pos->pos_y += sign * data->dir->dir_y * move;
 }
 
 static void	key_a_d(t_data *data, int keycode)
@@ -62,10 +62,10 @@ static void	key_a_d(t_data *data, int keycode)
 	angle_y = old_dir_x * sin(M_PI / 2) + data->dir->dir_y * cos(M_PI / 2);
 	if (keycode == KEY_D)
 		sign = -1;
-	if (data->map_data.map[(int)(data->first_player_pos->pos_x + angle_x * sign * move)][(int)data->first_player_pos->pos_y] == 0)
-		data->first_player_pos->pos_x += angle_x * sign * move;
-	if (data->map_data.map[(int)data->first_player_pos->pos_x][(int)(data->first_player_pos->pos_y + angle_y * sign * move)] == 0)
-		data->first_player_pos->pos_y += angle_y * sign * move;
+	if (data->map_data.map[(int)(data->cur_pos->pos_x + angle_x * sign * move)][(int)data->cur_pos->pos_y] == '0')
+		data->cur_pos->pos_x += angle_x * sign * move;
+	if (data->map_data.map[(int)data->cur_pos->pos_x][(int)(data->cur_pos->pos_y + angle_y * sign * move)] == '0')
+		data->cur_pos->pos_y += angle_y * sign * move;
 }
 
 static void	key_l_r(t_data *data, int keycode)
@@ -87,7 +87,6 @@ static void	key_l_r(t_data *data, int keycode)
 
 int	key_hook(int keycode, t_data *data)
 {
-	printf("keycode: %d\n", keycode);
 	if (keycode == KEY_W || keycode == KEY_S)
 		key_w_s(data, keycode);
 	else if (keycode == KEY_A || keycode == KEY_D)
@@ -97,6 +96,6 @@ int	key_hook(int keycode, t_data *data)
 	else
 		return (0);
 	key_draw_clear(data);
-	key_draw(data);//追加しないと描画されない
+	//key_draw(data);
 	return (0);
 }
