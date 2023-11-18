@@ -6,13 +6,22 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:15:11 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/12 17:08:55 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
 
-static	void	calc_one(t_vars	*var)
+static	void	free_calc(t_vars	*var)
+{
+	free(var->map);
+	free(var->ray_dir);
+	free(var->delta_dist);
+	free(var->step);
+	free(var->side_dist);
+}
+
+static	void	calc_init(t_vars	*var)
 {
 	var->hit = false;
 	var->side = false;
@@ -35,7 +44,7 @@ static	void	calc_one(t_vars	*var)
 	var->side_dist = (t_side_dist *)malloc(sizeof(t_side_dist));
 }
 
-static	void	calc_two(t_vars	*var)
+static	void	calc_side_dist(t_vars	*var)
 {
 	if (var->ray_dir->ray_dir_x < 0)
 	{
@@ -59,7 +68,7 @@ static	void	calc_two(t_vars	*var)
 	}
 }
 
-static	void	calc_three(t_vars *var)
+static	void	calc_hit_wall(t_vars *var)
 {
 	while (var->hit == false)
 	{
@@ -75,7 +84,7 @@ static	void	calc_three(t_vars *var)
 			var->map->map_y += var->step->step_y;
 			var->side = true;
 		}
-		if (map[var->map->map_x][var->map->map_y] > 0)
+		if (map[var->map->map_x][var->map->map_y] != 0)
 			var->hit = true;
 	}
 	if (var->side == false)
@@ -87,39 +96,63 @@ static	void	calc_three(t_vars *var)
 static void	draw_init(t_vars *var)
 {
 	var->line_height = (int)(SCREEN_H / var->perp_wall_dist);
-	var->draw_start = -1 * var->line_height / 2 + SCREEN_H / 2;
+	var->draw_start = -var->line_height / 2 + SCREEN_H / 2 + PITCH;
 	if (var->draw_start < 0)
 		var->draw_start = 0;
-	var->draw_end = var->line_height / 2 + SCREEN_H / 2;
+	var->draw_end = var->line_height / 2 + SCREEN_H / 2 + PITCH;
 	if (var->draw_end >= SCREEN_H)
 		var->draw_end = SCREEN_H - 1;
-	var->color = BLUE;
-	if (map[var->map->map_x][var->map->map_y])
-		var->color = RED;
-	if (var->side == true)
-		var->color /= 3;
+}
+
+static	void draw_tex(t_vars *var)
+{
+	if (var->side == false)
+		var->wall_x = var->pos->pos_y + var->perp_wall_dist * var->ray_dir->ray_dir_y;
+	else
+		var->wall_x = var->pos->pos_x + var->perp_wall_dist * var->ray_dir->ray_dir_x;
+	var->wall_x -= floor(var->wall_x);
+	var->tex_x = (int)(var->wall_x * (double)TEX_W);
+	if (var->side == false && var->ray_dir->ray_dir_x > 0)
+		var->tex_x = TEX_W - var->tex_x - 1;
+	else if (var->side == true && var->ray_dir->ray_dir_y < 0)
+		var->tex_x = TEX_W - var->tex_x - 1;
+	var->tex_step = 1.0 * TEX_H / var->line_height;
+	var->tex_pos = (var->draw_start - SCREEN_H / 2 + var->line_height / 2 - PITCH) * var->tex_step;
 }
 
 int	key_draw(t_vars *var)
 {
-	unsigned int	row;
-	unsigned int	col;
+	int	row;
+	int	col;
 
+	var->img = (t_img *)malloc(sizeof(t_img));
+	var->img->img = mlx_new_image(var->mlx, SCREEN_W, SCREEN_H);
+	var->img->addr = mlx_get_data_addr(var->img->img, &var->img->bits_per_pixel, &var->img->size_line, &var->img->endian);
 	row = 0;
-	while (row < (unsigned int)SCREEN_W)
+	while (row < SCREEN_W)
 	{
 		var->camera_x = 2 * row / (double)SCREEN_W - 1;
-		calc_one(var);
-		calc_two(var);
-		calc_three(var);
+		calc_init(var);
+		calc_side_dist(var);
+		calc_hit_wall(var);
 		draw_init(var);
+		draw_tex(var);
 		col = var->draw_start;
-		while (col < (unsigned int)var->draw_end)
+		while (col < var->draw_end)
 		{
-			mlx_pixel_put(var->mlx, var->win, row, col, var->color);
+			var->tex_y = (int)var->tex_pos & (TEX_H - 1);
+			var->color = *(unsigned int *)(var->texture->addr + var->tex_y * var->img->size_line + var->tex_x * (var->img->bits_per_pixel / 8));
+			if (var->side == true)
+				var->color /= 3;
+			var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
+			*(unsigned int *)var->img->dst = var->color;
+			var->tex_pos += var->tex_step;
 			++col;
 		}
+		free_calc(var);
 		++row;
 	}
+	mlx_put_image_to_window(var->mlx, var->win, var->img->img, 0, 0);
+	free(var->img);
 	return (0);
 }

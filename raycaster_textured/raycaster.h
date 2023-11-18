@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:16:53 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/12 17:12:32 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,21 @@
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
-# define RED 0xFF0000
-# define GREEN 0x00FF00
-# define BLUE 0x0000FF
-# define PURPLE 0xFF00FF
 
 # define SCREEN_W 1280
 # define SCREEN_H 960
+
 # define MAP_W 24
 # define MAP_H 24
 
 # define ANGLE 16
+
+/* ************************************************************************** */
+
+# define TEX_W 64
+# define TEX_H 64
+
+# define PITCH 100
 
 /* ************************************************************************** */
 
@@ -94,6 +98,37 @@ typedef struct s_ray_dir
 	double	ray_dir_y;
 }	t_ray_dir;
 
+/* ************************************************************************** */
+
+typedef struct s_tex_dir
+{
+	void	*n;
+	void	*s;
+	void	*e;
+	void	*w;
+}	t_tex_dir;
+
+typedef struct s_tex
+{
+	t_tex_dir	*dir;
+	char		*addr;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+}	t_tex;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	char	*dst;
+}	t_img;
+
+/* ************************************************************************** */
+
 typedef struct s_vars
 {
 	t_pos			*pos;
@@ -112,9 +147,17 @@ typedef struct s_vars
 	int				draw_start;
 	int				draw_end;
 	int				color;
+/* ************************************************************************** */
+	t_tex			*texture;
+	t_img			*img;
+	double			wall_x;
+	int				tex_x;
+	int				tex_y;
+	double			tex_step;
+	double			tex_pos;
+/* ************************************************************************** */
 	void			*mlx;
 	void			*win;
-	void			*img;
 }	t_vars;
 
 /* ************************************************************************** */

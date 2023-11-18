@@ -6,29 +6,11 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/04 08:17:32 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/12 16:49:05 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
-
-static void	key_draw_clear(t_vars *var)
-{
-	unsigned int	row;
-	unsigned int	col;
-
-	row = 0;
-	while (row < SCREEN_W)
-	{
-		col = 0;
-		while (col < SCREEN_H)
-		{
-			mlx_pixel_put(var->mlx, var->win, row, col, BLACK);
-			++col;
-		}
-		++row;
-	}
-}
 
 static void	key_w_s(t_vars *var, int keycode)
 {
@@ -93,8 +75,5 @@ int	key_hook(int keycode, t_vars *var)
 		key_a_d(var, keycode);
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		key_l_r(var, keycode);
-	else
-		return (0);
-	key_draw_clear(var);
 	return (0);
 }
