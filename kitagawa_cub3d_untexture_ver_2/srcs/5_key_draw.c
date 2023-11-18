@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 02:02:18 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 03:09:43 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	key_draw(t_data *data)
 		// printf ("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
 		// printf ("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
 		calc_three(data);
-		//printf("data->perp_wall_dist:%f\n", data->perp_wall_dist);
+		printf("data->perp_wall_dist:%f\n", data->perp_wall_dist);
 		draw_init(data);
 		//printf("data->line_height:%d\n", data->line_height);
 		col = data->draw_start;
