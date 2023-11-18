@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 16:38:52 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:13:17 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ static void	key_l_r(t_data *data, int keycode)
 
 int	key_hook(int keycode, t_data *data)
 {
+	printf("keycode: %d\n", keycode);
 	if (keycode == KEY_W || keycode == KEY_S)
 		key_w_s(data, keycode);
 	else if (keycode == KEY_A || keycode == KEY_D)
