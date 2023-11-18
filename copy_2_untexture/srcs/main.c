@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:00:01 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 02:16:34 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:47:18 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	main(void)
 {
 	t_vars	var;
 
-	var.pos = (t_pos *)malloc(sizeof(t_pos));
-	var.pos->pos_x = 22;
-	var.pos->pos_y = 12;
+	var.cur_pos = (t_cur_pos *)malloc(sizeof(t_cur_pos));
+	var.cur_pos->pos_x = 22;
+	var.cur_pos->pos_y = 12;
 
 	var.dir = (t_dir *)malloc(sizeof(t_dir));
 	var.dir->dir_x = -1;

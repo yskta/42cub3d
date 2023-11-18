@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 02:16:41 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:48:36 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static void	key_w_s(t_vars *var, int keycode)
 	move = 1;
 	if (keycode == KEY_S)
 		sign = -1;
-	if (map[(int)(var->pos->pos_x + sign * var->dir->dir_x * move)][(int)var->pos->pos_y] == 0)
-		var->pos->pos_x += sign * var->dir->dir_x * move;
-	if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + sign * var->dir->dir_y * move)] == 0)
-		var->pos->pos_y += sign * var->dir->dir_y * move;
+	if (map[(int)(var->cur_pos->pos_x + sign * var->dir->dir_x * move)][(int)var->cur_pos->pos_y] == 0)
+		var->cur_pos->pos_x += sign * var->dir->dir_x * move;
+	if (map[(int)var->cur_pos->pos_x][(int)(var->cur_pos->pos_y + sign * var->dir->dir_y * move)] == 0)
+		var->cur_pos->pos_y += sign * var->dir->dir_y * move;
 }
 
 static void	key_a_d(t_vars *var, int keycode)
@@ -62,10 +62,10 @@ static void	key_a_d(t_vars *var, int keycode)
 	angle_y = old_dir_x * sin(M_PI / 2) + var->dir->dir_y * cos(M_PI / 2);
 	if (keycode == KEY_D)
 		sign = -1;
-	if (map[(int)(var->pos->pos_x + angle_x * sign * move)][(int)var->pos->pos_y] == 0)
-		var->pos->pos_x += angle_x * sign * move;
-	if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + angle_y * sign * move)] == 0)
-		var->pos->pos_y += angle_y * sign * move;
+	if (map[(int)(var->cur_pos->pos_x + angle_x * sign * move)][(int)var->cur_pos->pos_y] == 0)
+		var->cur_pos->pos_x += angle_x * sign * move;
+	if (map[(int)var->cur_pos->pos_x][(int)(var->cur_pos->pos_y + angle_y * sign * move)] == 0)
+		var->cur_pos->pos_y += angle_y * sign * move;
 }
 
 static void	key_l_r(t_vars *var, int keycode)

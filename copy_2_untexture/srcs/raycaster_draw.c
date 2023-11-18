@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 02:16:38 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:48:07 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static	void	calc_one(t_vars	*var)
 	var->hit = false;
 	var->side = false;
 	var->map = (t_map *)malloc(sizeof(t_map));
-	var->map->map_x = (int)var->pos->pos_x;
-	var->map->map_y = (int)var->pos->pos_y;
+	var->map->map_x = (int)var->cur_pos->pos_x;
+	var->map->map_y = (int)var->cur_pos->pos_y;
 	var->ray_dir = (t_ray_dir *)malloc(sizeof(t_ray_dir));
 	var->ray_dir->ray_dir_x = var->dir->dir_x + var->plane->plane_x * var->camera_x;
 	var->ray_dir->ray_dir_y = var->dir->dir_y + var->plane->plane_y * var->camera_x;
@@ -40,22 +40,22 @@ static	void	calc_two(t_vars	*var)
 	if (var->ray_dir->ray_dir_x < 0)
 	{
 		var->step->step_x = -1;
-		var->side_dist->side_dist_x = (var->pos->pos_x - var->map->map_x) * var->delta_dist->delta_dist_x;
+		var->side_dist->side_dist_x = (var->cur_pos->pos_x - var->map->map_x) * var->delta_dist->delta_dist_x;
 	}
 	else
 	{
 		var->step->step_x = 1;
-		var->side_dist->side_dist_x = (var->map->map_x + 1.0 - var->pos->pos_x) * var->delta_dist->delta_dist_x;
+		var->side_dist->side_dist_x = (var->map->map_x + 1.0 - var->cur_pos->pos_x) * var->delta_dist->delta_dist_x;
 	}
 	if (var->ray_dir->ray_dir_y < 0)
 	{
 		var->step->step_y = -1;
-		var->side_dist->side_dist_y = (var->pos->pos_y - var->map->map_y) * var->delta_dist->delta_dist_y;
+		var->side_dist->side_dist_y = (var->cur_pos->pos_y - var->map->map_y) * var->delta_dist->delta_dist_y;
 	}
 	else
 	{
 		var->step->step_y = 1;
-		var->side_dist->side_dist_y = (var->map->map_y + 1.0 - var->pos->pos_y) * var->delta_dist->delta_dist_y;
+		var->side_dist->side_dist_y = (var->map->map_y + 1.0 - var->cur_pos->pos_y) * var->delta_dist->delta_dist_y;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 02:17:48 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:45:09 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ extern int	map[MAP_W][MAP_H];
 
 /* ************************************************************************** */
 
-typedef struct s_pos
+typedef struct s_cur_pos
 {
 	double	pos_x;
 	double	pos_y;
-}	t_pos;
+}	t_cur_pos;
 
 typedef struct s_dir
 {
@@ -98,7 +98,7 @@ typedef struct s_ray_dir
 
 typedef struct s_vars
 {
-	t_pos			*pos;
+	t_cur_pos		*cur_pos;
 	t_dir			*dir;
 	t_plane			*plane;
 	t_step			*step;
