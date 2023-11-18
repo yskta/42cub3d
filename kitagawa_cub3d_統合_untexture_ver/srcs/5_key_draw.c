@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 17:45:00 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:20:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,31 @@ static	void	calc_one(t_data	*data)
 //stepとside_distを計算する
 static	void	calc_two(t_data	*data)
 {
+	printf("data->ray_dir->ray_dir_x:%f\n", data->ray_dir->ray_dir_x);
 	if (data->ray_dir->ray_dir_x < 0)
 	{
 		data->step->step_x = -1;
 		data->side_dist->side_dist_x = (data->first_player_pos->pos_x - data->player_current_pos->pos_x) * data->delta_dist->delta_dist_x;
+		printf("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
 	}
 	else
 	{
 		data->step->step_x = 1;
 		data->side_dist->side_dist_x = (data->player_current_pos->pos_x + 1.0 - data->first_player_pos->pos_x) * data->delta_dist->delta_dist_x;
+		printf("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
 	}
+	printf("data->ray_dir->ray_dir_y:%f\n", data->ray_dir->ray_dir_y);
 	if (data->ray_dir->ray_dir_y < 0)
 	{
 		data->step->step_y = -1;
 		data->side_dist->side_dist_y = (data->first_player_pos->pos_y - data->player_current_pos->pos_y) * data->delta_dist->delta_dist_y;
+		printf("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
 	}
 	else
 	{
 		data->step->step_y = 1;
 		data->side_dist->side_dist_y = (data->player_current_pos->pos_y + 1.0 - data->first_player_pos->pos_y) * data->delta_dist->delta_dist_y;
+		printf("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
 	}
 }
 
