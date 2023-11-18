@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 01:58:51 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:02:18 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ static	void	calc_three(t_data *data)
 
 static void	draw_init(t_data *data)
 {
+	//ここのdata->perp_wall_distに0が入るケースあり。原因は不明
 	data->line_height = (int)(SCREEN_H / data->perp_wall_dist);
 	data->draw_start = -1 * data->line_height / 2 + SCREEN_H / 2;
 	if (data->draw_start < 0)
