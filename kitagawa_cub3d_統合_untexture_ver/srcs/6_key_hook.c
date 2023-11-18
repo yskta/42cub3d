@@ -6,13 +6,13 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 15:53:23 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:38:52 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	key_draw_clear(t_vars *var)
+static void	key_draw_clear(t_data *data)
 {
 	unsigned int	row;
 	unsigned int	col;
@@ -23,14 +23,14 @@ static void	key_draw_clear(t_vars *var)
 		col = 0;
 		while (col < SCREEN_H)
 		{
-			mlx_pixel_put(var->mlx, var->win, row, col, BLACK);
+			mlx_pixel_put(data->mlx, data->mlx_win, row, col, BLACK);
 			++col;
 		}
 		++row;
 	}
 }
 
-static void	key_w_s(t_vars *var, int keycode)
+static void	key_w_s(t_data *data, int keycode)
 {
 	double	sign;
 	double	move;
@@ -39,13 +39,13 @@ static void	key_w_s(t_vars *var, int keycode)
 	move = 1;
 	if (keycode == KEY_S)
 		sign = -1;
-	if (map[(int)(var->pos->pos_x + sign * var->dir->dir_x * move)][(int)var->pos->pos_y] == 0)
-		var->pos->pos_x += sign * var->dir->dir_x * move;
-	if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + sign * var->dir->dir_y * move)] == 0)
-		var->pos->pos_y += sign * var->dir->dir_y * move;
+	if (data->map_data.map[(int)(data->first_player_pos->pos_x + sign * data->dir->dir_x * move)][(int)data->first_player_pos->pos_y] == 0)
+		data->first_player_pos->pos_x += sign * data->dir->dir_x * move;
+	if (data->map_data.map[(int)data->first_player_pos->pos_x][(int)(data->first_player_pos->pos_y + sign * data->dir->dir_y * move)] == 0)
+		data->first_player_pos->pos_y += sign * data->dir->dir_y * move;
 }
 
-static void	key_a_d(t_vars *var, int keycode)
+static void	key_a_d(t_data *data, int keycode)
 {
 	double	sign;
 	double	move;
@@ -57,44 +57,44 @@ static void	key_a_d(t_vars *var, int keycode)
 	move = 1;
 	angle_x = 1;
 	angle_y = 1;
-	old_dir_x = var->dir->dir_x;
-	angle_x = var->dir->dir_x * cos(M_PI / 2) - var->dir->dir_y * sin(M_PI / 2);
-	angle_y = old_dir_x * sin(M_PI / 2) + var->dir->dir_y * cos(M_PI / 2);
+	old_dir_x = data->dir->dir_x;
+	angle_x = data->dir->dir_x * cos(M_PI / 2) - data->dir->dir_y * sin(M_PI / 2);
+	angle_y = old_dir_x * sin(M_PI / 2) + data->dir->dir_y * cos(M_PI / 2);
 	if (keycode == KEY_D)
 		sign = -1;
-	if (map[(int)(var->pos->pos_x + angle_x * sign * move)][(int)var->pos->pos_y] == 0)
-		var->pos->pos_x += angle_x * sign * move;
-	if (map[(int)var->pos->pos_x][(int)(var->pos->pos_y + angle_y * sign * move)] == 0)
-		var->pos->pos_y += angle_y * sign * move;
+	if (data->map_data.map[(int)(data->first_player_pos->pos_x + angle_x * sign * move)][(int)data->first_player_pos->pos_y] == 0)
+		data->first_player_pos->pos_x += angle_x * sign * move;
+	if (data->map_data.map[(int)data->first_player_pos->pos_x][(int)(data->first_player_pos->pos_y + angle_y * sign * move)] == 0)
+		data->first_player_pos->pos_y += angle_y * sign * move;
 }
 
-static void	key_l_r(t_vars *var, int keycode)
+static void	key_l_r(t_data *data, int keycode)
 {
 	double	old_dir_x;
 	double	old_plane_x;
 	double	rot;
 
-	old_dir_x = var->dir->dir_x;
-	old_plane_x = var->plane->plane_x;
+	old_dir_x = data->dir->dir_x;
+	old_plane_x = data->plane->plane_x;
 	rot = M_PI / ANGLE;
 	if (keycode == KEY_RIGHT)
 		rot *= -1;
-	var->dir->dir_x = var->dir->dir_x * cos(rot) - var->dir->dir_y * sin(rot);
-	var->dir->dir_y = old_dir_x * sin(rot) + var->dir->dir_y * cos(rot);
-	var->plane->plane_x = var->plane->plane_x * cos(rot) - var->plane->plane_y * sin(rot);
-	var->plane->plane_y = old_plane_x * sin(rot) + var->plane->plane_y * cos(rot);
+	data->dir->dir_x = data->dir->dir_x * cos(rot) - data->dir->dir_y * sin(rot);
+	data->dir->dir_y = old_dir_x * sin(rot) + data->dir->dir_y * cos(rot);
+	data->plane->plane_x = data->plane->plane_x * cos(rot) - data->plane->plane_y * sin(rot);
+	data->plane->plane_y = old_plane_x * sin(rot) + data->plane->plane_y * cos(rot);
 }
 
-int	key_hook(int keycode, t_vars *var)
+int	key_hook(int keycode, t_data *data)
 {
 	if (keycode == KEY_W || keycode == KEY_S)
-		key_w_s(var, keycode);
+		key_w_s(data, keycode);
 	else if (keycode == KEY_A || keycode == KEY_D)
-		key_a_d(var, keycode);
+		key_a_d(data, keycode);
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-		key_l_r(var, keycode);
+		key_l_r(data, keycode);
 	else
 		return (0);
-	key_draw_clear(var);
+	key_draw_clear(data);
 	return (0);
 }

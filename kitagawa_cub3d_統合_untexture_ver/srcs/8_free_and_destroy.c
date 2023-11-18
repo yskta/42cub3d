@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:43:54 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 19:19:29 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:11:00 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	destroy_textures(t_data *data)
 
 void	free_pos_dir_plane(t_data *data)
 {
-	if (data->pos != NULL)
-		free(data->pos);
+	if (data->first_player_pos != NULL)
+		free(data->first_player_pos);
 	if (data->dir != NULL)
 		free(data->dir);
 	if (data->plane != NULL)

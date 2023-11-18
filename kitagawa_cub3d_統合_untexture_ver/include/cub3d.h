@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/04 00:34:13 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:30:05 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,25 @@
 # define BLUE 0x0000FF
 # define PURPLE 0xFF00FF
 
-# define screenWidth 1280
-# define screenHeight 960
-# define mapWidth 24
-# define mapHeight 24
+# define SCREEN_W 1280
+# define SCREEN_H 960
+//# define mapWidth 24
+//# define mapHeight 24
 
 # define ANGLE 16
 
-/* ************************************************************************** */
+// /* ************************************************************************** */
 
-extern int map[mapWidth][mapHeight];
+// extern int map[mapWidth][mapHeight];
 
-/* ************************************************************************** */
+// /* ************************************************************************** */
 
 //nemotoさん分追加ここから
-typedef struct s_pos
+typedef struct s_first_player_pos
 {
 	double	pos_x;
 	double	pos_y;
-}	t_pos;
+}	t_first_player_pos;
 
 typedef struct s_dir
 {
@@ -95,11 +95,11 @@ typedef struct s_side_dist
 	double	side_dist_y;
 }	t_side_dist;
 
-typedef struct	s_map_pos
+typedef struct	s_player_pos_for_calc
 {
-	int	map_x;
-	int	map_y;
-}	t_map_pos;
+	int	pos_x;
+	int	pos_y;
+}	t_player_pos_for_calc;
 
 typedef struct	s_delta_dist
 {
@@ -149,18 +149,18 @@ typedef struct s_data{
 	t_floor_or_ceiling		floor;
 	t_floor_or_ceiling		ceiling;
 	//nemotoさん分追加ここから
-	t_pos					*pos;
-	t_dir					*dir;
-	t_plane					*plane;
+	t_first_player_pos		*first_player_pos;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
+	t_dir					*dir;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
+	t_plane					*plane;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
 	t_step					*step;
-	t_side_dist				*side_dist;
-	t_delta_dist			*delta_dist;
-	t_ray_dir				*ray_dir;
-	t_map_pos				*map_pos;
+	t_side_dist				*side_dist;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
+	t_delta_dist			*delta_dist;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
+	t_ray_dir				*ray_dir;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
+	t_player_pos_for_calc	*player_current_pos;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
 	double					camera_x;
 	double					perp_wall_dist;
-	bool					hit;
-	bool					side;
+	bool					hit;//calc_one関数で初期化
+	bool					side;//calc_one関数で初期化
 	int						line_height;
 	int						draw_start;
 	int						draw_end;
