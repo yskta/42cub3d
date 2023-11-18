@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 16:55:57 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:56:40 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ bool	init_pos_dir_plane(t_data *data)
 	printf("data->dir->dir_y = %f\n", data->dir->dir_y);
 	printf("data->plane->plane_x = %f\n", data->plane->plane_x);
 	printf("data->plane->plane_y = %f\n", data->plane->plane_y);
+	printf ("data->map_data.map[i][j]: %c\n", data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y]);
+	data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y] = '0';
 	printf ("data->map_data.map[i][j]: %c\n", data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y]);
 	int k = 0;
 	while (data->map_data.map[k] != NULL)
