@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 17:41:36 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:43:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,13 @@ static	void	calc_three(t_data	*data)
 static void	draw_init(t_data	*data)
 {
 	data->line_height = (int)(SCREEN_H / data->perp_wall_dist);
+	printf("data->line_height:%d\n", data->line_height);
 	data->draw_start = -1 * data->line_height / 2 + SCREEN_H / 2;
+	printf("data->draw_start:%d\n", data->draw_start);
 	if (data->draw_start < 0)
 		data->draw_start = 0;
 	data->draw_end = data->line_height / 2 + SCREEN_H / 2;
+	printf("data->draw_end:%d\n", data->draw_end);
 	if (data->draw_end >= SCREEN_H)
 		data->draw_end = SCREEN_H - 1;
 	data->color = BLUE;
