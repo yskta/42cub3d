@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 19:03:31 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 19:08:31 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ static	void	calc_three(t_data	*data)
 			data->side = true;
 		}
 		if (data->map_data.map[data->player_current_pos->pos_x][data->player_current_pos->pos_y] > 0)
-		{
 			data->hit = true;
-		}
 	}
 	if (data->side == false)
 		data->perp_wall_dist = data->side_dist->side_dist_x - data->delta_dist->delta_dist_x;
@@ -89,7 +87,7 @@ static	void	calc_three(t_data	*data)
 
 static void	draw_init(t_data	*data)
 {
-	data->line_height = (int)(SCREEN_H / data->perp_wall_dist);
+	data->line_height = (int)(SCREEN_H / abs(perp_wall_dist));
 	data->draw_start = -1 * data->line_height / 2 + SCREEN_H / 2;
 	if (data->draw_start < 0)
 		data->draw_start = 0;
