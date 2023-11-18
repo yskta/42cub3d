@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 19:21:04 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:26:57 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool	init_other_data(t_data *data)
 		free_pos_dir_plane(data);
 		return (false);
 	}
-	printf("init_other_data success\n");
+	// printf("init_other_data success\n");
 	return (true);
 }
 
@@ -47,7 +47,7 @@ bool	init_mlx(t_data *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		return (false);
-	data->mlx_win = mlx_new_window(data->mlx, screenWidth, screenHeight, "cub3d");
+	data->mlx_win = mlx_new_window(data->mlx, SCREEN_W, SCREEN_H, "cub3d");
 	if (data->mlx_win == NULL)
 	{
 		free(data->mlx_win);
