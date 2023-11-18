@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 00:32:01 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 01:16:50 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static	void	calc_two(t_data	*data)
 	if (data->ray_dir->ray_dir_x < 0)
 	{
 		data->step->step_x = -1;
-		data->side_dist->side_dist_x = (data->cur_pos->pos_x - data->box_pos->map_x) * data->delta_dist->delta_dist_x;
+		data->side_dist->side_dist_x = (data->cur_pos->pos_x - 1.0 - data->box_pos->map_x) * data->delta_dist->delta_dist_x;
 	}
 	else
 	{
@@ -50,7 +50,7 @@ static	void	calc_two(t_data	*data)
 	if (data->ray_dir->ray_dir_y < 0)
 	{
 		data->step->step_y = -1;
-		data->side_dist->side_dist_y = (data->cur_pos->pos_y - data->box_pos->map_y) * data->delta_dist->delta_dist_y;
+		data->side_dist->side_dist_y = (data->cur_pos->pos_y - 1.0 - data->box_pos->map_y) * data->delta_dist->delta_dist_y;
 	}
 	else
 	{
