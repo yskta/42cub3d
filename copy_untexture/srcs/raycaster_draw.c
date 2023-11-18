@@ -6,11 +6,11 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 02:10:00 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:16:38 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../iclude/raycaster.h"
+#include "../include/raycaster.h"
 
 static	void	calc_one(t_vars	*var)
 {
