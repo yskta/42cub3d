@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 16:27:54 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:46:11 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static	void	calc_three(t_data	*data)
 		else
 		{
 			data->side_dist->side_dist_y += data->delta_dist->delta_dist_y;
-			data->map->map_y += data->step->step_y;
+			data->first_player_pos->pos_y += data->step->step_y;
 			data->side = true;
 		}
 		if (data->map_data.map[data->player_current_pos->pos_x][data->player_current_pos->pos_y] > 0)
@@ -117,7 +117,7 @@ int	key_draw(t_data	*data)
 		col = data->draw_start;
 		while (col < (unsigned int)data->draw_end)
 		{
-			mlx_pixel_put(data->mlx, data->win, row, col, data->color);
+			mlx_pixel_put(data->mlx, data->mlx_win, row, col, data->color);
 			++col;
 		}
 		++row;
