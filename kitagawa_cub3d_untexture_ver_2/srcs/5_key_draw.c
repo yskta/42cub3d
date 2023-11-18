@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 23:52:49 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 00:07:38 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ int	key_draw(t_data *data)
 		data->camera_x = 2 * row / (double)SCREEN_W - 1;
 		calc_one(data);
 		calc_two(data);
+		printf ("data->delta_dist->delta_dist_x:%f\n", data->delta_dist->delta_dist_x);
+		printf ("data->delta_dist->delta_dist_y:%f\n", data->delta_dist->delta_dist_y);
+		printf ("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
+		printf ("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
 		calc_three(data);
 		printf("data->perp_wall_dist:%f\n", data->perp_wall_dist);
 		draw_init(data);
