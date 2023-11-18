@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 03:18:15 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 03:29:36 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static	void	calc_three(t_data *data)
 			data->box_pos->map_y += data->step->step_y;
 			data->side = true;
 		}
-		if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y] > 0)
+		if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y] > '0')
 			data->hit = true;
 	}
 	if (data->side == false)
