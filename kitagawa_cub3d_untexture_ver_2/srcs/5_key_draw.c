@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 23:48:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 23:52:49 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static	void	calc_three(t_data *data)
 			data->box_pos->map_y += data->step->step_y;
 			data->side = true;
 		}
-		if (map[data->box_pos->map_x][data->box_pos->map_y] != 0)
+		if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y] > 0)
 			data->hit = true;
 	}
 	if (data->side == false)
@@ -94,7 +94,7 @@ static void	draw_init(t_data *data)
 	if (data->draw_end >= SCREEN_H)
 		data->draw_end = SCREEN_H - 1;
 	data->color = BLUE;
-	if (map[data->box_pos->map_x][data->box_pos->map_y])
+	if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y])
 		data->color = RED;
 	if (data->side == true)
 		data->color /= 3;
@@ -118,7 +118,7 @@ int	key_draw(t_data *data)
 		col = data->draw_start;
 		while (col < (unsigned int)data->draw_end)
 		{
-			mlx_pixel_put(data->mlx, data->win, row, col, data->color);
+			mlx_pixel_put(data->mlx, data->mlx_win, row, col, data->color);
 			++col;
 		}
 		++row;
