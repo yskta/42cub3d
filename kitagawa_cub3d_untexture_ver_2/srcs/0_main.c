@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 02:27:57 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 02:30:48 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
 		return (false);
     data->cur_pos->pos_x = 22;
     data->cur_pos->pos_y = 12;
-    data->dir->dir_x = -1;
-    data->dir->dir_y = 0;
+    data->dir->dir_x = 0;
+    data->dir->dir_y = 1;
     data->plane->plane_x = 0;
     data->plane->plane_y = 0.66;
     printf("start raycasting\n");
