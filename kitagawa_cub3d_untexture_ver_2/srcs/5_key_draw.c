@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 01:16:50 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 01:39:45 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static	void	calc_two(t_data	*data)
 	if (data->ray_dir->ray_dir_x < 0)
 	{
 		data->step->step_x = -1;
-		data->side_dist->side_dist_x = (data->cur_pos->pos_x - 1.0 - data->box_pos->map_x) * data->delta_dist->delta_dist_x;
+		data->side_dist->side_dist_x = (data->cur_pos->pos_x - data->box_pos->map_x) * data->delta_dist->delta_dist_x;
 	}
 	else
 	{
@@ -50,7 +50,7 @@ static	void	calc_two(t_data	*data)
 	if (data->ray_dir->ray_dir_y < 0)
 	{
 		data->step->step_y = -1;
-		data->side_dist->side_dist_y = (data->cur_pos->pos_y - 1.0 - data->box_pos->map_y) * data->delta_dist->delta_dist_y;
+		data->side_dist->side_dist_y = (data->cur_pos->pos_y - data->box_pos->map_y) * data->delta_dist->delta_dist_y;
 	}
 	else
 	{
@@ -110,18 +110,18 @@ int	key_draw(t_data *data)
 	{
 		data->camera_x = 2 * row / (double)SCREEN_W - 1;
 		calc_one(data);
-		printf ("data->camera_x:%f\n", data->camera_x);
-		printf ("data->ray_dir->ray_dir_x:%f\n", data->ray_dir->ray_dir_x);
-		printf ("data->ray_dir->ray_dir_y:%f\n", data->ray_dir->ray_dir_y);
+		// printf ("data->camera_x:%f\n", data->camera_x);
+		// printf ("data->ray_dir->ray_dir_x:%f\n", data->ray_dir->ray_dir_x);
+		// printf ("data->ray_dir->ray_dir_y:%f\n", data->ray_dir->ray_dir_y);
 		calc_two(data);
-		printf ("data->delta_dist->delta_dist_x:%f\n", data->delta_dist->delta_dist_x);
-		printf ("data->delta_dist->delta_dist_y:%f\n", data->delta_dist->delta_dist_y);
-		printf ("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
-		printf ("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
+		// printf ("data->delta_dist->delta_dist_x:%f\n", data->delta_dist->delta_dist_x);
+		// printf ("data->delta_dist->delta_dist_y:%f\n", data->delta_dist->delta_dist_y);
+		// printf ("data->side_dist->side_dist_x:%f\n", data->side_dist->side_dist_x);
+		// printf ("data->side_dist->side_dist_y:%f\n", data->side_dist->side_dist_y);
 		calc_three(data);
-		printf("data->perp_wall_dist:%f\n", data->perp_wall_dist);
+		//printf("data->perp_wall_dist:%f\n", data->perp_wall_dist);
 		draw_init(data);
-		printf("data->line_height:%d\n", data->line_height);
+		//printf("data->line_height:%d\n", data->line_height);
 		col = data->draw_start;
 		while (col < (unsigned int)data->draw_end)
 		{
