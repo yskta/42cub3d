@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 16:50:53 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 16:54:19 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,10 @@ bool	init_pos_dir_plane(t_data *data)
 		}
 		i++;
 	}
-	if (data->map_data.map[i][j] == 'N')
-		data->map_data.map[i][j] = '0';
 	printf("for debug in init_pos_dir_plane\n");
 	printf("data->first_player_pos->pos_x = %f\n", data->first_player_pos->pos_x);
 	printf("data->first_player_pos->pos_y = %f\n", data->first_player_pos->pos_y);
+	printf ("data->map_data.map[i][j]: %c\n", data->map_data.map[(int)data->first_player_pos->pos_x][(int)data->first_player_pos->pos_y]);
 	int k = 0;
 	while (data->map_data.map[k] != NULL)
 	{
