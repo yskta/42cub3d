@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 16:46:11 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:12:02 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int	key_draw(t_data	*data)
 	row = 0;
 	while (row < (unsigned int)SCREEN_W)
 	{
+		printf("row:%d\n", row);
 		data->camera_x = 2 * row / (double)SCREEN_W - 1;
 		calc_one(data);
 		calc_two(data);
@@ -117,6 +118,7 @@ int	key_draw(t_data	*data)
 		col = data->draw_start;
 		while (col < (unsigned int)data->draw_end)
 		{
+			printf("col:%d\n", col);
 			mlx_pixel_put(data->mlx, data->mlx_win, row, col, data->color);
 			++col;
 		}

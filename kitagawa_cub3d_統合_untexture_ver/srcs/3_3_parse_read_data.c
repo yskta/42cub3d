@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/28 18:10:45 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 17:02:08 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,6 @@ char	**copy_map_contents(t_data *data)
 	return (copied_map);
 }
 
-// bool	check_row(t_data *data)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	while (data->map_data.map[data->map_data.map_height - 1][i] != '\0')
-// 	{
-// 		if (data->map_data.map[data->map_data.map_height - 1][i] != '1' && data->map_data.map[data->map_data.map_height - 1][i] != ' ')
-// 			return (false);
-// 		i++;
-// 	}
-// 	return (true);
-// }
-
 bool	check_top_line(char	**map)
 {
 	size_t	i;
@@ -73,12 +59,12 @@ bool	check_top_line(char	**map)
 	{
 		if (map[i][j] != '1' && map[i][j] != 'X')
 		{
-			printf("invalid_map in top_line\n");
+			// printf("invalid_map in top_line\n");
 			return (false);
 		}
 		j++;
 	}
-	printf("valid_map in top_line\n");
+	// printf("valid_map in top_line\n");
 	return (true);
 }
 
@@ -100,7 +86,7 @@ bool	check_bottom_line(char	**map)
 		}
 		j++;
 	}
-	printf("valid_map in bottom_line\n");
+	// printf("valid_map in bottom_line\n");
 	return (true);
 }
 
@@ -123,7 +109,7 @@ bool	check_leftside_wall(char	**map)
 	while (map[0][j] == 'X')//1行目の左端の壁のindexを探す。
 		j++;
 	left_end_wall_index = j;
-	printf("left_end_wall_index = %zu\n", left_end_wall_index);
+	// printf("left_end_wall_index = %zu\n", left_end_wall_index);
 	while(map[i + 1] != NULL)//2行目以降の左端の壁
 	{
 		if (map[i + 1][left_end_wall_index] == '0')
@@ -138,7 +124,7 @@ bool	check_leftside_wall(char	**map)
 				else
 					break ;
 			}
-			printf("left_end_wall_index = %zu\n", left_end_wall_index);
+			// printf("left_end_wall_index = %zu\n", left_end_wall_index);
 			//ここの時点で、left_end_wall_indexは左端の壁のindexになっている。
 			if (map[i + 1][left_end_wall_index] != '1')
 			{
@@ -205,8 +191,8 @@ bool	check_rightside_wall(char	**map)
 		}
 		if (map[i + 1][right_end_wall_index] == 'X')
 		{
-			printf("map[i]: %s\n", map[i]);
-			printf("map[i + 1]: %s\n", map[i + 1]);
+			// printf("map[i]: %s\n", map[i]);
+			// printf("map[i + 1]: %s\n", map[i + 1]);
 			//右端の壁のindexを探す。
 			while(right_end_wall_index > 0 && map[i][right_end_wall_index - 1] == '1' && map[i + 1][right_end_wall_index] == 'X')
 				right_end_wall_index--;
@@ -221,13 +207,13 @@ bool	check_rightside_wall(char	**map)
 		}
 		else if (map[i + 1][right_end_wall_index] == '0')
 		{
-			printf("map[i]: %s\n", map[i]);
-			printf("map[i + 1]: %s\n", map[i + 1]);
+			// printf("map[i]: %s\n", map[i]);
+			// printf("map[i + 1]: %s\n", map[i + 1]);
 			while(map[i][right_end_wall_index + 1] == '1' && map[i + 1][right_end_wall_index] == '0')
 				right_end_wall_index++;
 			if (map[i + 1][right_end_wall_index] != '1')
 			{
-				printf("invalid_map in rightsidewall\n");
+				// printf("invalid_map in rightsidewall\n");
 				return (false);
 			}
 			else
@@ -236,7 +222,7 @@ bool	check_rightside_wall(char	**map)
 		else
 			i++;
 	}
-	printf("valid_map in rightsidewall\n");
+	// printf("valid_map in rightsidewall\n");
 	return (true);
 }
 
@@ -257,7 +243,7 @@ bool	check_num_of_player_and_invalid_char(char	**map)
 				num_of_player++;
 			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'X')
 			{
-				printf("invalid_map invalid_char\n");
+				// printf("invalid_map invalid_char\n");
 				return (false);
 			}
 			j++;
@@ -268,7 +254,7 @@ bool	check_num_of_player_and_invalid_char(char	**map)
 		return (true);
 	else
 	{
-		printf("invalid_map num_of_player\n");
+		// printf("invalid_map num_of_player\n");
 		return (false);
 	}
 }
