@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 18:33:39 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 19:11:55 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define BLUE 0x0000FF
 # define PURPLE 0xFF00FF
 
-# define SCREEN_W 1280
-# define SCREEN_H 960
+# define SCREEN_W 720
+# define SCREEN_H 720
 
 # define ANGLE 16
 
