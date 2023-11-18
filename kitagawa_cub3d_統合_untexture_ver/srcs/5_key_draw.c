@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 18:35:07 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/18 18:44:32 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,14 @@ static	void	calc_three(t_data	*data)
 		else
 		{
 			data->side_dist->side_dist_y += data->delta_dist->delta_dist_y;
-			data->first_player_pos->pos_y += data->step->step_y;
+			data->player_current_pos->pos_y += data->step->step_y;
 			data->side = true;
 		}
 		if (data->map_data.map[data->player_current_pos->pos_x][data->player_current_pos->pos_y] > 0)
+		{
 			data->hit = true;
+			printf ("data->hit:true\n");
+		}
 	}
 	if (data->side == false)
 		data->perp_wall_dist = data->side_dist->side_dist_x - data->delta_dist->delta_dist_x;
