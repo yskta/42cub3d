@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/20 00:45:37 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/20 00:50:31 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static	void draw_celling_fllor(t_data *data)
 int	key_draw(t_data *data)
 {
 	int	row;
-	//unsigned int	col;
 
 	data->img = (t_img *)malloc(sizeof(t_img));
 	data->img->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
@@ -52,17 +51,11 @@ int	key_draw(t_data *data)
 		tex_init(data);
 		tex_dir(data);
 		tex_draw(data, row);
-		//draw_init(data);
-		// col = (unsigned int)data->draw_start;
-		// while (col < (unsigned int)data->draw_end)
-		// {
-		// 	mlx_pixel_put(data->mlx, data->mlx_win, row, col, data->color);
-		// 	++col;
-		// }
 		calc_free(data);
 		++row;
 	}
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img->img, 0, 0);
+	mlx_destroy_image(data->mlx, data->img->img);
 	free(data->img);
 	return (0);
 }
