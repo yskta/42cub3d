@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/12 17:12:32 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 18:58:24 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
+# define GREEN 0x00FF00
+# define BLUE 0x0000FF
 
 # define SCREEN_W 1280
 # define SCREEN_H 960
@@ -39,10 +41,8 @@
 
 /* ************************************************************************** */
 
-# define TEX_W 64
-# define TEX_H 64
-
-# define PITCH 100
+# define TEX_W 64 // 1280 = 64 * 20
+# define TEX_H 64 // 960 = 64 * 15
 
 /* ************************************************************************** */
 
@@ -100,6 +100,14 @@ typedef struct s_ray_dir
 
 /* ************************************************************************** */
 
+typedef enum e_kind_dir
+{
+	DIR_N,
+	DIR_S,
+	DIR_E,
+	DIR_W,
+}	t_kind_dir;
+
 typedef struct s_tex_dir
 {
 	void	*n;
@@ -110,7 +118,7 @@ typedef struct s_tex_dir
 
 typedef struct s_tex
 {
-	t_tex_dir	*dir;
+	t_tex_dir	*tex_dir;
 	char		*addr;
 	int			bits_per_pixel;
 	int			size_line;
@@ -119,12 +127,13 @@ typedef struct s_tex
 
 typedef struct s_img
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	char	*dst;
+	void		*img;
+	char		*addr;
+	char		*dst;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+	t_kind_dir	kind;
 }	t_img;
 
 /* ************************************************************************** */
@@ -156,13 +165,25 @@ typedef struct s_vars
 	double			tex_step;
 	double			tex_pos;
 /* ************************************************************************** */
+	int				color_c;
+	int				color_f;
+/* ************************************************************************** */
 	void			*mlx;
 	void			*win;
 }	t_vars;
 
 /* ************************************************************************** */
 
-int	key_draw(t_vars *var);
-int	key_hook(int keycode, t_vars *var);
+int		key_draw(t_vars *var);
+int		key_hook(int keycode, t_vars *var);
+
+void	calc_free(t_vars	*var);
+void	calc_init(t_vars	*var);
+void	calc_side_dist(t_vars	*var);
+void	calc_hit_wall(t_vars *var);
+
+void 	tex_init(t_vars *var);
+void 	tex_dir(t_vars *var);
+void 	tex_draw(t_vars *var, int row);
 
 #endif
