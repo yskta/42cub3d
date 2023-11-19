@@ -6,13 +6,12 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 03:20:53 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:12:05 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-//レイキャスティング用のデータを初期化する
 bool	init_pos_dir_plane(t_data *data)
 {
 	size_t	i;
@@ -68,12 +67,6 @@ bool	init_pos_dir_plane(t_data *data)
 		}
 		i++;
 	}
-	// printf("for debug in init_pos_dir_plane\n");
-	// printf("data->dir->dir_x = %f\n", data->dir->dir_x);
-	// printf("data->dir->dir_y = %f\n", data->dir->dir_y);
-	// printf("data->plane->plane_x = %f\n", data->plane->plane_x);
-	// printf("data->plane->plane_y = %f\n", data->plane->plane_y);
-	//TODO：外す必要あるかも
 	data->map_data.map[(int)data->cur_pos->pos_x][(int)data->cur_pos->pos_y] = '0';
 	return (true);
 }

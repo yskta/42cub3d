@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   5_key_draw.c                                       :+:      :+:    :+:   */
+/*   5_raycaster_draw_calc.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 19:25:24 by yokitaga         ###   ########.fr       */
+/*   Created: 2023/11/20 00:17:30 by yokitaga          #+#    #+#             */
+/*   Updated: 2023/11/20 00:30:22 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static	void	calc_one(t_data	*data)
+void	calc_free(t_data *data)
+{
+	free(data->box_pos);
+	free(data->ray_dir);
+	free(data->delta_dist);
+	free(data->step);
+	free(data->side_dist);
+}
+
+void	calc_init(t_data	*data)
 {
 	data->hit = false;
 	data->side = false;
@@ -35,7 +44,7 @@ static	void	calc_one(t_data	*data)
 	data->side_dist = (t_side_dist *)malloc(sizeof(t_side_dist));
 }
 
-static	void	calc_two(t_data	*data)
+void	calc_side_dist(t_data	*data)
 {
 	if (data->ray_dir->ray_dir_x < 0)
 	{
@@ -59,7 +68,7 @@ static	void	calc_two(t_data	*data)
 	}
 }
 
-static	void	calc_three(t_data *data)
+void	calc_hit_wall(t_data *data)
 {
 	while (data->hit == false)
 	{
@@ -68,12 +77,20 @@ static	void	calc_three(t_data *data)
 			data->side_dist->side_dist_x += data->delta_dist->delta_dist_x;
 			data->box_pos->map_x += data->step->step_x;
 			data->side = false;
+			if (data->ray_dir->ray_dir_y < 0)
+				data->img->kind = DIR_S;
+			else
+				data->img->kind = DIR_N;
 		}
 		else
 		{
 			data->side_dist->side_dist_y += data->delta_dist->delta_dist_y;
 			data->box_pos->map_y += data->step->step_y;
 			data->side = true;
+			if (data->ray_dir->ray_dir_x < 0)
+				data->img->kind = DIR_W;
+			else
+				data->img->kind = DIR_E;
 		}
 		if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y] > '0')
 			data->hit = true;
@@ -82,49 +99,4 @@ static	void	calc_three(t_data *data)
 		data->perp_wall_dist = data->side_dist->side_dist_x - data->delta_dist->delta_dist_x;
 	else
 		data->perp_wall_dist = data->side_dist->side_dist_y - data->delta_dist->delta_dist_y;
-}
-
-static void	draw_init(t_data *data)
-{
-	data->line_height = (int)(SCREEN_H / data->perp_wall_dist);
-	data->draw_start = -1 * data->line_height / 2 + SCREEN_H / 2;
-	if (data->draw_start < 0)
-		data->draw_start = 0;
-	data->draw_end = data->line_height / 2 + SCREEN_H / 2;
-	if (data->draw_end >= SCREEN_H)
-		data->draw_end = SCREEN_H - 1;
-	data->color = BLUE;
-	if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y])
-		data->color = BLUE;
-	if (data->side == true)
-		data->color /= 3;
-}
-
-int	key_draw(t_data *data)
-{
-	unsigned int	row;
-	unsigned int	col;
-
-	row = 0;
-	while (row < (unsigned int)SCREEN_W)
-	{
-		data->camera_x = 2 * row / (double)SCREEN_W - 1;
-		calc_one(data);
-		calc_two(data);
-		calc_three(data);
-		draw_init(data);
-		col = data->draw_start;
-		while (col < (unsigned int)data->draw_end)
-		{
-			mlx_pixel_put(data->mlx, data->mlx_win, row, col, data->color);
-			++col;
-		}
-		++row;
-		free(data->box_pos);
-		free(data->ray_dir);
-		free(data->delta_dist);
-		free(data->step);
-		free(data->side_dist);
-	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 23:51:22 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/20 00:44:04 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@
 # define KEY_A 0x061
 # define KEY_D 0x064
 # define KEY_LEFT		0xff51
-# define KEY_UP			0xff52
+//# define KEY_UP			0xff52
 # define KEY_RIGHT		0xff53
-# define KEY_DOWN		0xff54
+//# define KEY_DOWN		0xff54
 # define KEY_ESC		0xff1b
 
 # define BLACK 0x000000
@@ -53,7 +53,9 @@
 
 # define ANGLE 16
 
-//nemotoさん分追加ここから
+# define TEX_W 64 // 1280 = 64 * 20
+# define TEX_H 64 // 960 = 64 * 15
+
 typedef struct s_cur_pos
 {
 	double	pos_x;
@@ -101,7 +103,6 @@ typedef struct	s_ray_dir
 	double	ray_dir_x;
 	double	ray_dir_y;
 }	t_ray_dir;
-//ここまで
 
 typedef struct s_map{
 	char	**read_data; //mallocする
@@ -111,12 +112,47 @@ typedef struct s_map{
 	size_t	map_height;
 }t_map;
 
-typedef struct s_texture{
-	char	*path;//東西南北それぞれmallocする
+typedef struct s_each_texture{
 	void	*texture_ptr;
 	int		x;
 	int		y;
-}t_texture;
+}t_each_texture;
+
+typedef enum e_kind_dir
+{
+	DIR_N,
+	DIR_S,
+	DIR_E,
+	DIR_W,
+}	t_kind_dir;
+
+typedef struct s_tex_dir
+{
+	t_each_texture	north;
+	t_each_texture	south;
+	t_each_texture	east;
+	t_each_texture	west;
+}	t_tex_dir;
+
+typedef struct s_tex
+{
+	t_tex_dir	*tex_dir;//mallocする
+	char		*addr;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+}	t_tex;
+
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	char		*dst;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endian;
+	t_kind_dir	kind;
+}	t_img;
 
 typedef struct s_floor_or_ceiling{
 	char	*before_split;
@@ -131,12 +167,10 @@ typedef struct s_data{
 	void					*mlx_win;
 	bool					judge_valid_map;
 	t_map					map_data;
-	t_texture				north;
-	t_texture				south;
-	t_texture				west;
-	t_texture				east;
-	t_floor_or_ceiling		floor;
-	t_floor_or_ceiling		ceiling;
+	char					*north_path;//mallocする@3_2_parse_read_data
+	char					*south_path;//mallocする@3_2_parse_read_data
+	char					*west_path;//mallocする@3_2_parse_read_data
+	char					*east_path;//mallocする@3_2_parse_read_data
 	//nemotoさん分追加ここから
 	t_cur_pos				*cur_pos;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
 	t_dir					*dir;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
@@ -154,6 +188,19 @@ typedef struct s_data{
 	int						draw_start;
 	int						draw_end;
 	int						color;
+	//teture関連
+	t_tex					*texture;//mallocする@4_1
+	t_img					*img;
+	double					wall_x;
+	int						tex_x;
+	int						tex_y;
+	double					tex_step;
+	double					tex_pos;
+	//天井,床関連
+	t_floor_or_ceiling		floor;
+	t_floor_or_ceiling		ceiling;
+	// int						color_c;
+	// int						color_f;
 	//ここまで
 }t_data;//mallocする
 
@@ -178,6 +225,15 @@ bool		init_texture(t_data *data);
 bool		init_pos_dir_plane(t_data *data);
 
 int			key_draw(t_data *data);
+
+void		calc_free(t_data	*data);
+void		calc_init(t_data	*data);
+void		calc_side_dist(t_data	*data);
+void		calc_hit_wall(t_data *data);
+
+void 		tex_init(t_data *data);
+void 		tex_dir(t_data *data);
+void 		tex_draw(t_data *data, int row);
 
 int			key_hook(int keycode, t_data *data);
 
