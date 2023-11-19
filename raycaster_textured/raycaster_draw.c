@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 18:08:48 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 18:38:42 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,19 @@ static	void tex_init(t_vars *var)
 	var->tex_pos = (var->draw_start - SCREEN_H / 2 + var->line_height / 2) * var->tex_step;
 }
 
+
+static	void tex_dir(t_vars *var)
+{
+	if (1)
+		var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->n, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
+	// else if ()
+	// 	var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->s, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
+	// else if ()
+	// 	var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->e, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
+	// else if ()
+	// 	var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->w, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
+}
+
 static	void tex_draw(t_vars *var, int row)
 {
 	int	col;
@@ -146,8 +159,6 @@ static	void tex_draw(t_vars *var, int row)
 	{
 		var->tex_y = (int)var->tex_pos & (TEX_H - 1);
 		var->color = *(unsigned int *)(var->texture->addr + var->tex_y * var->texture->size_line + var->tex_x * (var->texture->bits_per_pixel / 8));
-		if (var->side == true)
-			var->color = (var->color >> 1) & 8355711;
 		var->img->dst = var->img->addr + col * var->img->size_line + row * (var->img->bits_per_pixel / 8);
 		*(unsigned int *)var->img->dst = var->color;
 		var->tex_pos += var->tex_step;
@@ -171,6 +182,7 @@ int	key_draw(t_vars *var)
 		calc_side_dist(var);
 		calc_hit_wall(var);
 		tex_init(var);
+		tex_dir(var);
 		tex_draw(var, row);
 		calc_free(var);
 		++row;

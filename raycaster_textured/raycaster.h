@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 18:20:47 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 18:28:07 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,10 @@ typedef struct s_img
 {
 	void	*img;
 	char	*addr;
+	char	*dst;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
-	char	*dst;
 }	t_img;
 
 /* ************************************************************************** */

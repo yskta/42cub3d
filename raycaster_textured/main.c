@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:00:01 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 17:43:44 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 18:29:18 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,6 @@ int	main(void)
   var.texture->tex_dir->s = mlx_xpm_file_to_image(var.mlx, "./texture/south.xpm", &len_w, &len_h);
   var.texture->tex_dir->e = mlx_xpm_file_to_image(var.mlx, "./texture/east.xpm", &len_w, &len_h);
   var.texture->tex_dir->w = mlx_xpm_file_to_image(var.mlx, "./texture/west.xpm", &len_w, &len_h);
-
-  void  *tmp = var.texture->tex_dir->e;
-  var.texture->addr = mlx_get_data_addr(tmp, &var.texture->bits_per_pixel, &var.texture->size_line, &var.texture->endian);
-	// mlx_put_image_to_window(var.mlx, var.win, tmp, 0, 0);
 
 /* ************************************************************************** */
 
