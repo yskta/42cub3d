@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 18:38:42 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 18:51:31 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,20 @@ static	void	calc_hit_wall(t_vars *var)
 			var->side_dist->side_dist_x += var->delta_dist->delta_dist_x;
 			var->map->map_x += var->step->step_x;
 			var->side = false;
+			if (var->ray_dir->ray_dir_y < 0)
+				var->img->kind = DIR_S;
+			else
+				var->img->kind = DIR_N;
 		}
 		else
 		{
 			var->side_dist->side_dist_y += var->delta_dist->delta_dist_y;
 			var->map->map_y += var->step->step_y;
 			var->side = true;
+			if (var->ray_dir->ray_dir_x < 0)
+				var->img->kind = DIR_W;
+			else
+				var->img->kind = DIR_E;
 		}
 		if (map[var->map->map_x][var->map->map_y] != 0)
 			var->hit = true;
@@ -140,14 +148,14 @@ static	void tex_init(t_vars *var)
 
 static	void tex_dir(t_vars *var)
 {
-	if (1)
+	if (var->img->kind == DIR_N)
 		var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->n, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
-	// else if ()
-	// 	var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->s, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
-	// else if ()
-	// 	var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->e, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
-	// else if ()
-	// 	var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->w, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
+	else if (var->img->kind == DIR_S)
+		var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->s, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
+	else if (var->img->kind == DIR_E)
+		var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->e, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
+	else if (var->img->kind == DIR_W)
+		var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->w, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
 }
 
 static	void tex_draw(t_vars *var, int row)
