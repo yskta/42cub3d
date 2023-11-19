@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 23:49:00 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 23:49:50 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,8 +199,8 @@ typedef struct s_data{
 	//天井,床関連
 	t_floor_or_ceiling		floor;
 	t_floor_or_ceiling		ceiling;
-	int						color_c;
-	int						color_f;
+	// int						color_c;
+	// int						color_f;
 	//ここまで
 }t_data;//mallocする
 
