@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 18:49:10 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 18:58:24 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,16 @@ typedef struct s_vars
 
 /* ************************************************************************** */
 
-int	key_draw(t_vars *var);
-int	key_hook(int keycode, t_vars *var);
+int		key_draw(t_vars *var);
+int		key_hook(int keycode, t_vars *var);
+
+void	calc_free(t_vars	*var);
+void	calc_init(t_vars	*var);
+void	calc_side_dist(t_vars	*var);
+void	calc_hit_wall(t_vars *var);
+
+void 	tex_init(t_vars *var);
+void 	tex_dir(t_vars *var);
+void 	tex_draw(t_vars *var, int row);
 
 #endif
