@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 01:10:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 22:45:02 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,7 +295,7 @@ bool	check_playable_map(char **map)
 			}
 		}
 	}
-	printf("invalid_map in playable_map\n");
+	//printf("invalid_map in playable_map\n");
 	return (false);
 }
 
@@ -357,6 +357,6 @@ bool	check_valid_map(t_data *data)
 		return (false);
 	}
 	free_two_dimensional_array(copied_map);
-	printf("valid_map\n");
+	//printf("valid_map\n");
 	return (true);
 }

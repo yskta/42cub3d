@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/18 17:26:57 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 23:25:23 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ bool	init_other_data(t_data *data)
 	}
 	if (init_texture(data) == false)
 	{
+		//TODO：必要ならここにtexture関連のfreeを追加
 		destroy_textures(data);
 		free_map_data_and_texture(data);
 		mlx_destroy_window(data->mlx, data->mlx_win);
@@ -58,16 +59,24 @@ bool	init_mlx(t_data *data)
 
 bool	init_texture(t_data *data)
 {
-	data->north.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->north.path, \
-			&data->north.x, &data->north.y);
-	data->south.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->south.path, \
-			&data->south.x, &data->south.y);
-	data->west.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->west.path, \
-			&data->west.x, &data->west.y);
-	data->east.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->east.path, \
-			&data->east.x, &data->east.y);
-	if (data->north.texture_ptr == NULL || data->south.texture_ptr == NULL || \
-			data->west.texture_ptr == NULL || data->east.texture_ptr == NULL)
+	data->texture = (t_tex *)malloc(sizeof(t_tex));
+	data->texture->tex_dir = (t_tex_dir *)malloc(sizeof(t_tex_dir));
+	if (data->texture == NULL || data->texture->tex_dir == NULL)
+		return (false);
+	data->texture->tex_dir->north.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->north_path, \
+			&data->texture->tex_dir->north.x, &data->texture->tex_dir->north.y);
+	printf ("data->north_path = %s\n", data->north_path);
+	printf ("data->texture->tex_dir->north.texture_ptr = %p\n", data->texture->tex_dir->north.texture_ptr);
+	printf ("data->texture->tex_dir->north.x = %d\n", data->texture->tex_dir->north.x);
+	printf ("data->texture->tex_dir->north.y = %d\n", data->texture->tex_dir->north.y);
+	data->texture->tex_dir->south.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->south_path, \
+			&data->texture->tex_dir->south.x, &data->texture->tex_dir->south.y);
+	data->texture->tex_dir->west.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->west_path, \
+			&data->texture->tex_dir->west.x, &data->texture->tex_dir->west.y);
+	data->texture->tex_dir->east.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->east_path, \
+			&data->texture->tex_dir->east.x, &data->texture->tex_dir->east.y);
+	if (data->texture->tex_dir->north.texture_ptr == NULL || data->texture->tex_dir->south.texture_ptr == NULL || \
+			data->texture->tex_dir->west.texture_ptr == NULL || data->texture->tex_dir->east.texture_ptr == NULL)
 		return (false);
 	return (true);
 }
