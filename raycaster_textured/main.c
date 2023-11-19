@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:00:01 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/12 17:09:55 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 17:20:59 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int	main(void)
   void  *tmp = var.texture->dir->e;
   var.texture->addr = mlx_get_data_addr(tmp, &var.texture->bits_per_pixel, &var.texture->size_line, &var.texture->endian);
 	// mlx_put_image_to_window(var.mlx, var.win, tmp, 0, 0);
+
+/* ************************************************************************** */
+
+  var.color_c = BLUE / 2;
+  var.color_f = GREEN / 2;
 
 /* ************************************************************************** */
 
