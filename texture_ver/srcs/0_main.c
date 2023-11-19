@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 23:55:38 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/20 00:33:11 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int main(int argc, char *argv[])
     t_data  *data;
 
     data = (t_data *)malloc(sizeof(t_data));
-    data->hit = false;
     if (!data)
         put_error_and_exit("malloc error in main", data);
     if (check_arg(argc, argv) == false)

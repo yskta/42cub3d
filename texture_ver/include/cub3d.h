@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/20 00:14:46 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/20 00:44:04 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,12 +190,12 @@ typedef struct s_data{
 	int						color;
 	//teture関連
 	t_tex					*texture;//mallocする@4_1
-	// t_img					*img;
-	// double					wall_x;
-	// int						tex_x;
-	// int						tex_y;
-	// double					tex_step;
-	// double					tex_pos;
+	t_img					*img;
+	double					wall_x;
+	int						tex_x;
+	int						tex_y;
+	double					tex_step;
+	double					tex_pos;
 	//天井,床関連
 	t_floor_or_ceiling		floor;
 	t_floor_or_ceiling		ceiling;
@@ -225,6 +225,15 @@ bool		init_texture(t_data *data);
 bool		init_pos_dir_plane(t_data *data);
 
 int			key_draw(t_data *data);
+
+void		calc_free(t_data	*data);
+void		calc_init(t_data	*data);
+void		calc_side_dist(t_data	*data);
+void		calc_hit_wall(t_data *data);
+
+void 		tex_init(t_data *data);
+void 		tex_dir(t_data *data);
+void 		tex_draw(t_data *data, int row);
 
 int			key_hook(int keycode, t_data *data);
 
