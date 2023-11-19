@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 19:25:24 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 23:47:06 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ static void	draw_init(t_data *data)
 	data->draw_end = data->line_height / 2 + SCREEN_H / 2;
 	if (data->draw_end >= SCREEN_H)
 		data->draw_end = SCREEN_H - 1;
-	data->color = BLUE;
+	data->color = (int)BLUE;
 	if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y])
-		data->color = BLUE;
+		data->color = (int)BLUE;
 	if (data->side == true)
 		data->color /= 3;
 }
@@ -113,7 +113,7 @@ int	key_draw(t_data *data)
 		calc_two(data);
 		calc_three(data);
 		draw_init(data);
-		col = data->draw_start;
+		col = (unsigned int)data->draw_start;
 		while (col < (unsigned int)data->draw_end)
 		{
 			mlx_pixel_put(data->mlx, data->mlx_win, row, col, data->color);
