@@ -6,13 +6,34 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 17:22:45 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 17:35:59 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
 
-static	void	free_calc(t_vars	*var)
+static	void draw_celling_floor(t_vars *var)
+{
+	int	row;
+	int	col;
+	
+	col = SCREEN_H / 2 + 1;
+	while (col < SCREEN_H)
+	{
+		row = 0;
+		while (row < SCREEN_W)
+		{
+			var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
+			*(unsigned int *)var->img->dst = var->color_f;
+			var->img->dst = var->img->addr + ((SCREEN_H - col - 1) * var->img->size_line + row * (var->img->bits_per_pixel / 8));
+			*(unsigned int *)var->img->dst = var->color_c;
+			++row;
+		}
+		++col;
+	}
+}
+
+static	void	calc_free(t_vars	*var)
 {
 	free(var->map);
 	free(var->ray_dir);
@@ -93,19 +114,15 @@ static	void	calc_hit_wall(t_vars *var)
 		var->perp_wall_dist = var->side_dist->side_dist_y - var->delta_dist->delta_dist_y;
 }
 
-static void	draw_init(t_vars *var)
+static	void tex_init(t_vars *var)
 {
 	var->line_height = (int)(SCREEN_H / var->perp_wall_dist);
-	var->draw_start = -var->line_height / 2 + SCREEN_H / 2 + PITCH;
+	var->draw_start = -var->line_height / 2 + SCREEN_H / 2;
 	if (var->draw_start < 0)
 		var->draw_start = 0;
-	var->draw_end = var->line_height / 2 + SCREEN_H / 2 + PITCH;
+	var->draw_end = var->line_height / 2 + SCREEN_H / 2;
 	if (var->draw_end >= SCREEN_H)
 		var->draw_end = SCREEN_H - 1;
-}
-
-static	void draw_tex(t_vars *var)
-{
 	if (var->side == false)
 		var->wall_x = var->pos->pos_y + var->perp_wall_dist * var->ray_dir->ray_dir_y;
 	else
@@ -117,31 +134,35 @@ static	void draw_tex(t_vars *var)
 	else if (var->side == true && var->ray_dir->ray_dir_y < 0)
 		var->tex_x = TEX_W - var->tex_x - 1;
 	var->tex_step = 1.0 * TEX_H / var->line_height;
-	var->tex_pos = (var->draw_start - SCREEN_H / 2 + var->line_height / 2 - PITCH) * var->tex_step;
+	var->tex_pos = (var->draw_start - SCREEN_H / 2 + var->line_height / 2) * var->tex_step;
+}
+
+static	void tex_draw(t_vars *var, int row)
+{
+	int	col;
+
+	col = var->draw_start;
+	while (col < var->draw_end)
+	{
+		var->tex_y = (int)var->tex_pos & (TEX_H - 1);
+		var->color = *(unsigned int *)(var->texture->addr + var->tex_y * var->img->size_line + var->tex_x * (var->img->bits_per_pixel / 8));
+		if (var->side == true)
+			var->color /= 3;
+		var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
+		*(unsigned int *)var->img->dst = var->color;
+		var->tex_pos += var->tex_step;
+		++col;
+	}
 }
 
 int	key_draw(t_vars *var)
 {
 	int	row;
-	int	col;
 
 	var->img = (t_img *)malloc(sizeof(t_img));
 	var->img->img = mlx_new_image(var->mlx, SCREEN_W, SCREEN_H);
 	var->img->addr = mlx_get_data_addr(var->img->img, &var->img->bits_per_pixel, &var->img->size_line, &var->img->endian);
-	col = SCREEN_H / 2 + 1;
-	while (col < SCREEN_H)
-	{
-		row = 0;
-		while (row < SCREEN_W)
-		{
-			var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
-			*(unsigned int *)var->img->dst = var->color_f;
-			var->img->dst = var->img->addr + ((SCREEN_H - col - 1) * var->img->size_line + row * (var->img->bits_per_pixel / 8));
-			*(unsigned int *)var->img->dst = var->color_c;
-			++row;
-		}
-		++col;
-	}
+	draw_celling_floor(var);
 	row = 0;
 	while (row < SCREEN_W)
 	{
@@ -149,21 +170,9 @@ int	key_draw(t_vars *var)
 		calc_init(var);
 		calc_side_dist(var);
 		calc_hit_wall(var);
-		draw_init(var);
-		draw_tex(var);
-		col = var->draw_start;
-		while (col < var->draw_end)
-		{
-			var->tex_y = (int)var->tex_pos & (TEX_H - 1);
-			var->color = *(unsigned int *)(var->texture->addr + var->tex_y * var->img->size_line + var->tex_x * (var->img->bits_per_pixel / 8));
-			if (var->side == true)
-				var->color /= 3;
-			var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
-			*(unsigned int *)var->img->dst = var->color;
-			var->tex_pos += var->tex_step;
-			++col;
-		}
-		free_calc(var);
+		tex_init(var);
+		tex_draw(var, row);
+		calc_free(var);
 		++row;
 	}
 	mlx_put_image_to_window(var->mlx, var->win, var->img->img, 0, 0);
