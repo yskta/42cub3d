@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 17:20:31 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 17:23:11 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,40 +131,6 @@ typedef struct s_img
 
 /* ************************************************************************** */
 
-typedef struct s_ray_xy
-{
-	float	raydir_x0;
-	float	raydir_y0;
-	float	raydir_x1;
-	float	raydir_y1;
-}	t_ray_xy;
-
-typedef struct s_floor_step
-{
-	float	floor_step_x;
-	float	floor_step_y;
-}	t_floor_step;
-
-typedef struct s_floor
-{
-	float	floor_x;
-	float	floor_y;
-}	t_floor;
-
-typedef struct s_cell
-{
-	int		cell_x;
-	int		cell_y;
-}	t_cell;
-
-typedef struct s_txy
-{
-	int		tx;
-	int		ty;
-}	t_txy;
-
-/* ************************************************************************** */
-
 typedef struct s_vars
 {
 	t_pos			*pos;
@@ -192,14 +158,6 @@ typedef struct s_vars
 	double			tex_step;
 	double			tex_pos;
 /* ************************************************************************** */
-	t_ray_xy		*ray_xy;
-	t_floor_step	*floor_step;
-	t_floor			*floor;
-	t_cell			*cell;
-	t_txy			*txy;
-	int				p;
-	float			pos_z;
-	float			row_dis;
 	int				color_c;
 	int				color_f;
 /* ************************************************************************** */

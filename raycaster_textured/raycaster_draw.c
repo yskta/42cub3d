@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 17:15:53 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 17:22:45 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,49 +120,6 @@ static	void draw_tex(t_vars *var)
 	var->tex_pos = (var->draw_start - SCREEN_H / 2 + var->line_height / 2 - PITCH) * var->tex_step;
 }
 
-// static	void	free_draw(t_vars	*var)
-// {
-// 	free(var->ray_xy);
-// 	free(var->floor_step);
-// 	free(var->floor);
-// 	free(var->cell);
-// 	free(var->txy);
-// }
-
-// static	void init_c_f(t_vars *var, int col)
-// {
-// 	var->ray_xy = (t_ray_xy *)malloc(sizeof(t_ray_xy));
-// 	var->ray_xy->raydir_x0 = var->ray_dir->ray_dir_x - var->plane->plane_x;
-// 	var->ray_xy->raydir_y0 = var->ray_dir->ray_dir_y - var->plane->plane_y;
-// 	var->ray_xy->raydir_x1 = var->ray_dir->ray_dir_x + var->plane->plane_x;
-// 	var->ray_xy->raydir_y1 = var->ray_dir->ray_dir_y + var->plane->plane_y;
-// 	var->p = col - SCREEN_H / 2;
-// 	var->pos_z = SCREEN_H / 2;
-// 	var->row_dis = var->pos_z / var->p;
-// 	var->floor_step = (t_floor_step *)malloc(sizeof(t_floor_step));
-// 	var->floor_step->floor_step_x = var->row_dis * (var->ray_xy->raydir_x1 - var->ray_xy->raydir_x0) / SCREEN_W;
-// 	var->floor_step->floor_step_y = var->row_dis * (var->ray_xy->raydir_y1 - var->ray_xy->raydir_y0) / SCREEN_W;
-// 	var->floor = (t_floor *)malloc(sizeof(t_floor));
-// 	var->floor->floor_x = var->pos->pos_x + var->row_dis * var->ray_xy->raydir_x0;
-// 	var->floor->floor_y = var->pos->pos_y + var->row_dis * var->ray_xy->raydir_y0;
-// }
-
-// static	void draw_c_f(t_vars *var, int row, int col)
-// {
-// 	var->cell = (t_cell *)malloc(sizeof(t_cell));
-// 	var->txy = (t_txy *)malloc(sizeof(t_txy));
-// 	var->cell->cell_x = (int)var->floor->floor_x;
-// 	var->cell->cell_y = (int)var->floor->floor_y;
-// 	var->txy->tx = (int)(TEX_W * (var->floor->floor_x - var->cell->cell_x)) & (TEX_W - 1);
-// 	var->txy->ty = (int)(TEX_H * (var->floor->floor_y - var->cell->cell_y)) & (TEX_H - 1);
-// 	var->floor->floor_x += var->floor_step->floor_step_x;
-// 	var->floor->floor_y += var->floor_step->floor_step_y;
-// 	var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
-// 	*(unsigned int *)var->img->dst = var->color_f;
-// 	var->img->dst = var->img->addr + ((SCREEN_H - col - 1) * var->img->size_line + row * (var->img->bits_per_pixel / 8));
-// 	*(unsigned int *)var->img->dst = var->color_c;
-// }
-
 int	key_draw(t_vars *var)
 {
 	int	row;
@@ -174,7 +131,6 @@ int	key_draw(t_vars *var)
 	col = SCREEN_H / 2 + 1;
 	while (col < SCREEN_H)
 	{
-		// init_c_f(var, col);
 		row = 0;
 		while (row < SCREEN_W)
 		{
@@ -182,10 +138,8 @@ int	key_draw(t_vars *var)
 			*(unsigned int *)var->img->dst = var->color_f;
 			var->img->dst = var->img->addr + ((SCREEN_H - col - 1) * var->img->size_line + row * (var->img->bits_per_pixel / 8));
 			*(unsigned int *)var->img->dst = var->color_c;
-			// draw_c_f(var, row, col);
 			++row;
 		}
-		// free_draw(var);
 		++col;
 	}
 	row = 0;
