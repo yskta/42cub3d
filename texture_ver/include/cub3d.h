@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 23:49:50 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/20 00:14:46 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ typedef struct s_tex_dir
 
 typedef struct s_tex
 {
-	t_tex_dir	*tex_dir;
+	t_tex_dir	*tex_dir;//mallocする
 	char		*addr;
 	int			bits_per_pixel;
 	int			size_line;
@@ -189,7 +189,7 @@ typedef struct s_data{
 	int						draw_end;
 	int						color;
 	//teture関連
-	t_tex					*texture;
+	t_tex					*texture;//mallocする@4_1
 	// t_img					*img;
 	// double					wall_x;
 	// int						tex_x;
