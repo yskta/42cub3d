@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:20:59 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 02:57:19 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 20:24:49 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ int main(int argc, char *argv[])
         put_error_and_exit("error in parse read data", data);
     if (init_other_data(data) == false)
         put_error_and_exit("error in init other data", data);
-    ////
-    printf ("data->cur_pos->pos_x in main= %f\n", data->cur_pos->pos_x);
-	printf ("data->cur_pos->pos_y in main = %f\n", data->cur_pos->pos_y);
-    int k = 0;
-	while (data->map_data.map[k] != NULL)
-	{
-		printf("%s\n", data->map_data.map[k]);
-		k++;
-	}
-    ////
     printf("start raycasting\n");
     mlx_key_hook(data->mlx_win, key_hook, data);
     mlx_loop_hook(data->mlx, key_draw, data);
