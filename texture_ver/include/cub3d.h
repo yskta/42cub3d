@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 23:21:30 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 23:28:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ typedef struct s_tex_dir
 	t_each_texture	north;
 	t_each_texture	south;
 	t_each_texture	east;
-	t_each_texture	wast;
+	t_each_texture	west;
 }	t_tex_dir;
 
 typedef struct s_tex
