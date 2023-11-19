@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 17:35:36 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 18:20:47 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
 
 /* ************************************************************************** */
 
-# define TEX_W 64
-# define TEX_H 64
+# define TEX_W 64 // 1280 = 64 * 20
+# define TEX_H 64 // 960 = 64 * 15
 
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef struct s_tex_dir
 
 typedef struct s_tex
 {
-	t_tex_dir	*dir;
+	t_tex_dir	*tex_dir;
 	char		*addr;
 	int			bits_per_pixel;
 	int			size_line;

@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 17:35:59 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/19 18:08:48 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static	void draw_celling_floor(t_vars *var)
 		row = 0;
 		while (row < SCREEN_W)
 		{
-			var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
+			var->img->dst = var->img->addr + col * var->img->size_line + row * (var->img->bits_per_pixel / 8);
 			*(unsigned int *)var->img->dst = var->color_f;
-			var->img->dst = var->img->addr + ((SCREEN_H - col - 1) * var->img->size_line + row * (var->img->bits_per_pixel / 8));
+			var->img->dst = var->img->addr + (SCREEN_H - col - 1) * var->img->size_line + row * (var->img->bits_per_pixel / 8);
 			*(unsigned int *)var->img->dst = var->color_c;
 			++row;
 		}
@@ -117,7 +117,7 @@ static	void	calc_hit_wall(t_vars *var)
 static	void tex_init(t_vars *var)
 {
 	var->line_height = (int)(SCREEN_H / var->perp_wall_dist);
-	var->draw_start = -var->line_height / 2 + SCREEN_H / 2;
+	var->draw_start = -1 * var->line_height / 2 + SCREEN_H / 2;
 	if (var->draw_start < 0)
 		var->draw_start = 0;
 	var->draw_end = var->line_height / 2 + SCREEN_H / 2;
@@ -145,10 +145,10 @@ static	void tex_draw(t_vars *var, int row)
 	while (col < var->draw_end)
 	{
 		var->tex_y = (int)var->tex_pos & (TEX_H - 1);
-		var->color = *(unsigned int *)(var->texture->addr + var->tex_y * var->img->size_line + var->tex_x * (var->img->bits_per_pixel / 8));
+		var->color = *(unsigned int *)(var->texture->addr + var->tex_y * var->texture->size_line + var->tex_x * (var->texture->bits_per_pixel / 8));
 		if (var->side == true)
-			var->color /= 3;
-		var->img->dst = var->img->addr + (col * var->img->size_line + row * (var->img->bits_per_pixel / 8));
+			var->color = (var->color >> 1) & 8355711;
+		var->img->dst = var->img->addr + col * var->img->size_line + row * (var->img->bits_per_pixel / 8);
 		*(unsigned int *)var->img->dst = var->color;
 		var->tex_pos += var->tex_step;
 		++col;
