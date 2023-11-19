@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 23:28:53 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/19 23:49:00 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,12 +190,12 @@ typedef struct s_data{
 	int						color;
 	//teture関連
 	t_tex					*texture;
-	t_img					*img;
-	double					wall_x;
-	int						tex_x;
-	int						tex_y;
-	double					tex_step;
-	double					tex_pos;
+	// t_img					*img;
+	// double					wall_x;
+	// int						tex_x;
+	// int						tex_y;
+	// double					tex_step;
+	// double					tex_pos;
 	//天井,床関連
 	t_floor_or_ceiling		floor;
 	t_floor_or_ceiling		ceiling;
