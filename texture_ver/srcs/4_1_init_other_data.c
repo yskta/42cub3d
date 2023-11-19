@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 23:25:23 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:11:48 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,6 @@ bool	init_texture(t_data *data)
 		return (false);
 	data->texture->tex_dir->north.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->north_path, \
 			&data->texture->tex_dir->north.x, &data->texture->tex_dir->north.y);
-	printf ("data->north_path = %s\n", data->north_path);
-	printf ("data->texture->tex_dir->north.texture_ptr = %p\n", data->texture->tex_dir->north.texture_ptr);
-	printf ("data->texture->tex_dir->north.x = %d\n", data->texture->tex_dir->north.x);
-	printf ("data->texture->tex_dir->north.y = %d\n", data->texture->tex_dir->north.y);
 	data->texture->tex_dir->south.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->south_path, \
 			&data->texture->tex_dir->south.x, &data->texture->tex_dir->south.y);
 	data->texture->tex_dir->west.texture_ptr = mlx_xpm_file_to_image(data->mlx, data->west_path, \

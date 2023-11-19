@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 03:41:57 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/20 01:12:23 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ int	key_hook(int keycode, t_data *data)
 	else
 		return (0);
 	key_draw_clear(data);
-	//key_draw(data);
 	return (0);
 }
