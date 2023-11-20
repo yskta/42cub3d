@@ -6,13 +6,13 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 18:57:30 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/20 17:18:14 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycaster.h"
+#include "main.h"
 
-void tex_init(t_vars *var)
+void	tex_init(t_vars *var)
 {
 	var->line_height = (int)(SCREEN_H / var->perp_wall_dist);
 	var->draw_start = -1 * var->line_height / 2 + SCREEN_H / 2;
@@ -35,9 +35,20 @@ void tex_init(t_vars *var)
 	var->tex_pos = (var->draw_start - SCREEN_H / 2 + var->line_height / 2) * var->tex_step;
 }
 
-
-void tex_dir(t_vars *var)
+void	tex_dir(t_vars *var)
 {
+	if (var->side_dist->side_dist_x < var->side_dist->side_dist_y)
+	{
+		var->img->kind = DIR_N;
+		if (var->ray_dir->ray_dir_y < 0)
+			var->img->kind = DIR_S;
+	}
+	else
+	{
+		var->img->kind = DIR_E;
+		if (var->ray_dir->ray_dir_x < 0)
+			var->img->kind = DIR_W;
+	}	
 	if (var->img->kind == DIR_N)
 		var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->n, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
 	else if (var->img->kind == DIR_S)
@@ -48,7 +59,7 @@ void tex_dir(t_vars *var)
 		var->texture->addr = mlx_get_data_addr(var->texture->tex_dir->w, &var->texture->bits_per_pixel, &var->texture->size_line, &var->texture->endian);
 }
 
-void tex_draw(t_vars *var, int row)
+void	tex_draw(t_vars *var, int row)
 {
 	int	col;
 

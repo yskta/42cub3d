@@ -6,24 +6,24 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 18:56:57 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/20 17:17:07 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycaster.h"
+#include "main.h"
 
-static	void draw_celling_floor(t_vars *var)
+static void	draw_celling_floor(t_vars *var)
 {
 	int	row;
 	int	col;
-	
+
 	col = SCREEN_H / 2 + 1;
 	while (col < SCREEN_H)
 	{
 		row = 0;
 		while (row < SCREEN_W)
 		{
-			var->img->dst = var->img->addr + col * var->img->size_line + row * (var->img->bits_per_pixel / 8);
+			var->img->dst = var->img->addr + row * (var->img->bits_per_pixel / 8) + col * var->img->size_line;
 			*(unsigned int *)var->img->dst = var->color_f;
 			var->img->dst = var->img->addr + (SCREEN_H - col - 1) * var->img->size_line + row * (var->img->bits_per_pixel / 8);
 			*(unsigned int *)var->img->dst = var->color_c;

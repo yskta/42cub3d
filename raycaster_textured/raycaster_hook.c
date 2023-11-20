@@ -6,11 +6,11 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/12 16:49:05 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/20 16:43:24 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycaster.h"
+#include "main.h"
 
 static void	key_w_s(t_vars *var, int keycode)
 {

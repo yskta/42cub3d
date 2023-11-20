@@ -6,11 +6,11 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 19:00:01 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 18:29:18 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/20 16:43:34 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycaster.h"
+#include "main.h"
 
 int map[MAP_W][MAP_H]=
 {
