@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.h                                        :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:38 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/19 18:58:24 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/23 14:09:20 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
-# define GREEN 0x00FF00
+# define GREEN 0x8fb12f
 # define BLUE 0x0000FF
 
 # define SCREEN_W 1280
@@ -143,11 +143,11 @@ typedef struct s_vars
 	t_pos			*pos;
 	t_dir			*dir;
 	t_plane			*plane;
-	t_step			*step;
-	t_side_dist		*side_dist;
-	t_delta_dist	*delta_dist;
-	t_ray_dir		*ray_dir;
 	t_map			*map;
+	t_ray_dir		*ray_dir;
+	t_delta_dist	*delta_dist;
+	t_side_dist		*side_dist;
+	t_step			*step;
 	double			camera_x;
 	double			perp_wall_dist;
 	bool			hit;
@@ -159,11 +159,12 @@ typedef struct s_vars
 /* ************************************************************************** */
 	t_tex			*texture;
 	t_img			*img;
-	double			wall_x;
 	int				tex_x;
 	int				tex_y;
+	int				old_tex_x;
 	double			tex_step;
 	double			tex_pos;
+	double			wall_x;
 /* ************************************************************************** */
 	int				color_c;
 	int				color_f;

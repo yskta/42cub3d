@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/20 17:17:07 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/23 14:27:11 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	key_draw(t_vars *var)
 		calc_side_dist(var);
 		calc_hit_wall(var);
 		tex_init(var);
-		tex_dir(var);
+		if (var->tex_x < var->old_tex_x)
+			tex_dir(var);
 		tex_draw(var, row);
 		calc_free(var);
 		++row;

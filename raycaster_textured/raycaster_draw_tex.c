@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:27:52 by snemoto           #+#    #+#             */
-/*   Updated: 2023/11/20 17:18:14 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/23 14:33:23 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	tex_init(t_vars *var)
 	else
 		var->wall_x = var->pos->pos_x + var->perp_wall_dist * var->ray_dir->ray_dir_x;
 	var->wall_x -= floor(var->wall_x);
+	var->old_tex_x = var->tex_x;
 	var->tex_x = (int)(var->wall_x * (double)TEX_W);
 	if (var->side == false && var->ray_dir->ray_dir_x > 0)
 		var->tex_x = TEX_W - var->tex_x - 1;
@@ -37,16 +38,16 @@ void	tex_init(t_vars *var)
 
 void	tex_dir(t_vars *var)
 {
-	if (var->side_dist->side_dist_x < var->side_dist->side_dist_y)
+	if (var->side == false)
 	{
 		var->img->kind = DIR_N;
-		if (var->ray_dir->ray_dir_y < 0)
+		if (var->step->step_x > 0)
 			var->img->kind = DIR_S;
 	}
 	else
 	{
 		var->img->kind = DIR_E;
-		if (var->ray_dir->ray_dir_x < 0)
+		if (var->step->step_y < 0)
 			var->img->kind = DIR_W;
 	}	
 	if (var->img->kind == DIR_N)
@@ -68,9 +69,9 @@ void	tex_draw(t_vars *var, int row)
 	{
 		var->tex_y = (int)var->tex_pos & (TEX_H - 1);
 		var->color = *(unsigned int *)(var->texture->addr + var->tex_y * var->texture->size_line + var->tex_x * (var->texture->bits_per_pixel / 8));
+		var->tex_pos += var->tex_step;
 		var->img->dst = var->img->addr + col * var->img->size_line + row * (var->img->bits_per_pixel / 8);
 		*(unsigned int *)var->img->dst = var->color;
-		var->tex_pos += var->tex_step;
 		++col;
 	}
 }
