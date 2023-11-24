@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 15:36:37 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:04:19 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@
 # define KEY_A 0x061
 # define KEY_D 0x064
 # define KEY_LEFT		0xff51
-//# define KEY_UP			0xff52
 # define KEY_RIGHT		0xff53
-//# define KEY_DOWN		0xff54
 # define KEY_ESC		0xff1b
 
 # define BLACK 0x000000
@@ -53,8 +51,8 @@
 
 # define ANGLE 16
 
-# define TEX_W 64 // 1280 = 64 * 20
-# define TEX_H 64 // 960 = 64 * 15
+# define TEX_W 64
+# define TEX_H 64
 
 typedef struct s_cur_pos
 {
@@ -92,23 +90,23 @@ typedef struct s_box_pos_for_calc
 	int	map_y;
 }	t_box_pos_for_calc;
 
-typedef struct	s_delta_dist
+typedef struct s_delta_dist
 {
 	double	delta_dist_x;
 	double	delta_dist_y;
 }	t_delta_dist;
 
-typedef struct	s_ray_dir
+typedef struct s_ray_dir
 {
 	double	ray_dir_x;
 	double	ray_dir_y;
 }	t_ray_dir;
 
 typedef struct s_map{
-	char	**read_data; //mallocする
-	char	**map; //mallocする
+	char	**read_data;
+	char	**map;
 	ssize_t	fd;
-	size_t 	read_data_height;
+	size_t	read_data_height;
 	size_t	map_height;
 }t_map;
 
@@ -136,7 +134,7 @@ typedef struct s_tex_dir
 
 typedef struct s_tex
 {
-	t_tex_dir	*tex_dir;//mallocする
+	t_tex_dir	*tex_dir;
 	char		*addr;
 	int			bits_per_pixel;
 	int			size_line;
@@ -167,29 +165,27 @@ typedef struct s_data{
 	void					*mlx_win;
 	bool					judge_valid_map;
 	t_map					map_data;
-	char					*north_path;//mallocする@3_2_parse_read_data
-	char					*south_path;//mallocする@3_2_parse_read_data
-	char					*west_path;//mallocする@3_2_parse_read_data
-	char					*east_path;//mallocする@3_2_parse_read_data
-	//nemotoさん分追加ここから
-	t_cur_pos				*cur_pos;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
-	t_dir					*dir;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
-	t_plane					*plane;//4_2_init_other_data.cで初期化。free_pos_dir_plane関数でfreeする
-	t_step					*step;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり。
-	t_side_dist				*side_dist;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
-	t_delta_dist			*delta_dist;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
-	t_ray_dir				*ray_dir;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
-	t_box_pos_for_calc		*box_pos;//calc_one関数で初期化。描画する毎回mallocするので毎回freeする必要あり
+	char					*north_path;
+	char					*south_path;
+	char					*west_path;
+	char					*east_path;
+	t_cur_pos				*cur_pos;
+	t_dir					*dir;
+	t_plane					*plane;
+	t_step					*step;
+	t_side_dist				*side_dist;
+	t_delta_dist			*delta_dist;
+	t_ray_dir				*ray_dir;
+	t_box_pos_for_calc		*box_pos;
 	double					camera_x;
 	double					perp_wall_dist;
-	bool					hit;//calc_one関数で初期化
-	bool					side;//calc_one関数で初期化
+	bool					hit;
+	bool					side;
 	int						line_height;
 	int						draw_start;
 	int						draw_end;
 	int						color;
-	//teture関連
-	t_tex					*texture;//mallocする@4_1
+	t_tex					*texture;
 	t_img					*img;
 	double					wall_x;
 	int						tex_x;
@@ -197,13 +193,9 @@ typedef struct s_data{
 	int						old_tex_x;
 	double					tex_step;
 	double					tex_pos;
-	//天井,床関連
 	t_floor_or_ceiling		floor;
 	t_floor_or_ceiling		ceiling;
-	// int						color_c;
-	// int						color_f;
-	//ここまで
-}t_data;//mallocする
+}t_data;
 
 bool		check_arg(int argc, char **argv);
 
@@ -217,7 +209,7 @@ bool		parse_texture(t_data *data, size_t i, size_t j);
 bool		parse_floor_or_ceiling(t_data *data, size_t i, size_t j);
 bool		parse_each_identifier(t_data *data, size_t i, size_t j);
 
-bool 		check_valid_map(t_data *data);
+bool		check_valid_map(t_data *data);
 void		convert_space_to_X(char **map);
 
 bool		init_other_data(t_data *data);
@@ -232,9 +224,9 @@ void		calc_init(t_data	*data);
 void		calc_side_dist(t_data	*data);
 void		calc_hit_wall(t_data *data);
 
-void 		tex_init(t_data *data);
-void 		tex_dir(t_data *data);
-void 		tex_draw(t_data *data, int row);
+void		tex_init(t_data *data);
+void		tex_dir(t_data *data);
+void		tex_draw(t_data *data, int row);
 
 int			key_hook(int keycode, t_data *data);
 
