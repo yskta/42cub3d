@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/24 16:40:57 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/24 17:34:41 by snemoto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ endif
 
 ifeq ($(OS),Darwin)
 	CFLAGS += -I/usr/X11/include
-	MLX_DIR = 
+	MLX_DIR = ./minilibx-linux
 	MLX_LIB = minilibx-linux/libmlx_Darwin.a
 	X11_DIR = /usr/X11/include/../lib
 	X11_LIB = -lXext -lX11
@@ -77,7 +77,7 @@ lib:
 	make -C $(LIB_DIR)
 
 clean:
-	make clean -C $(LIB_DIR)
+	make fclean -C $(LIB_DIR)
 	rm -r $(OBJS)
 
 fclean: clean
