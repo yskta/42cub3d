@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 00:17:30 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/20 00:30:22 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:38:06 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,12 @@ void	calc_hit_wall(t_data *data)
 			data->side_dist->side_dist_x += data->delta_dist->delta_dist_x;
 			data->box_pos->map_x += data->step->step_x;
 			data->side = false;
-			if (data->ray_dir->ray_dir_y < 0)
-				data->img->kind = DIR_S;
-			else
-				data->img->kind = DIR_N;
 		}
 		else
 		{
 			data->side_dist->side_dist_y += data->delta_dist->delta_dist_y;
 			data->box_pos->map_y += data->step->step_y;
 			data->side = true;
-			if (data->ray_dir->ray_dir_x < 0)
-				data->img->kind = DIR_W;
-			else
-				data->img->kind = DIR_E;
 		}
 		if (data->map_data.map[data->box_pos->map_x][data->box_pos->map_y] > '0')
 			data->hit = true;

@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/20 00:50:31 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:37:30 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static	void draw_celling_fllor(t_data *data)
 		row = 0;
 		while (row < SCREEN_W)
 		{
-			data->img->dst = data->img->addr + col * data->img->size_line + row * (data->img->bits_per_pixel / 8);
+			data->img->dst = data->img->addr + row * (data->img->bits_per_pixel / 8) + col * data->img->size_line;
 			*(unsigned int *)data->img->dst = BLUE / 2;
 			data->img->dst = data->img->addr + (SCREEN_H - col - 1) * data->img->size_line + row * (data->img->bits_per_pixel / 8);
 			*(unsigned int *)data->img->dst = GREEN / 2;
@@ -49,7 +49,8 @@ int	key_draw(t_data *data)
 		calc_side_dist(data);
 		calc_hit_wall(data);
 		tex_init(data);
-		tex_dir(data);
+		if (data->tex_x < data->old_tex_x
+			tex_dir(data);
 		tex_draw(data, row);
 		calc_free(data);
 		++row;
