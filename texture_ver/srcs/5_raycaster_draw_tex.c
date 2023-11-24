@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 00:23:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 15:40:28 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:46:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void tex_draw(t_data *data, int row)
 	{
 		data->tex_y = (int)data->tex_pos & (TEX_H - 1);
 		data->color = *(unsigned int *)(data->texture->addr + data->tex_y * data->texture->size_line + data->tex_x * (data->texture->bits_per_pixel / 8));
-		data->tex_pos += data->tex_step;
 		data->img->dst = data->img->addr + col * data->img->size_line + row * (data->img->bits_per_pixel / 8);
 		*(unsigned int *)data->img->dst = data->color;
+		data->tex_pos += data->tex_step;
 		++col;
 	}
 }
