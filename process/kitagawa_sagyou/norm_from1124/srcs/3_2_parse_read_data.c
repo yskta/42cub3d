@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 23:10:47 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 00:05:34 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,24 @@ bool	parse_texture(t_data *data, size_t i, size_t j)
 		while (data->map_data.read_data[i][j] != '.')
 			j++;
 		data->north_path = ft_strdup(&data->map_data.read_data[i][j]);
-		//printf("north.path: %s\n", data->north.path);
 	}
 	else if (data->map_data.read_data[i][j] == 'S')
 	{
 		while (data->map_data.read_data[i][j] != '.')
 			j++;
 		data->south_path = ft_strdup(&data->map_data.read_data[i][j]);
-		//printf("south.path: %s\n", data->south.path);
 	}
 	else if (data->map_data.read_data[i][j] == 'W')
 	{
 		while (data->map_data.read_data[i][j] != '.')
 			j++;
 		data->west_path = ft_strdup(&data->map_data.read_data[i][j]);
-		//printf("west.path: %s\n", data->west.path);
 	}
 	else if (data->map_data.read_data[i][j] == 'E')
 	{
 		while (data->map_data.read_data[i][j] != '.')
 			j++;
 		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
-		//printf("east.path: %s\n", data->east.path);
 	}
 	else
 		return (false);
@@ -79,7 +75,8 @@ bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j)
 		data->floor.b = ft_atoi(data->floor.after_split[2]);
 		free_two_dimensional_array(data->floor.after_split);
 		free(data->floor.before_split);
-		if (data->floor.r < 0 || data->floor.r > 255 || data->floor.g < 0 || data->floor.g > 255 || data->floor.b < 0 || data->floor.b > 255)
+		if (data->floor.r < 0 || data->floor.r > 255 || data->floor.g < 0 || \
+			data->floor.g > 255 || data->floor.b < 0 || data->floor.b > 255)
 			return (false);
 	}
 	else if (data->map_data.read_data[i][j] == 'C')
@@ -94,7 +91,9 @@ bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j)
 		data->ceiling.b = ft_atoi(data->ceiling.after_split[2]);
 		free_two_dimensional_array(data->ceiling.after_split);
 		free(data->ceiling.before_split);
-		if (data->ceiling.r < 0 || data->ceiling.r > 255 || data->ceiling.g < 0 || data->ceiling.g > 255 || data->ceiling.b < 0 || data->ceiling.b > 255)
+		if (data->ceiling.r < 0 || data->ceiling.r > 255 || \
+			data->ceiling.g < 0 || data->ceiling.g > 255 || \
+			data->ceiling.b < 0 || data->ceiling.b > 255)
 			return (false);
 	}
 	return (true);
@@ -102,9 +101,13 @@ bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j)
 
 bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 {
-	if (data->map_data.read_data[i][j] == 'N' || data->map_data.read_data[i][j] == 'S' || data->map_data.read_data[i][j] == 'W' || data->map_data.read_data[i][j] == 'E')
+	if (data->map_data.read_data[i][j] == 'N' || \
+		data->map_data.read_data[i][j] == 'S' || \
+		data->map_data.read_data[i][j] == 'W' || \
+		data->map_data.read_data[i][j] == 'E')
 		return (parse_texture(data, i, j));
-	else if (data->map_data.read_data[i][j] == 'F' || data->map_data.read_data[i][j] == 'C')
+	else if (data->map_data.read_data[i][j] == 'F' || \
+		data->map_data.read_data[i][j] == 'C')
 		return (parse_floor_or_ceiling(data, i, j));
 	return (true);
 }
