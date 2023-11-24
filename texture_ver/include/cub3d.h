@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/20 00:44:04 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 15:36:37 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,7 @@ typedef struct s_data{
 	double					wall_x;
 	int						tex_x;
 	int						tex_y;
+	int						old_tex_x;
 	double					tex_step;
 	double					tex_pos;
 	//天井,床関連
