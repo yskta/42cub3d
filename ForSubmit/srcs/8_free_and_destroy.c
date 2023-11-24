@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:43:54 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/20 00:15:11 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 00:40:28 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_two_dimensional_array(char **array)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (array[i] != NULL)
@@ -27,12 +27,10 @@ void	free_two_dimensional_array(char **array)
 
 void	free_map_data_and_texture(t_data *data)
 {
-	//map_data関連のfree
 	if (data->map_data.read_data != NULL)
 		free_two_dimensional_array(data->map_data.read_data);
 	if (data->map_data.map != NULL)
 		free_two_dimensional_array(data->map_data.map);
-	//path関連のfree
 	if (data->north_path != NULL)
 		free(data->north_path);
 	if (data->south_path != NULL)
@@ -41,7 +39,6 @@ void	free_map_data_and_texture(t_data *data)
 		free(data->west_path);
 	if (data->east_path != NULL)
 		free(data->east_path);
-	//texture関連のfree
 	if (data->texture->tex_dir != NULL)
 		free(data->texture->tex_dir);
 	if (data->texture != NULL)
@@ -53,13 +50,17 @@ void	destroy_textures(t_data *data)
 	if (data->texture->tex_dir != NULL)
 	{
 		if (data->texture->tex_dir->north.texture_ptr != NULL)
-			mlx_destroy_image(data->mlx, data->texture->tex_dir->north.texture_ptr);
+			mlx_destroy_image(data->mlx, \
+				data->texture->tex_dir->north.texture_ptr);
 		if (data->texture->tex_dir->south.texture_ptr != NULL)
-			mlx_destroy_image(data->mlx, data->texture->tex_dir->south.texture_ptr);
+			mlx_destroy_image(data->mlx, \
+				data->texture->tex_dir->south.texture_ptr);
 		if (data->texture->tex_dir->west.texture_ptr != NULL)
-			mlx_destroy_image(data->mlx, data->texture->tex_dir->west.texture_ptr);
+			mlx_destroy_image(data->mlx, \
+				data->texture->tex_dir->west.texture_ptr);
 		if (data->texture->tex_dir->east.texture_ptr != NULL)
-			mlx_destroy_image(data->mlx, data->texture->tex_dir->east.texture_ptr);
+			mlx_destroy_image(data->mlx, \
+				data->texture->tex_dir->east.texture_ptr);
 	}
 }
 
