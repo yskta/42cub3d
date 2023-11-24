@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/20 00:46:39 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/24 16:07:31 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,13 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 
 OBJS = $(SRCS:%.c=%.o)
 
+X11_DIR = /usr/X11/include/../lib
+X11_LIB = -lXext -lX11
+X11_INCLUDE = $(addprefix -I, $(X11_DIR))
+
 MLX_DIR = ./minilibx-linux
-MLX_LIB = -lmlx_Linux -lXext -lX11
+#MLX_LIB = -lmlx_Linux -lXext -lX11
+MLX_LIB = -lmlx_Linux
 MLX_INCLUDE = $(addprefix -I, $(MLX_DIR))
 
 LIB_DIR = ./libft
@@ -46,10 +51,10 @@ LIB_INCLUDE = $(addprefix -I, $(LIB_DIR))
 all: mlx lib $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB) -lm
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(X11_DIR) $(X11_LIB) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB) -lm
 
 %.o:	%.c
-	$(CC) $(CFLAGS) -c $(MLX_INCLUDE) $(LIB_INCLUDE) $< -o $@
+	$(CC) $(CFLAGS) -c $(X11_INCLUDE) $(MLX_INCLUDE) $(LIB_INCLUDE) $< -o $@
 
 mlx:
 	make -C $(MLX_DIR)
@@ -65,3 +70,20 @@ fclean: clean
 	rm -r $(NAME)
 
 re: fclean all
+
+# **************************************************************************** #
+# Platform Compatibility													   #
+# **************************************************************************** #
+
+OS := $(shell uname -s)
+
+ifeq ($(OS),Linux)
+	X11_DIR = 
+	X11_LIB = 
+	MLX_LIB = -lmlx_Linux -lXext -lX11
+endif
+
+ifeq ($(OS),Darwin)
+		CFLAGS += -I/usr/X11/include
+		MLX_LIB = minilibx-linux/libmlx_Darwin.a
+endif
