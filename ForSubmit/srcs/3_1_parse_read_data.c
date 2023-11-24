@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/19 02:35:07 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:55:58 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	parse_all_identifier(t_data *data)
 {
 	size_t	i;
 	size_t	j;
-	
+
 	i = 0;
 	while (data->map_data.read_data[i] != NULL)
 	{
@@ -49,11 +49,6 @@ bool	judge_space_or_wall(char *line)
 	size_t	i;
 
 	i = 0;
-	// printf("line:%s\n", line);
-	// if (line[i] == 0x20)
-	// 	printf("line[i]:space\n");
-	// else
-	// 	printf("line[i]:%c\n", line[i]);
 	while (line[i] == ' ' || line[i] == '1')
 		i++;
 	if (line[i] == '\0')
@@ -73,13 +68,12 @@ bool	parse_map(t_data *data)
 		if (judge_space_or_wall(data->map_data.read_data[i]) == true)
 		{
 			data->map_data.map_height = data->map_data.read_data_height - i;
-			data->map_data.map = malloc(sizeof(char *) * (data->map_data.map_height + 1));
+			data->map_data.map = malloc(sizeof(char *) * \
+				(data->map_data.map_height + 1));
 			j = 0;
 			while (data->map_data.read_data[i] != NULL)
 			{
-				//printf("data->map_data.read_data[i]:%s\n", data->map_data.read_data[i]);
 				data->map_data.map[j] = ft_strdup(data->map_data.read_data[i]);
-				//printf("data->map_data.map[j]:%s\n", data->map_data.map[j]);
 				i++;
 				j++;
 			}
@@ -89,7 +83,6 @@ bool	parse_map(t_data *data)
 		i++;
 	}
 	convert_space_to_X(data->map_data.map);
-	//一旦外す
 	if (check_valid_map(data) == false)
 		return (false);
 	return (true);
@@ -98,7 +91,7 @@ bool	parse_map(t_data *data)
 bool	parse_read_data(t_data *data)
 {
 	if (parse_all_identifier(data) == false)
-	{	
+	{
 		free_map_data_and_texture(data);
 		return (false);
 	}
