@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/20 01:12:05 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 00:34:35 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ bool	init_pos_dir_plane(t_data *data)
 		j = 0;
 		while (data->map_data.map[i][j] != '\0')
 		{
-			if (data->map_data.map[i][j] == 'N' || data->map_data.map[i][j] == 'S' ||
+			if (data->map_data.map[i][j] == 'N' || \
+				data->map_data.map[i][j] == 'S' || \
 			data->map_data.map[i][j] == 'E' || data->map_data.map[i][j] == 'W')
 			{
 				data->cur_pos->pos_x = (double)i;
@@ -40,33 +41,34 @@ bool	init_pos_dir_plane(t_data *data)
 					data->plane->plane_x = 0;
 					data->plane->plane_y = 0.66;
 				}
-				// else if (data->map_data.map[i][j] == 'S')
-				// {
-				// 	data->dir->dir_x = 1;
-				// 	data->dir->dir_y = 0;
-				// 	data->plane->plane_x = 0;
-				// 	data->plane->plane_y = -0.66;
-				// }
-				// else if (data->map_data.map[i][j] == 'E')
-				// {
-				// 	data->dir->dir_x = 0;
-				// 	data->dir->dir_y = 1;
-				// 	data->plane->plane_x = 0.66;
-				// 	data->plane->plane_y = 0;
-				// }
-				// else if (data->map_data.map[i][j] == 'W')
-				// {
-				// 	data->dir->dir_x = 0;
-				// 	data->dir->dir_y = -1;
-				// 	data->plane->plane_x = -0.66;
-				// 	data->plane->plane_y = 0;
-				// }
-				break;
+				else if (data->map_data.map[i][j] == 'S')
+				{
+					data->dir->dir_x = 1;
+					data->dir->dir_y = 0;
+					data->plane->plane_x = 0;
+					data->plane->plane_y = -0.66;
+				}
+				else if (data->map_data.map[i][j] == 'E')
+				{
+					data->dir->dir_x = 0;
+					data->dir->dir_y = 1;
+					data->plane->plane_x = 0.66;
+					data->plane->plane_y = 0;
+				}
+				else if (data->map_data.map[i][j] == 'W')
+				{
+					data->dir->dir_x = 0;
+					data->dir->dir_y = -1;
+					data->plane->plane_x = -0.66;
+					data->plane->plane_y = 0;
+				}
+				break ;
 			}
 			j++;
 		}
 		i++;
 	}
-	data->map_data.map[(int)data->cur_pos->pos_x][(int)data->cur_pos->pos_y] = '0';
+	data->map_data.map[(int)data->cur_pos->pos_x][(int)data->cur_pos->pos_y] \
+		= '0';
 	return (true);
 }
