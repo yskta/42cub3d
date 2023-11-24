@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/24 16:38:40 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/24 16:40:57 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 			9_utils.c)
 
 OBJS = $(SRCS:%.c=%.o)
+OS := $(shell uname -s)
 
 ifeq ($(OS),Linux)
 	MLX_DIR = ./minilibx-linux
