@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   6_key_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/20 01:12:23 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:37:57 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static void	key_w_s(t_data *data, int keycode)
 	move = 1;
 	if (keycode == KEY_S)
 		sign = -1;
-	if (data->map_data.map[(int)(data->cur_pos->pos_x + sign * data->dir->dir_x * move)][(int)data->cur_pos->pos_y] == '0')
-		data->cur_pos->pos_x += sign * data->dir->dir_x * move;
-	if (data->map_data.map[(int)data->cur_pos->pos_x][(int)(data->cur_pos->pos_y + sign * data->dir->dir_y * move)] == '0')
-		data->cur_pos->pos_y += sign * data->dir->dir_y * move;
+	if (data->map_data.map[(int)(data->cur_pos->x + sign * data->dir->x * move)][(int)data->cur_pos->y] == '0')
+		data->cur_pos->x += sign * data->dir->x * move;
+	if (data->map_data.map[(int)data->cur_pos->x][(int)(data->cur_pos->y + sign * data->dir->y * move)] == '0')
+		data->cur_pos->y += sign * data->dir->y * move;
 }
 
 static void	key_a_d(t_data *data, int keycode)
@@ -57,15 +57,15 @@ static void	key_a_d(t_data *data, int keycode)
 	move = 1;
 	angle_x = 1;
 	angle_y = 1;
-	old_dir_x = data->dir->dir_x;
-	angle_x = data->dir->dir_x * cos(M_PI / 2) - data->dir->dir_y * sin(M_PI / 2);
-	angle_y = old_dir_x * sin(M_PI / 2) + data->dir->dir_y * cos(M_PI / 2);
+	old_dir_x = data->dir->x;
+	angle_x = data->dir->x * cos(M_PI / 2) - data->dir->y * sin(M_PI / 2);
+	angle_y = old_dir_x * sin(M_PI / 2) + data->dir->y * cos(M_PI / 2);
 	if (keycode == KEY_D)
 		sign = -1;
-	if (data->map_data.map[(int)(data->cur_pos->pos_x + angle_x * sign * move)][(int)data->cur_pos->pos_y] == '0')
-		data->cur_pos->pos_x += angle_x * sign * move;
-	if (data->map_data.map[(int)data->cur_pos->pos_x][(int)(data->cur_pos->pos_y + angle_y * sign * move)] == '0')
-		data->cur_pos->pos_y += angle_y * sign * move;
+	if (data->map_data.map[(int)(data->cur_pos->x + angle_x * sign * move)][(int)data->cur_pos->y] == '0')
+		data->cur_pos->x += angle_x * sign * move;
+	if (data->map_data.map[(int)data->cur_pos->x][(int)(data->cur_pos->y + angle_y * sign * move)] == '0')
+		data->cur_pos->y += angle_y * sign * move;
 }
 
 static void	key_l_r(t_data *data, int keycode)
@@ -74,15 +74,15 @@ static void	key_l_r(t_data *data, int keycode)
 	double	old_plane_x;
 	double	rot;
 
-	old_dir_x = data->dir->dir_x;
-	old_plane_x = data->plane->plane_x;
+	old_dir_x = data->dir->x;
+	old_plane_x = data->plane->x;
 	rot = M_PI / ANGLE;
 	if (keycode == KEY_RIGHT)
 		rot *= -1;
-	data->dir->dir_x = data->dir->dir_x * cos(rot) - data->dir->dir_y * sin(rot);
-	data->dir->dir_y = old_dir_x * sin(rot) + data->dir->dir_y * cos(rot);
-	data->plane->plane_x = data->plane->plane_x * cos(rot) - data->plane->plane_y * sin(rot);
-	data->plane->plane_y = old_plane_x * sin(rot) + data->plane->plane_y * cos(rot);
+	data->dir->x = data->dir->x * cos(rot) - data->dir->y * sin(rot);
+	data->dir->y = old_dir_x * sin(rot) + data->dir->y * cos(rot);
+	data->plane->x = data->plane->x * cos(rot) - data->plane->y * sin(rot);
+	data->plane->y = old_plane_x * sin(rot) + data->plane->y * cos(rot);
 }
 
 int	key_hook(int keycode, t_data *data)

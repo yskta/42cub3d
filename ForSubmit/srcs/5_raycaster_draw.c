@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   5_raycaster_draw.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 15:58:08 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:42:12 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static	void draw_celling_fllor(t_data *data)
+static void	draw_celling_fllor(t_data *data)
 {
 	unsigned int	row;
 	unsigned int	col;
@@ -23,9 +23,11 @@ static	void draw_celling_fllor(t_data *data)
 		row = 0;
 		while (row < SCREEN_W)
 		{
-			data->img->dst = data->img->addr + row * (data->img->bits_per_pixel / 8) + col * data->img->size_line;
+			data->img->dst = data->img->addr \
+				+ row * (data->img->bits / 8) + col * data->img->size;
 			*(unsigned int *)data->img->dst = BLUE / 2;
-			data->img->dst = data->img->addr + (SCREEN_H - col - 1) * data->img->size_line + row * (data->img->bits_per_pixel / 8);
+			data->img->dst = data->img->addr + (SCREEN_H - col - 1) \
+				* data->img->size + row * (data->img->bits / 8);
 			*(unsigned int *)data->img->dst = GREEN / 2;
 			++row;
 		}
@@ -39,7 +41,8 @@ int	key_draw(t_data *data)
 
 	data->img = (t_img *)malloc(sizeof(t_img));
 	data->img->img = mlx_new_image(data->mlx, SCREEN_W, SCREEN_H);
-	data->img->addr = mlx_get_data_addr(data->img->img, &data->img->bits_per_pixel, &data->img->size_line, &data->img->endian);
+	data->img->addr = mlx_get_data_addr(data->img->img, \
+		&data->img->bits, &data->img->size, &data->img->endian);
 	draw_celling_fllor(data);
 	row = 0;
 	while (row < SCREEN_W)
@@ -49,8 +52,8 @@ int	key_draw(t_data *data)
 		calc_side_dist(data);
 		calc_hit_wall(data);
 		tex_init(data);
-		//if (data->tex_x < data->old_tex_x)
-		tex_dir(data);
+		// if (data->tex_x < data->old_tex_x)
+			tex_dir(data);
 		tex_draw(data, row);
 		calc_free(data);
 		++row;
