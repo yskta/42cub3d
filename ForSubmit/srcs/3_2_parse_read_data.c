@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 00:05:34 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:35:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,56 @@ bool	juduge_identifer(char *str)
 
 bool	parse_texture(t_data *data, size_t i, size_t j)
 {
-	if (data->map_data.read_data[i][j] == 'N')
+	char	*directions[];
+	char	identifiers[];
+	int		k;
+
+	directions = {data->north_path, data->south_path, \
+		data->west_path, data->east_path};
+	identifiers[] = {'N', 'S', 'W', 'E'};
+	k = 0;
+	while (k < 4 && data->map_data.read_data[i][j] != identifiers[k])
+		k++;
+	if (k < 4)
 	{
 		while (data->map_data.read_data[i][j] != '.')
 			j++;
-		data->north_path = ft_strdup(&data->map_data.read_data[i][j]);
+		directions[k] = ft_strdup(&data->map_data.read_data[i][j]);
+		return (true);
 	}
-	else if (data->map_data.read_data[i][j] == 'S')
-	{
-		while (data->map_data.read_data[i][j] != '.')
-			j++;
-		data->south_path = ft_strdup(&data->map_data.read_data[i][j]);
-	}
-	else if (data->map_data.read_data[i][j] == 'W')
-	{
-		while (data->map_data.read_data[i][j] != '.')
-			j++;
-		data->west_path = ft_strdup(&data->map_data.read_data[i][j]);
-	}
-	else if (data->map_data.read_data[i][j] == 'E')
-	{
-		while (data->map_data.read_data[i][j] != '.')
-			j++;
-		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
-	}
-	else
-		return (false);
-	return (true);
+	return (false);
 }
+
+//bool	parse_texture(t_data *data, size_t i, size_t j)
+//{
+//	if (data->map_data.read_data[i][j] == 'N')
+//	{
+//		while (data->map_data.read_data[i][j] != '.')
+//			j++;
+//		data->north_path = ft_strdup(&data->map_data.read_data[i][j]);
+//	}
+//	else if (data->map_data.read_data[i][j] == 'S')
+//	{
+//		while (data->map_data.read_data[i][j] != '.')
+//			j++;
+//		data->south_path = ft_strdup(&data->map_data.read_data[i][j]);
+//	}
+//	else if (data->map_data.read_data[i][j] == 'W')
+//	{
+//		while (data->map_data.read_data[i][j] != '.')
+//			j++;
+//		data->west_path = ft_strdup(&data->map_data.read_data[i][j]);
+//	}
+//	else if (data->map_data.read_data[i][j] == 'E')
+//	{
+//		while (data->map_data.read_data[i][j] != '.')
+//			j++;
+//		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
+//	}
+//	else
+//		return (false);
+//	return (true);
+//}
 
 bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j)
 {
