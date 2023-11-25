@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:24 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 16:05:00 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 16:06:17 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ bool	check_leftside_wall_xcase(char **map, size_t i, \
 		return (true);
 }
 
-bool	check_leftside_wall_for_norm(char	**map, size_t i, \
-	size_t left_end_wall_index)
+bool	check_leftside_wall_for_norm(char	**map, size_t left_end_wall_index)
 {
 	size_t	i;
 
@@ -73,16 +72,14 @@ bool	check_leftside_wall_for_norm(char	**map, size_t i, \
 
 bool	check_leftside_wall(char	**map)
 {
-	size_t	i;
 	size_t	j;
 	size_t	left_end_wall_index;
 
-	i = 0;
 	j = 0;
 	while (map[0][j] == 'X')
 		j++;
 	left_end_wall_index = j;
-	return (check_leftside_wall_for_norm(map, i, left_end_wall_index));
+	return (check_leftside_wall_for_norm(map, left_end_wall_index));
 }
 
 bool	check_rightside_wall(char	**map)
