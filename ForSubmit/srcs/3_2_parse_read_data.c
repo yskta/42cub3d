@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 14:44:52 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:45:55 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	juduge_identifer(char *str)
 
 bool	parse_texture(t_data *data, size_t i, size_t j)
 {
-	char	directions[4];
+	char	*directions[4];
 	char	identifiers[4];
 	int		k;
 
