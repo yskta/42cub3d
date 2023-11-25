@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 14:42:18 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:44:52 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,14 @@ bool	parse_texture(t_data *data, size_t i, size_t j)
 	char	identifiers[4];
 	int		k;
 
-	directions = {data->north_path, data->south_path, \
-		data->west_path, data->east_path};
-	identifiers = {'N', 'S', 'W', 'E'};
+	directions[0] = data->north_path;
+	directions[1] = data->south_path;
+	directions[2] = data->west_path;
+	directions[3] = data->east_path;
+	identifiers[0] = 'N';
+	identifiers[1] = 'S';
+	identifiers[2] = 'W';
+	identifiers[3] = 'E';
 	k = 0;
 	while (k < 4 && data->map_data.read_data[i][j] != identifiers[k])
 		k++;
