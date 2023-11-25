@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:07:44 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 16:32:50 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 16:34:20 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ bool	check_rightside_wall(char	**map)
 {
 	size_t	j;
 	size_t	right_end_wall_index;
-	size_t	next_len;
 
 	j = 0;
 	while (map[0][j] != '\0')
