@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   5_raycaster_draw_tex.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 00:23:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 19:46:21 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/25 12:37:08 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ void	tex_dir(t_data *data)
 			data->img->kind = DIR_W;
 	}
 	if (data->img->kind == DIR_N)
-		data->texture->addr = mlx_get_data_addr(data->texture->tex_dir->north.texture_ptr, \
-			&data->texture->bits, &data->texture->size, &data->texture->endian);
+		data->tex->addr = mlx_get_data_addr(data->tex->tex_dir->north.tex_ptr, \
+			&data->tex->bits, &data->tex->size, &data->tex->endian);
 	else if (data->img->kind == DIR_S)
-		data->texture->addr = mlx_get_data_addr(data->texture->tex_dir->south.texture_ptr, \
-			&data->texture->bits, &data->texture->size, &data->texture->endian);
+		data->tex->addr = mlx_get_data_addr(data->tex->tex_dir->south.tex_ptr, \
+			&data->tex->bits, &data->tex->size, &data->tex->endian);
 	else if (data->img->kind == DIR_E)
-		data->texture->addr = mlx_get_data_addr(data->texture->tex_dir->east.texture_ptr, \
-			&data->texture->bits, &data->texture->size, &data->texture->endian);
+		data->tex->addr = mlx_get_data_addr(data->tex->tex_dir->east.tex_ptr, \
+			&data->tex->bits, &data->tex->size, &data->tex->endian);
 	else if (data->img->kind == DIR_W)
-		data->texture->addr = mlx_get_data_addr(data->texture->tex_dir->west.texture_ptr, \
-			&data->texture->bits, &data->texture->size, &data->texture->endian);
+		data->tex->addr = mlx_get_data_addr(data->tex->tex_dir->west.tex_ptr, \
+			&data->tex->bits, &data->tex->size, &data->tex->endian);
 }
 
 void	tex_draw(t_data *data, int row)
@@ -75,8 +75,8 @@ void	tex_draw(t_data *data, int row)
 	while (col < data->draw_end)
 	{
 		data->tex_y = (int)data->tex_pos & (TEX_H - 1);
-		data->color = *(unsigned int *)(data->texture->addr + data->tex_y * \
-			data->texture->size + data->tex_x * (data->texture->bits / 8));
+		data->color = *(unsigned int *)(data->tex->addr + data->tex_y * \
+			data->tex->size + data->tex_x * (data->tex->bits / 8));
 		data->tex_pos += data->tex_step;
 		data->img->dst = data->img->addr \
 			+ col * data->img->size + row * (data->img->bits / 8);

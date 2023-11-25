@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 10:10:21 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 12:33:29 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ typedef struct s_map{
 }	t_map;
 
 typedef struct s_each_texture{
-	void	*texture_ptr;
+	void	*tex_ptr;
 	int		x;
 	int		y;
 }	t_each_texture;
@@ -185,7 +185,7 @@ typedef struct s_data{
 	int						draw_start;
 	int						draw_end;
 	int						color;
-	t_tex					*texture;
+	t_tex					*tex;
 	t_img					*img;
 	double					wall_x;
 	int						tex_x;

@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:25:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 00:29:25 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 12:39:33 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,26 @@ bool	init_mlx(t_data *data)
 
 bool	init_texture(t_data *data)
 {
-	data->texture = (t_tex *)malloc(sizeof(t_tex));
-	data->texture->tex_dir = (t_tex_dir *)malloc(sizeof(t_tex_dir));
-	if (data->texture == NULL || data->texture->tex_dir == NULL)
+	data->tex = (t_tex *)malloc(sizeof(t_tex));
+	data->tex->tex_dir = (t_tex_dir *)malloc(sizeof(t_tex_dir));
+	if (data->tex == NULL || data->tex->tex_dir == NULL)
 		return (false);
-	data->texture->tex_dir->north.texture_ptr = \
+	data->tex->tex_dir->north.tex_ptr = \
 		mlx_xpm_file_to_image(data->mlx, data->north_path, \
-			&data->texture->tex_dir->north.x, &data->texture->tex_dir->north.y);
-	data->texture->tex_dir->south.texture_ptr = \
+			&data->tex->tex_dir->north.x, &data->tex->tex_dir->north.y);
+	data->tex->tex_dir->south.tex_ptr = \
 		mlx_xpm_file_to_image(data->mlx, data->south_path, \
-			&data->texture->tex_dir->south.x, &data->texture->tex_dir->south.y);
-	data->texture->tex_dir->west.texture_ptr = \
+			&data->tex->tex_dir->south.x, &data->tex->tex_dir->south.y);
+	data->tex->tex_dir->west.tex_ptr = \
 		mlx_xpm_file_to_image(data->mlx, data->west_path, \
-			&data->texture->tex_dir->west.x, &data->texture->tex_dir->west.y);
-	data->texture->tex_dir->east.texture_ptr = \
+			&data->tex->tex_dir->west.x, &data->tex->tex_dir->west.y);
+	data->tex->tex_dir->east.tex_ptr = \
 		mlx_xpm_file_to_image(data->mlx, data->east_path, \
-			&data->texture->tex_dir->east.x, &data->texture->tex_dir->east.y);
-	if (data->texture->tex_dir->north.texture_ptr == NULL || \
-		data->texture->tex_dir->south.texture_ptr == NULL || \
-		data->texture->tex_dir->west.texture_ptr == NULL || \
-		data->texture->tex_dir->east.texture_ptr == NULL)
+			&data->tex->tex_dir->east.x, &data->tex->tex_dir->east.y);
+	if (data->tex->tex_dir->north.tex_ptr == NULL || \
+		data->tex->tex_dir->south.tex_ptr == NULL || \
+		data->tex->tex_dir->west.tex_ptr == NULL || \
+		data->tex->tex_dir->east.tex_ptr == NULL)
 		return (false);
 	return (true);
 }
