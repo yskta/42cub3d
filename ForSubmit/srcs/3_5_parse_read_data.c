@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:07:44 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 16:37:42 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 16:42:40 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,14 @@ bool	check_rightside_wall_for_norm(char	**map, size_t right_end_wall_index)
 			if (check_rightside_wall_xcase(map, i, \
 				right_end_wall_index) == false)
 				return (false);
-			else
-				i++;
 		}
 		else if (map[i + 1][right_end_wall_index] == '0')
 		{
 			if (check_rightside_wall_for_zerocase(map, i, \
 				right_end_wall_index) == false)
 				return (false);
-			else
-				i++;
 		}
-		else
-			i++;
+		i++;
 	}
 	return (true);
 }
