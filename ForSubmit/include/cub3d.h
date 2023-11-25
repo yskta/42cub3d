@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 00:23:15 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:49:15 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,32 +56,38 @@
 
 typedef struct s_cur_pos
 {
-	double	pos_x;
-	double	pos_y;
+	double	x;
+	double	y;
 }	t_cur_pos;
 
 typedef struct s_dir
 {
-	double	dir_x;
-	double	dir_y;
+	double	x;
+	double	y;
 }	t_dir;
 
 typedef struct s_plane
 {
-	double	plane_x;
-	double	plane_y;
+	double	x;
+	double	y;
 }	t_plane;
+
+typedef struct s_box_pos_for_calc
+{
+	int	x;
+	int	y;
+}	t_box_pos_for_calc;
 
 typedef struct s_step
 {
-	int	step_x;
-	int	step_y;
+	int	x;
+	int	y;
 }	t_step;
 
 typedef struct s_side_dist
 {
-	double	side_dist_x;
-	double	side_dist_y;
+	double	x;
+	double	y;
 }	t_side_dist;
 
 typedef struct s_box_pos_for_calc
@@ -92,14 +98,14 @@ typedef struct s_box_pos_for_calc
 
 typedef struct s_delta_dist
 {
-	double	delta_dist_x;
-	double	delta_dist_y;
+	double	x;
+	double	y;
 }	t_delta_dist;
 
 typedef struct s_ray_dir
 {
-	double	ray_dir_x;
-	double	ray_dir_y;
+	double	x;
+	double	y;
 }	t_ray_dir;
 
 typedef struct s_map{
@@ -108,21 +114,13 @@ typedef struct s_map{
 	ssize_t	fd;
 	size_t	read_data_height;
 	size_t	map_height;
-}t_map;
+}	t_map;
 
 typedef struct s_each_texture{
 	void	*texture_ptr;
 	int		x;
 	int		y;
-}t_each_texture;
-
-typedef enum e_kind_dir
-{
-	DIR_N,
-	DIR_S,
-	DIR_E,
-	DIR_W,
-}	t_kind_dir;
+}	t_each_texture;
 
 typedef struct s_tex_dir
 {
@@ -136,18 +134,26 @@ typedef struct s_tex
 {
 	t_tex_dir	*tex_dir;
 	char		*addr;
-	int			bits_per_pixel;
-	int			size_line;
+	int			bits;
+	int			size;
 	int			endian;
 }	t_tex;
+
+typedef enum e_kind_dir
+{
+	DIR_N,
+	DIR_S,
+	DIR_E,
+	DIR_W,
+}	t_kind_dir;
 
 typedef struct s_img
 {
 	void		*img;
 	char		*addr;
 	char		*dst;
-	int			bits_per_pixel;
-	int			size_line;
+	int			bits;
+	int			size;
 	int			endian;
 	t_kind_dir	kind;
 }	t_img;
@@ -158,7 +164,7 @@ typedef struct s_floor_or_ceiling{
 	int		r;
 	int		g;
 	int		b;
-}t_floor_or_ceiling;
+}	t_floor_or_ceiling;
 
 typedef struct s_data{
 	void					*mlx;
@@ -210,6 +216,7 @@ bool		parse_floor_or_ceiling(t_data *data, size_t i, size_t j);
 bool		parse_each_identifier(t_data *data, size_t i, size_t j);
 
 bool		check_valid_map(t_data *data);
+
 void		convert_space_to_x(char **map);
 
 bool		init_other_data(t_data *data);
