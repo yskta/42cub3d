@@ -6,11 +6,11 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:04:23 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 14:46:26 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 23:17:59 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 static size_t	ft_cnt(const char *s, char c);
 static char		**ft_split_str(const char *s, char c, \

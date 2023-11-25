@@ -6,21 +6,15 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:04:37 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/10/14 14:45:06 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 23:20:06 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 static char	*ft_read_get_save(int fd, char *save);
 static char	*ft_get_outputline(char *save);
 static char	*ft_get_next_save(char *save);
-
-char	*ft_free_for_gnl(char *str)
-{
-	free(str);
-	return (NULL);
-}
 
 char	*ft_strjoin_for_gnl(char *s1, char *s2)
 {
