@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   9_utils.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:32:13 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 00:42:39 by yokitaga         ###   ########.fr       */
+/*   Created: 2023/10/09 20:20:34 by yokitaga          #+#    #+#             */
+/*   Updated: 2023/10/09 20:24:13 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "libft.h"
 
-void	put_error_and_exit(char *str, t_data *data)
+char	*ft_strchr(const char *s, int c)
 {
-	if (data)
-		free(data);
-	printf("%s\n", str);
-	exit (1);
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (NULL);
 }
