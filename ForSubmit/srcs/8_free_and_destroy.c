@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:43:54 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 00:40:28 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 12:41:17 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,28 @@ void	free_map_data_and_texture(t_data *data)
 		free(data->west_path);
 	if (data->east_path != NULL)
 		free(data->east_path);
-	if (data->texture->tex_dir != NULL)
-		free(data->texture->tex_dir);
-	if (data->texture != NULL)
-		free(data->texture);
+	if (data->tex->tex_dir != NULL)
+		free(data->tex->tex_dir);
+	if (data->tex != NULL)
+		free(data->tex);
 }
 
 void	destroy_textures(t_data *data)
 {
-	if (data->texture->tex_dir != NULL)
+	if (data->tex->tex_dir != NULL)
 	{
-		if (data->texture->tex_dir->north.texture_ptr != NULL)
+		if (data->tex->tex_dir->north.tex_ptr != NULL)
 			mlx_destroy_image(data->mlx, \
-				data->texture->tex_dir->north.texture_ptr);
-		if (data->texture->tex_dir->south.texture_ptr != NULL)
+				data->tex->tex_dir->north.tex_ptr);
+		if (data->tex->tex_dir->south.tex_ptr != NULL)
 			mlx_destroy_image(data->mlx, \
-				data->texture->tex_dir->south.texture_ptr);
-		if (data->texture->tex_dir->west.texture_ptr != NULL)
+				data->tex->tex_dir->south.tex_ptr);
+		if (data->tex->tex_dir->west.tex_ptr != NULL)
 			mlx_destroy_image(data->mlx, \
-				data->texture->tex_dir->west.texture_ptr);
-		if (data->texture->tex_dir->east.texture_ptr != NULL)
+				data->tex->tex_dir->west.tex_ptr);
+		if (data->tex->tex_dir->east.tex_ptr != NULL)
 			mlx_destroy_image(data->mlx, \
-				data->texture->tex_dir->east.texture_ptr);
+				data->tex->tex_dir->east.tex_ptr);
 	}
 }
 
