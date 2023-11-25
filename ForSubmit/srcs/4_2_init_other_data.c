@@ -6,22 +6,61 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 10:15:22 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:15:21 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-bool	init_pos_dir_plane(t_data *data)
+void	init_data_pos_dir_plane_north_or_south(t_data *data, int i, int j)
+{
+	data->cur_pos->x = i;
+	data->cur_pos->y = j;
+	if (data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
+		== 'N')
+	{
+		data->dir->x = -1;
+		data->dir->y = 0;
+		data->plane->x = 0;
+		data->plane->y = 0.66;
+	}
+	else if (data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
+		== 'S')
+	{
+		data->dir->x = 1;
+		data->dir->y = 0;
+		data->plane->x = 0;
+		data->plane->y = -0.66;
+	}
+}
+
+void	init_data_pos_dir_plane_east_or_west(t_data *data, int i, int j)
+{
+	data->cur_pos->x = i;
+	data->cur_pos->y = j;
+	if (data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
+		== 'E')
+	{
+		data->dir->x = 0;
+		data->dir->y = 1;
+		data->plane->x = 0.66;
+		data->plane->y = 0;
+	}
+	else if (data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
+		== 'W')
+	{
+		data->dir->x = 0;
+		data->dir->y = -1;
+		data->plane->x = -0.66;
+		data->plane->y = 0;
+	}
+}
+
+void	init_data_pos_dir_plane(t_data *data)
 {
 	size_t	i;
 	size_t	j;
 
-	data->cur_pos = (t_cur_pos *)malloc(sizeof(t_cur_pos));
-	data->dir = (t_dir *)malloc(sizeof(t_dir));
-	data->plane = (t_plane *)malloc(sizeof(t_plane));
-	if (data->cur_pos == NULL || data->dir == NULL || data->plane == NULL)
-		return (false);
 	i = 0;
 	while (data->map_data.map[i] != NULL)
 	{
@@ -29,45 +68,31 @@ bool	init_pos_dir_plane(t_data *data)
 		while (data->map_data.map[i][j] != '\0')
 		{
 			if (data->map_data.map[i][j] == 'N' || \
-				data->map_data.map[i][j] == 'S' || \
-			data->map_data.map[i][j] == 'E' || data->map_data.map[i][j] == 'W')
+				data->map_data.map[i][j] == 'S')
 			{
-				data->cur_pos->x = (double)i;
-				data->cur_pos->y = (double)j;
-				if (data->map_data.map[i][j] == 'N')
-				{
-					data->dir->x = -1;
-					data->dir->y = 0;
-					data->plane->x = 0;
-					data->plane->y = 0.66;
-				}
-				else if (data->map_data.map[i][j] == 'S')
-				{
-					data->dir->x = 1;
-					data->dir->y = 0;
-					data->plane->x = 0;
-					data->plane->y = -0.66;
-				}
-				else if (data->map_data.map[i][j] == 'E')
-				{
-					data->dir->x = 0;
-					data->dir->y = 1;
-					data->plane->x = 0.66;
-					data->plane->y = 0;
-				}
-				else if (data->map_data.map[i][j] == 'W')
-				{
-					data->dir->x = 0;
-					data->dir->y = -1;
-					data->plane->x = -0.66;
-					data->plane->y = 0;
-				}
+				init_data_pos_dir_plane_north_or_south(data, (int)i, (int)j);
+				break ;
+			}
+			else if (data->map_data.map[i][j] == 'E' || \
+				data->map_data.map[i][j] == 'W')
+			{
+				init_data_pos_dir_plane_east_or_west(data, (int)i, (int)j);
 				break ;
 			}
 			j++;
 		}
 		i++;
 	}
+}
+
+bool	init_pos_dir_plane(t_data *data)
+{
+	data->cur_pos = (t_cur_pos *)malloc(sizeof(t_cur_pos));
+	data->dir = (t_dir *)malloc(sizeof(t_dir));
+	data->plane = (t_plane *)malloc(sizeof(t_plane));
+	if (data->cur_pos == NULL || data->dir == NULL || data->plane == NULL)
+		return (false);
+	init_data_pos_dir_plane(data);
 	data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
 		= '0';
 	return (true);
