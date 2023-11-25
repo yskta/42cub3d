@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:24 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 15:08:56 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:33:31 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,14 +141,39 @@ bool	check_num_of_player_and_invalid_char(char	**map)
 		return (false);
 }
 
+bool	check_playable_or_not(char **map, size_t	x, size_t	y;)
+{
+	size_t	above_line_len;
+	size_t	under_line_len;
+
+	above_line_len = ft_strlen(map[y - 1]);
+	under_line_len = ft_strlen(map[y + 1]);
+	if ((above_line_len > x + 1) && \
+		(map[y - 1][x] == '1' || \
+			map[y - 1][x] == '0'))
+	{
+		if ((under_line_len > x + 1) && \
+			(map[y + 1][x] == '1' || \
+				map[y + 1][x] == '0'))
+		{
+			if (map[y][x - 1] == '1' || \
+				map[y][x - 1] == '0')
+			{
+				if (map[y][x + 1] == '1' || \
+					map[y][x + 1] == '0')
+					return (true);
+			}
+		}
+	}
+	return (false);
+}
+
 bool	check_playable_map(char **map)
 {
 	size_t	i;
 	size_t	j;
 	size_t	player_pos_x;
 	size_t	player_pos_y;
-	size_t	above_line_len;
-	size_t	under_line_len;
 
 	i = 0;
 	while (map[i] != NULL)
@@ -166,26 +191,7 @@ bool	check_playable_map(char **map)
 		}
 		i++;
 	}
-	above_line_len = ft_strlen(map[player_pos_y - 1]);
-	under_line_len = ft_strlen(map[player_pos_y + 1]);
-	if ((above_line_len > player_pos_x + 1) && \
-		(map[player_pos_y - 1][player_pos_x] == '1' || \
-			map[player_pos_y - 1][player_pos_x] == '0'))
-	{
-		if ((under_line_len > player_pos_x + 1) && \
-			(map[player_pos_y + 1][player_pos_x] == '1' || \
-				map[player_pos_y + 1][player_pos_x] == '0'))
-		{
-			if (map[player_pos_y][player_pos_x - 1] == '1' || \
-				map[player_pos_y][player_pos_x - 1] == '0')
-			{
-				if (map[player_pos_y][player_pos_x + 1] == '1' || \
-					map[player_pos_y][player_pos_x + 1] == '0')
-					return (true);
-			}
-		}
-	}
-	return (false);
+	return (check_playable_or_not(map, player_pos_x, player_pos_y));
 }
 
 
