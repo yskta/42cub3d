@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:43:54 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 12:41:17 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:12:18 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	free_map_data_and_texture(t_data *data)
 		free(data->west_path);
 	if (data->east_path != NULL)
 		free(data->east_path);
-	if (data->tex->tex_dir != NULL)
+	if (data->tex != NULL && data->tex->tex_dir != NULL)
 		free(data->tex->tex_dir);
 	if (data->tex != NULL)
 		free(data->tex);
