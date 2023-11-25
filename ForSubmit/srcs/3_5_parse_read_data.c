@@ -5,90 +5,103 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 15:26:33 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 15:46:32 by yokitaga         ###   ########.fr       */
+/*   Created: 2023/11/25 16:07:44 by yokitaga          #+#    #+#             */
+/*   Updated: 2023/11/25 16:32:50 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-bool	check_num_of_player_and_invalid_char(char	**map)
+int	check_rightside_wall_check_nextlen(char **map, \
+	size_t i, size_t right_end_wall_index)
 {
-	size_t	i;
-	size_t	j;
-	size_t	num_of_player;
+	size_t	next_len;
 
-	i = 0;
-	num_of_player = 0;
-	while (map[i] != NULL)
+	next_len = ft_strlen(map[i + 1]);
+	if (right_end_wall_index + 1 > next_len)
 	{
-		j = 0;
-		while (map[i][j] != '\0')
+		while (right_end_wall_index > 0)
 		{
-			if (map[i][j] == 'N' || map[i][j] == 'S' || \
-				map[i][j] == 'W' || map[i][j] == 'E')
-				num_of_player++;
-			else if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'X')
-				return (false);
-			j++;
+			if (map[i][right_end_wall_index - 1] == '1')
+				right_end_wall_index--;
+			else
+				break ;
 		}
-		i++;
+		if (right_end_wall_index + 1 > next_len)
+			return (-1);
 	}
-	if (num_of_player == 1)
-		return (true);
-	else
+	return (right_end_wall_index);
+}
+
+bool	check_rightside_wall_xcase(char **map, size_t i, \
+	size_t right_end_wall_index)
+{
+	while (right_end_wall_index > 0 && map[i][right_end_wall_index - 1] == '1' \
+		&& map[i + 1][right_end_wall_index] == 'X')
+		right_end_wall_index--;
+	if (map[i + 1][right_end_wall_index] != '1')
 		return (false);
+	else
+		return (true);
 }
 
-bool	check_playable_or_not(char **map, size_t	x, size_t	y)
+bool	check_rightside_wall_for_zerocase(char **map, size_t i, \
+	size_t right_end_wall_index)
 {
-	size_t	above_line_len;
-	size_t	under_line_len;
-
-	above_line_len = ft_strlen(map[y - 1]);
-	under_line_len = ft_strlen(map[y + 1]);
-	if ((above_line_len > x + 1) && \
-		(map[y - 1][x] == '1' || \
-			map[y - 1][x] == '0'))
-	{
-		if ((under_line_len > x + 1) && \
-			(map[y + 1][x] == '1' || \
-				map[y + 1][x] == '0'))
-		{
-			if (map[y][x - 1] == '1' || \
-				map[y][x - 1] == '0')
-			{
-				if (map[y][x + 1] == '1' || \
-					map[y][x + 1] == '0')
-					return (true);
-			}
-		}
-	}
-	return (false);
+	while (map[i][right_end_wall_index + 1] == '1' && \
+		map[i + 1][right_end_wall_index] == '0')
+		right_end_wall_index++;
+	if (map[i + 1][right_end_wall_index] != '1')
+		return (false);
+	else
+		return (true);
 }
 
-bool	check_playable_map(char **map)
+bool	check_rightside_wall_for_norm(char	**map, size_t right_end_wall_index)
 {
 	size_t	i;
-	size_t	j;
-	size_t	player_pos_x;
-	size_t	player_pos_y;
 
 	i = 0;
-	while (map[i] != NULL)
+	while (map[i + 1] != NULL)
 	{
-		j = 0;
-		while (map[i][j] != '\0')
+		right_end_wall_index = check_rightside_wall_check_nextlen(map, \
+			i, right_end_wall_index);
+		if (right_end_wall_index == -1)
+			return (false);
+		if (map[i + 1][right_end_wall_index] == 'X')
 		{
-			if (map[i][j] == 'N' || map[i][j] == 'S' || \
-				map[i][j] == 'W' || map[i][j] == 'E')
-			{
-				player_pos_x = j;
-				player_pos_y = i;
-			}
-			j++;
+			if (check_rightside_wall_xcase(map, i, \
+				right_end_wall_index) == false)
+				return (false);
+			else
+				i++;
 		}
-		i++;
+		else if (map[i + 1][right_end_wall_index] == '0')
+		{
+			if (check_rightside_wall_for_zerocase(map, i, \
+				right_end_wall_index) == false)
+				return (false);
+			else
+				i++;
+		}
+		else
+			i++;
 	}
-	return (check_playable_or_not(map, player_pos_x, player_pos_y));
+	return (true);
+}
+
+bool	check_rightside_wall(char	**map)
+{
+	size_t	j;
+	size_t	right_end_wall_index;
+	size_t	next_len;
+
+	j = 0;
+	while (map[0][j] != '\0')
+		j++;
+	j--;
+	while (map[0][j] == 'X')
+		j--;
+	right_end_wall_index = j;
+	return (check_rightside_wall_for_norm(map, right_end_wall_index));
 }
