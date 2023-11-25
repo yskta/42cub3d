@@ -6,14 +6,14 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:24 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 15:55:19 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:57:30 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
 book	checj_leftside_wall_zerocase(char **map, size_t i, \
-	size_t leftside_wall_index)
+	size_t left_end_wall_index)
 {
 	while (left_end_wall_index > 0)
 	{
