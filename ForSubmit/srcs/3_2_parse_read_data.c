@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 14:50:32 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:58:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,41 +59,40 @@ bool	parse_texture(t_data *data, size_t i, size_t j)
 	return (true);
 }
 
-bool	parse_floor_or_ceiling(t_data *data, size_t i, size_t j)
+bool	parse_floor(t_data *data, size_t i, size_t j)
 {
-	if (data->map_data.read_data[i][j] == 'F')
-	{
+	j++;
+	while (data->map_data.read_data[i][j] == 'X')
 		j++;
-		while (data->map_data.read_data[i][j] == 'X')
-			j++;
-		data->floor.before_split = ft_strdup(&data->map_data.read_data[i][j]);
-		data->floor.after_split = ft_split(data->floor.before_split, ',');
-		data->floor.r = ft_atoi(data->floor.after_split[0]);
-		data->floor.g = ft_atoi(data->floor.after_split[1]);
-		data->floor.b = ft_atoi(data->floor.after_split[2]);
-		free_two_dimensional_array(data->floor.after_split);
-		free(data->floor.before_split);
-		if (data->floor.r < 0 || data->floor.r > 255 || data->floor.g < 0 || \
-			data->floor.g > 255 || data->floor.b < 0 || data->floor.b > 255)
-			return (false);
-	}
-	else if (data->map_data.read_data[i][j] == 'C')
-	{
+	data->floor.before_split = ft_strdup(&data->map_data.read_data[i][j]);
+	data->floor.after_split = ft_split(data->floor.before_split, ',');
+	data->floor.r = ft_atoi(data->floor.after_split[0]);
+	data->floor.g = ft_atoi(data->floor.after_split[1]);
+	data->floor.b = ft_atoi(data->floor.after_split[2]);
+	free_two_dimensional_array(data->floor.after_split);
+	free(data->floor.before_split);
+	if (data->floor.r < 0 || data->floor.r > 255 || data->floor.g < 0 || \
+		data->floor.g > 255 || data->floor.b < 0 || data->floor.b > 255)
+		return (false);
+	return (true);
+}
+
+bool	parse_ceiling(t_data *data, size_t i, size_t j)
+{
+	j++;
+	while (data->map_data.read_data[i][j] == 'X')
 		j++;
-		while (data->map_data.read_data[i][j] == 'X')
-			j++;
-		data->ceiling.before_split = ft_strdup(&data->map_data.read_data[i][j]);
-		data->ceiling.after_split = ft_split(data->ceiling.before_split, ',');
-		data->ceiling.r = ft_atoi(data->ceiling.after_split[0]);
-		data->ceiling.g = ft_atoi(data->ceiling.after_split[1]);
-		data->ceiling.b = ft_atoi(data->ceiling.after_split[2]);
-		free_two_dimensional_array(data->ceiling.after_split);
-		free(data->ceiling.before_split);
-		if (data->ceiling.r < 0 || data->ceiling.r > 255 || \
-			data->ceiling.g < 0 || data->ceiling.g > 255 || \
-			data->ceiling.b < 0 || data->ceiling.b > 255)
-			return (false);
-	}
+	data->ceiling.before_split = ft_strdup(&data->map_data.read_data[i][j]);
+	data->ceiling.after_split = ft_split(data->ceiling.before_split, ',');
+	data->ceiling.r = ft_atoi(data->ceiling.after_split[0]);
+	data->ceiling.g = ft_atoi(data->ceiling.after_split[1]);
+	data->ceiling.b = ft_atoi(data->ceiling.after_split[2]);
+	free_two_dimensional_array(data->ceiling.after_split);
+	free(data->ceiling.before_split);
+	if (data->ceiling.r < 0 || data->ceiling.r > 255 || \
+		data->ceiling.g < 0 || data->ceiling.g > 255 || \
+		data->ceiling.b < 0 || data->ceiling.b > 255)
+		return (false);
 	return (true);
 }
 
@@ -104,8 +103,9 @@ bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 		data->map_data.read_data[i][j] == 'W' || \
 		data->map_data.read_data[i][j] == 'E')
 		return (parse_texture(data, i, j));
-	else if (data->map_data.read_data[i][j] == 'F' || \
-		data->map_data.read_data[i][j] == 'C')
-		return (parse_floor_or_ceiling(data, i, j));
+	else if (data->map_data.read_data[i][j] == 'F')
+		return (parse_floor(data, i, j));
+	else if (data->map_data.read_data[i][j] == 'C')
+		return (parse_ceiling(data, i, j));
 	return (true);
 }

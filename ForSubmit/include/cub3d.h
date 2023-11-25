@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 13:20:05 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:58:09 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,8 @@ bool		parse_read_data(t_data *data);
 
 bool		juduge_identifer(char *str);
 bool		parse_texture(t_data *data, size_t i, size_t j);
-bool		parse_floor_or_ceiling(t_data *data, size_t i, size_t j);
+bool		parse_floor(t_data *data, size_t i, size_t j);
+bool		parse_ceiling(t_data *data, size_t i, size_t j);
 bool		parse_each_identifier(t_data *data, size_t i, size_t j);
 
 bool		check_valid_map(t_data *data);
