@@ -6,14 +6,14 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:07:44 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 16:34:20 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 16:36:35 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	check_rightside_wall_check_nextlen(char **map, \
-	size_t i, size_t right_end_wall_index)
+ssize_t	check_rightside_wall_check_nextlen(char **map, \
+	size_t i, ssize_t right_end_wall_index)
 {
 	size_t	next_len;
 
@@ -34,7 +34,7 @@ int	check_rightside_wall_check_nextlen(char **map, \
 }
 
 bool	check_rightside_wall_xcase(char **map, size_t i, \
-	size_t right_end_wall_index)
+	ssize_t right_end_wall_index)
 {
 	while (right_end_wall_index > 0 && map[i][right_end_wall_index - 1] == '1' \
 		&& map[i + 1][right_end_wall_index] == 'X')
@@ -46,7 +46,7 @@ bool	check_rightside_wall_xcase(char **map, size_t i, \
 }
 
 bool	check_rightside_wall_for_zerocase(char **map, size_t i, \
-	size_t right_end_wall_index)
+	ssize_t right_end_wall_index)
 {
 	while (map[i][right_end_wall_index + 1] == '1' && \
 		map[i + 1][right_end_wall_index] == '0')
@@ -57,7 +57,7 @@ bool	check_rightside_wall_for_zerocase(char **map, size_t i, \
 		return (true);
 }
 
-bool	check_rightside_wall_for_norm(char	**map, size_t right_end_wall_index)
+bool	check_rightside_wall_for_norm(char	**map, ssize_t right_end_wall_index)
 {
 	size_t	i;
 
@@ -93,7 +93,7 @@ bool	check_rightside_wall_for_norm(char	**map, size_t right_end_wall_index)
 bool	check_rightside_wall(char	**map)
 {
 	size_t	j;
-	size_t	right_end_wall_index;
+	ssize_t	right_end_wall_index;
 
 	j = 0;
 	while (map[0][j] != '\0')
