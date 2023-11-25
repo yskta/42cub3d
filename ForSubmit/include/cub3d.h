@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 19:49:15 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/25 10:10:21 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,6 @@ typedef struct s_side_dist
 	double	x;
 	double	y;
 }	t_side_dist;
-
-typedef struct s_box_pos_for_calc
-{
-	int	map_x;
-	int	map_y;
-}	t_box_pos_for_calc;
 
 typedef struct s_delta_dist
 {
