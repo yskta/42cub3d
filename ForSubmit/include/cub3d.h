@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 14:58:09 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:07:23 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,11 @@ bool		parse_ceiling(t_data *data, size_t i, size_t j);
 bool		parse_each_identifier(t_data *data, size_t i, size_t j);
 
 bool		check_valid_map(t_data *data);
+
+bool		check_leftside_wall(char	**map);
+bool		check_rightside_wall(char	**map);
+bool		check_num_of_player_and_invalid_char(char	**map);
+bool		check_playable_map(char **map);
 
 void		convert_space_to_x(char **map);
 
