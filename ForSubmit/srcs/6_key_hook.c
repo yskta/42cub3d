@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   6_key_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 19:37:57 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/25 10:17:36 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ static void	key_w_s(t_data *data, int keycode)
 	move = 1;
 	if (keycode == KEY_S)
 		sign = -1;
-	if (data->map_data.map[(int)(data->cur_pos->x + sign * data->dir->x * move)][(int)data->cur_pos->y] == '0')
+	if (data->map_data.map[(int)(data->cur_pos->x + \
+		sign * data->dir->x * move)][(int)data->cur_pos->y] == '0')
 		data->cur_pos->x += sign * data->dir->x * move;
-	if (data->map_data.map[(int)data->cur_pos->x][(int)(data->cur_pos->y + sign * data->dir->y * move)] == '0')
+	if (data->map_data.map[(int)data->cur_pos->x][(int)(data->cur_pos->y + \
+		sign * data->dir->y * move)] == '0')
 		data->cur_pos->y += sign * data->dir->y * move;
 }
 
@@ -62,9 +64,11 @@ static void	key_a_d(t_data *data, int keycode)
 	angle_y = old_dir_x * sin(M_PI / 2) + data->dir->y * cos(M_PI / 2);
 	if (keycode == KEY_D)
 		sign = -1;
-	if (data->map_data.map[(int)(data->cur_pos->x + angle_x * sign * move)][(int)data->cur_pos->y] == '0')
+	if (data->map_data.map[(int)(data->cur_pos->x + \
+		angle_x * sign * move)][(int)data->cur_pos->y] == '0')
 		data->cur_pos->x += angle_x * sign * move;
-	if (data->map_data.map[(int)data->cur_pos->x][(int)(data->cur_pos->y + angle_y * sign * move)] == '0')
+	if (data->map_data.map[(int)data->cur_pos->x][(int)(data->cur_pos->y + \
+		angle_y * sign * move)] == '0')
 		data->cur_pos->y += angle_y * sign * move;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_2_init_other_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 19:37:04 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/25 10:15:22 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,24 @@ bool	init_pos_dir_plane(t_data *data)
 				}
 				else if (data->map_data.map[i][j] == 'S')
 				{
-					data->dir->dir_x = 1;
-					data->dir->dir_y = 0;
-					data->plane->plane_x = 0;
-					data->plane->plane_y = -0.66;
+					data->dir->x = 1;
+					data->dir->y = 0;
+					data->plane->x = 0;
+					data->plane->y = -0.66;
 				}
 				else if (data->map_data.map[i][j] == 'E')
 				{
-					data->dir->dir_x = 0;
-					data->dir->dir_y = 1;
-					data->plane->plane_x = 0.66;
-					data->plane->plane_y = 0;
+					data->dir->x = 0;
+					data->dir->y = 1;
+					data->plane->x = 0.66;
+					data->plane->y = 0;
 				}
 				else if (data->map_data.map[i][j] == 'W')
 				{
-					data->dir->dir_x = 0;
-					data->dir->dir_y = -1;
-					data->plane->plane_x = -0.66;
-					data->plane->plane_y = 0;
+					data->dir->x = 0;
+					data->dir->y = -1;
+					data->plane->x = -0.66;
+					data->plane->y = 0;
 				}
 				break ;
 			}
@@ -68,7 +68,7 @@ bool	init_pos_dir_plane(t_data *data)
 		}
 		i++;
 	}
-	data->map_data.map[(int)data->cur_pos->pos_x][(int)data->cur_pos->pos_y] \
+	data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
 		= '0';
 	return (true);
 }

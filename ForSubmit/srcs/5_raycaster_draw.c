@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   5_raycaster_draw.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 19:42:12 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/25 10:18:17 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	key_draw(t_data *data)
 		calc_hit_wall(data);
 		tex_init(data);
 		// if (data->tex_x < data->old_tex_x)
-			tex_dir(data);
+		tex_dir(data);
 		tex_draw(data, row);
 		calc_free(data);
 		++row;
