@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/25 16:08:32 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/25 16:50:51 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRCS 			= $(addprefix $(SRCS_DIR),\
 			5_raycaster_draw_tex.c \
 			6_key_hook.c \
 			7_end_program.c \
-			8_free_and_destroy.c \
+			8_1_free_and_destroy.c \
+			8_2_free_and_destroy.c \
 			9_utils.c)
 
 OBJS = $(SRCS:%.c=%.o)
