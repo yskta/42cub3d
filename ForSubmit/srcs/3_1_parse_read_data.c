@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 13:13:48 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:24:04 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ bool	parse_all_identifier(t_data *data)
 		j = 0;
 		while (data->map_data.read_data[i][j] != '\0')
 		{
-			if (data->map_data.read_data[i][j] == ' ')
-			{
-				while (data->map_data.read_data[i][j] == ' ')
-					j++;
-				if (data->map_data.read_data[i][j] == '\0')
-					break ;
-			}
+			while (data->map_data.read_data[i][j] == ' ')
+				j++;
+			if (data->map_data.read_data[i][j] == '\0')
+				break ;
 			if (juduge_identifer(&data->map_data.read_data[i][j]) == true)
 			{
 				if (parse_each_identifier(data, i, j) == false)
