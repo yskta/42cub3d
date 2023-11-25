@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 13:19:02 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 13:20:05 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ bool		check_arg(int argc, char **argv);
 
 bool		read_map(char *argv, t_data *data);
 bool		parse_all_identifier(t_data *data);
-bool		parse_map(t_data *data);
+void		parse_map(t_data *data);
 bool		parse_read_data(t_data *data);
 
 bool		juduge_identifer(char *str);
