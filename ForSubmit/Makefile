@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/25 10:44:59 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/25 10:51:57 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,9 @@ ifeq ($(OS),Linux)
 	MLX_DIR = ./minilibx-linux
 	MLX_LIB = -lmlx_Linux -lXext -lX11
 	MLX_INCLUDE = $(addprefix -I, $(MLX_DIR))
-	X11_DIR = 
-	X11_LIB = 
-	X11_INCLUDE = 
+	#X11_DIR = 
+	#X11_LIB = 
+	#X11_INCLUDE = 
 endif
 
 ifeq ($(OS),Darwin)
@@ -65,7 +65,12 @@ LIB_INCLUDE = $(addprefix -I, $(LIB_DIR))
 all: mlx lib $(NAME)
 
 $(NAME): $(OBJS)
+ifeq ($(OS),Linux)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB) -lm
+else
 	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(X_11_DIR) $(X11_LIB) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB) -lm
+endif
+
 
 %.o:	%.c
 	$(CC) $(CFLAGS) -c $(X11_INCLUDE) $(MLX_INCLUDE) $(LIB_INCLUDE) $< -o $@
