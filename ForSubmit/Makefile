@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/25 10:51:57 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/25 10:57:26 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,6 @@ ifeq ($(OS),Linux)
 	MLX_DIR = ./minilibx-linux
 	MLX_LIB = -lmlx_Linux -lXext -lX11
 	MLX_INCLUDE = $(addprefix -I, $(MLX_DIR))
-	#X11_DIR = 
-	#X11_LIB = 
-	#X11_INCLUDE = 
 endif
 
 ifeq ($(OS),Darwin)
@@ -53,10 +50,6 @@ ifeq ($(OS),Darwin)
 	X11_LIB = -lXext -lX11
 	X11_INCLUDE = $(addprefix -I, $(X11_DIR))
 endif
-
-#MLX_DIR = ./minilibx-linux
-#MLX_LIB = -lmlx_Linux -lXext -lX11
-#MLX_INCLUDE = $(addprefix -I, $(MLX_DIR))
 
 LIB_DIR = ./libft
 LIB_LIB = -lft
