@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 14:45:55 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 14:49:30 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	parse_texture(t_data *data, size_t i, size_t j)
 	{
 		while (data->map_data.read_data[i][j] != '.')
 			j++;
-		directions[k] = ft_strdup(&data->map_data.read_data[i][j]);
+		*(directions[k]) = ft_strdup(&data->map_data.read_data[i][j]);
 		return (true);
 	}
 	return (false);
