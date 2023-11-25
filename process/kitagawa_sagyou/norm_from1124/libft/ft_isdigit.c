@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   9_utils.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:32:13 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 00:42:39 by yokitaga         ###   ########.fr       */
+/*   Created: 2023/10/20 11:34:11 by yokitaga          #+#    #+#             */
+/*   Updated: 2023/10/20 11:34:13 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "libft.h"
 
-void	put_error_and_exit(char *str, t_data *data)
+int	ft_isdigit(int c)
 {
-	if (data)
-		free(data);
-	printf("%s\n", str);
-	exit (1);
+	if ('0' <= c && c <= '9')
+		return (1);
+	else
+		return (0);
 }
