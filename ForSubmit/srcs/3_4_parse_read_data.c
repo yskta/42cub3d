@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:31:24 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 15:33:31 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:44:50 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ bool	check_num_of_player_and_invalid_char(char	**map)
 		return (false);
 }
 
-bool	check_playable_or_not(char **map, size_t	x, size_t	y;)
+bool	check_playable_or_not(char **map, size_t	x, size_t	y)
 {
 	size_t	above_line_len;
 	size_t	under_line_len;
