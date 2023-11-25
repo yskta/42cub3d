@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 14:58:53 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:21:30 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	juduge_identifer(char *str)
 		return (false);
 }
 
-bool	parse_texture(t_data *data, size_t i, size_t j)
+bool	parse_path(t_data *data, size_t i, size_t j)
 {
 	if (data->map_data.read_data[i][j] == 'N')
 	{
@@ -102,7 +102,7 @@ bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 		data->map_data.read_data[i][j] == 'S' || \
 		data->map_data.read_data[i][j] == 'W' || \
 		data->map_data.read_data[i][j] == 'E')
-		return (parse_texture(data, i, j));
+		return (parse_path(data, i, j));
 	else if (data->map_data.read_data[i][j] == 'F')
 		return (parse_floor(data, i, j));
 	else if (data->map_data.read_data[i][j] == 'C')

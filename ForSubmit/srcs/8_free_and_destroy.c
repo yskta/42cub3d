@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:43:54 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 15:12:18 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:18:36 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_two_dimensional_array(char **array)
 	free(array);
 }
 
-void	free_map_data_and_texture(t_data *data)
+void	free_map_data_and_path(t_data *data)
 {
 	if (data->map_data.read_data != NULL)
 		free_two_dimensional_array(data->map_data.read_data);
@@ -39,6 +39,10 @@ void	free_map_data_and_texture(t_data *data)
 		free(data->west_path);
 	if (data->east_path != NULL)
 		free(data->east_path);
+}
+
+void	free_texture(t_data *data)
+{
 	if (data->tex != NULL && data->tex->tex_dir != NULL)
 		free(data->tex->tex_dir);
 	if (data->tex != NULL)
@@ -77,9 +81,10 @@ void	free_pos_dir_plane(t_data *data)
 void	free_and_destroy_all(t_data *data)
 {
 	destroy_textures(data);
-	free_map_data_and_texture(data);
+	free_map_data_and_path(data);
 	mlx_destroy_window(data->mlx, data->mlx_win);
 	mlx_destroy_display(data->mlx);
+	free_texture(data);
 	free(data->mlx);
 	free_pos_dir_plane(data);
 	free(data);
