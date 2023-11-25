@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 12:33:29 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 15:44:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,15 +201,21 @@ bool		check_arg(int argc, char **argv);
 
 bool		read_map(char *argv, t_data *data);
 bool		parse_all_identifier(t_data *data);
-bool		parse_map(t_data *data);
+void		parse_map(t_data *data);
 bool		parse_read_data(t_data *data);
 
 bool		juduge_identifer(char *str);
-bool		parse_texture(t_data *data, size_t i, size_t j);
-bool		parse_floor_or_ceiling(t_data *data, size_t i, size_t j);
+bool		parse_path(t_data *data, size_t i, size_t j);
+bool		parse_floor(t_data *data, size_t i, size_t j);
+bool		parse_ceiling(t_data *data, size_t i, size_t j);
 bool		parse_each_identifier(t_data *data, size_t i, size_t j);
 
 bool		check_valid_map(t_data *data);
+
+bool		check_leftside_wall(char	**map);
+bool		check_rightside_wall(char	**map);
+bool		check_num_of_player_and_invalid_char(char	**map);
+bool		check_playable_map(char **map);
 
 void		convert_space_to_x(char **map);
 
@@ -234,7 +240,8 @@ int			key_hook(int keycode, t_data *data);
 int			close_program(t_data *data);
 
 void		free_two_dimensional_array(char **array);
-void		free_map_data_and_texture(t_data *data);
+void		free_map_data_and_path(t_data *data);
+void		free_texture(t_data *data);
 void		destroy_textures(t_data *data);
 void		free_pos_dir_plane(t_data *data);
 void		free_and_destroy_all(t_data *data);
