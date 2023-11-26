@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 00:47:45 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 01:38:19 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 	int		id_num;
 	bool	valid_flag;
 
+	data->num_of_identifer++;
 	id_num = juduge_identifer(&data->map_data.read_data[i][j]);
 	valid_flag = true;
 	if (1 <= id_num && id_num <= 4)
