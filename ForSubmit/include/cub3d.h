@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 11:25:43 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:31:37 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define KEY_RIGHT		0xff53
 # define KEY_ESC		0xff1b
 
-//# define BLACK 0x000000
+# define BLACK 0x000000
 //# define WHITE 0xFFFFFF
 //# define RED 0xFF0000
 //# define GREEN 0x00FF00
