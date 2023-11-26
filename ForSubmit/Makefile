@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/25 16:50:51 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/26 10:11:13 by snemoto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,9 +65,8 @@ $(NAME): $(OBJS)
 ifeq ($(OS),Linux)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB) -lm
 else
-	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(X_11_DIR) $(X11_LIB) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB) -lm
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -L$(X11_DIR) $(X11_LIB) -L$(MLX_DIR) $(MLX_LIB) -L$(LIB_DIR) $(LIB_LIB) -lm
 endif
-
 
 %.o:	%.c
 	$(CC) $(CFLAGS) -c $(X11_INCLUDE) $(MLX_INCLUDE) $(LIB_INCLUDE) $< -o $@
