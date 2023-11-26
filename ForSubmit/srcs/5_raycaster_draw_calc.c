@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 00:17:30 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/24 19:43:57 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:18:11 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	calc_init(t_data	*data)
 	if (data->ray_dir->x == 0)
 		data->delta_dist->x = 1e30;
 	else
-		data->delta_dist->x = fabs(1 / data->ray_dir->x);
+		data->delta_dist->x = fabs(1.0 / data->ray_dir->x);
 	if (data->ray_dir->y == 0)
 		data->delta_dist->y = 1e30;
 	else
-		data->delta_dist->y = fabs(1 / data->ray_dir->y);
+		data->delta_dist->y = fabs(1.0 / data->ray_dir->y);
 	data->step = (t_step *)malloc(sizeof(t_step));
 	data->side_dist = (t_side_dist *)malloc(sizeof(t_side_dist));
 }
@@ -88,11 +88,11 @@ void	calc_hit_wall(t_data *data)
 			data->box_pos->y += data->step->y;
 			data->side = true;
 		}
-		if (data->map_data.map[data->box_pos->x][data->box_pos->y] > '0')
+		if (data->map_data.map[data->box_pos->x][data->box_pos->y] != '0')
 			data->hit = true;
 	}
 	if (data->side == false)
-		data->perp_wall_dist = data->side_dist->x - data->delta_dist->x;
+		data->perp_wall_dist = data->side_dist->x - data->delta_dist->x + 0.01;
 	else
-		data->perp_wall_dist = data->side_dist->y - data->delta_dist->y;
+		data->perp_wall_dist = data->side_dist->y - data->delta_dist->y + 0.01;
 }

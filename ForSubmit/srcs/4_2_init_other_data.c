@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_2_init_other_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 19:04:18 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 17:15:21 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:01:46 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	init_data_pos_dir_plane_north_or_south(t_data *data, int i, int j)
 	if (data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
 		== 'N')
 	{
-		data->dir->x = -1;
-		data->dir->y = 0;
-		data->plane->x = 0;
+		data->dir->x = -1.0;
+		data->dir->y = 0.0;
+		data->plane->x = 0.0;
 		data->plane->y = 0.66;
 	}
 	else if (data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
 		== 'S')
 	{
-		data->dir->x = 1;
-		data->dir->y = 0;
-		data->plane->x = 0;
+		data->dir->x = 1.0;
+		data->dir->y = 0.0;
+		data->plane->x = 0.0;
 		data->plane->y = -0.66;
 	}
 }
@@ -41,18 +41,18 @@ void	init_data_pos_dir_plane_east_or_west(t_data *data, int i, int j)
 	if (data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
 		== 'E')
 	{
-		data->dir->x = 0;
-		data->dir->y = 1;
+		data->dir->x = 0.0;
+		data->dir->y = 1.0;
 		data->plane->x = 0.66;
-		data->plane->y = 0;
+		data->plane->y = 0.0;
 	}
 	else if (data->map_data.map[(int)data->cur_pos->x][(int)data->cur_pos->y] \
 		== 'W')
 	{
-		data->dir->x = 0;
-		data->dir->y = -1;
+		data->dir->x = 0.0;
+		data->dir->y = -1.0;
 		data->plane->x = -0.66;
-		data->plane->y = 0;
+		data->plane->y = 0.0;
 	}
 }
 
