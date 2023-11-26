@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 02:24:01 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:24:50 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 {
 	ssize_t	fd;
 
-	printf("data->map_data.read_data[i][j] = %c\n", data->map_data.read_data[i][j]);
 	while (data->map_data.read_data[i][j] != '\0' && \
 		data->map_data.read_data[i][j] != '.')
 		j++;
