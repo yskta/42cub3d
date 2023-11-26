@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 15:21:30 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:44:31 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ bool	parse_floor(t_data *data, size_t i, size_t j)
 	if (data->floor.r < 0 || data->floor.r > 255 || data->floor.g < 0 || \
 		data->floor.g > 255 || data->floor.b < 0 || data->floor.b > 255)
 		return (false);
+	data->floor.color = data->floor.r << 16 | data->floor.g << 8 | \
+						data->floor.b;
 	return (true);
 }
 
@@ -93,6 +95,8 @@ bool	parse_ceiling(t_data *data, size_t i, size_t j)
 		data->ceiling.g < 0 || data->ceiling.g > 255 || \
 		data->ceiling.b < 0 || data->ceiling.b > 255)
 		return (false);
+	data->ceiling.color = data->ceiling.r << 16 | data->ceiling.g << 8 | \
+						data->ceiling.b;
 	return (true);
 }
 

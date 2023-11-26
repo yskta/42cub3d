@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 10:18:17 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/25 17:46:08 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ static void	draw_celling_fllor(t_data *data)
 		{
 			data->img->dst = data->img->addr \
 				+ row * (data->img->bits / 8) + col * data->img->size;
-			*(unsigned int *)data->img->dst = BLUE / 2;
+			*(unsigned int *)data->img->dst = data->floor.color;
 			data->img->dst = data->img->addr + (SCREEN_H - col - 1) \
 				* data->img->size + row * (data->img->bits / 8);
-			*(unsigned int *)data->img->dst = GREEN / 2;
+			*(unsigned int *)data->img->dst = data->ceiling.color;
 			++row;
 		}
 		++col;
