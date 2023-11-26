@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 00:03:42 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:04:57 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,5 @@ bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 		valid_flag = parse_floor(data, i, j);
 	else if (id_num == 6)
 		valid_flag = parse_ceiling(data, i, j);
-	return (true);
+	return (valid_flag);
 }
