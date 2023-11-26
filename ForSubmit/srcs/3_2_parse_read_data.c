@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 01:59:39 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:03:03 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,14 @@ bool	parse_floor(t_data *data, size_t i, size_t j)
 {
 	bool	valid_flag;
 
-	printf("data->map_data.read_data[i] = %s\n", data->map_data.read_data[i]);
 	valid_flag = true;
 	j++;
-	while (data->map_data.read_data[i][j] == 'X')
+	while (data->map_data.read_data[i][j] == ' ')
 		j++;
+	if (data->map_data.read_data[i][j] == '\0')
+		return (false);
 	data->floor.before_split = ft_strdup(&data->map_data.read_data[i][j]);
+	printf("data->floor.before_split = %s\n", data->floor.before_split);
 	data->floor.after_split = ft_split(data->floor.before_split, ',');
 	if (set_and_check_color(&data->floor) == false)
 		valid_flag = false;
@@ -92,12 +94,14 @@ bool	parse_ceiling(t_data *data, size_t i, size_t j)
 {
 	bool	valid_flag;
 
-	printf("data->map_data.read_data[i] = %s\n", data->map_data.read_data[i]);
 	valid_flag = true;
 	j++;
-	while (data->map_data.read_data[i][j] == 'X')
+	while (data->map_data.read_data[i][j] == ' ')
 		j++;
+	if (data->map_data.read_data[i][j] == '\0')
+		return (false);
 	data->ceiling.before_split = ft_strdup(&data->map_data.read_data[i][j]);
+	printf("data->ceiling.before_split = %s\n", data->ceiling.before_split);
 	data->ceiling.after_split = ft_split(data->ceiling.before_split, ',');
 	if (set_and_check_color(&data->ceiling) == false)
 		valid_flag = false;
