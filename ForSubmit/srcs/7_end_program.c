@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:43:56 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 00:37:58 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:28:50 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int	close_program(t_data *data)
 {
 	free_and_destroy_all(data);
 	printf("CLOSED\n");
-	exit (1);
+	exit (0);
 }

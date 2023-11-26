@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 10:17:36 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 11:29:10 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int	key_hook(int keycode, t_data *data)
 		key_a_d(data, keycode);
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		key_l_r(data, keycode);
+	else if (keycode == KEY_ESC)
+		close_program(data);
 	else
 		return (0);
 	key_draw_clear(data);
