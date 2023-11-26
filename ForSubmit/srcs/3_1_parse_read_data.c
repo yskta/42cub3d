@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 00:44:25 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:48:45 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ bool	parse_read_data(t_data *data)
 	data->south_path = NULL;
 	data->west_path = NULL;
 	data->east_path = NULL;
-	if (parse_all_identifier(data) == false)
+	if (parse_all_identifier(data) == false || \
+		data->north_path == NULL || data->south_path == NULL || \
+		data->west_path == NULL || data->east_path == NULL)
 	{
 		free_map_data_and_path(data);
 		return (false);

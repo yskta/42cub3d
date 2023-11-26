@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 00:44:51 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:47:45 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 		data->west_path = ft_strdup(&data->map_data.read_data[i][j]);
 	else if (id_num == 4 && data->east_path == NULL)
 		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
+	else
+		return (false);
 	return (true);
 }
 
@@ -94,9 +96,7 @@ bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 	id_num = juduge_identifer(&data->map_data.read_data[i][j]);
 	valid_flag = true;
 	if (1 <= id_num && id_num <= 4)
-	{
 		valid_flag = parse_path(data, i, j, id_num);
-	}
 	else if (id_num == 5)
 		valid_flag = parse_floor(data, i, j);
 	else if (id_num == 6)
