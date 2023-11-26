@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 00:37:45 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:44:51 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 {
 	while (data->map_data.read_data[i][j] != '.')
 		j++;
-	if (id_num == 1)
+	if (id_num == 1 && data->north_path == NULL)
 		data->north_path = ft_strdup(&data->map_data.read_data[i][j]);
-	else if (id_num == 2)
+	else if (id_num == 2 && data->south_path == NULL)
 		data->south_path = ft_strdup(&data->map_data.read_data[i][j]);
-	else if (id_num == 3)
+	else if (id_num == 3 && data->west_path == NULL)
 		data->west_path = ft_strdup(&data->map_data.read_data[i][j]);
-	else if (id_num == 4)
+	else if (id_num == 4 && data->east_path == NULL)
 		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
 	return (true);
 }
@@ -92,10 +92,11 @@ bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 	bool	valid_flag;
 
 	id_num = juduge_identifer(&data->map_data.read_data[i][j]);
-	printf("id_num = %d\n", id_num);
 	valid_flag = true;
 	if (1 <= id_num && id_num <= 4)
+	{
 		valid_flag = parse_path(data, i, j, id_num);
+	}
 	else if (id_num == 5)
 		valid_flag = parse_floor(data, i, j);
 	else if (id_num == 6)
