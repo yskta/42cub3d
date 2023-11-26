@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 00:35:39 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:37:45 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,13 @@ bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 	while (data->map_data.read_data[i][j] != '.')
 		j++;
 	if (id_num == 1)
-	{
 		data->north_path = ft_strdup(&data->map_data.read_data[i][j]);
-		printf("north_path = %s\n", data->north_path);
-	}
 	else if (id_num == 2)
-	{
 		data->south_path = ft_strdup(&data->map_data.read_data[i][j]);
-		printf("south_path = %s\n", data->south_path);
-	}
 	else if (id_num == 3)
-	{
 		data->west_path = ft_strdup(&data->map_data.read_data[i][j]);
-		printf("west_path = %s\n", data->west_path);
-	}
-	else if (id_num == 4 && data->east_path == NULL)
-	{
+	else if (id_num == 4)
 		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
-		printf("east_path = %s\n", data->east_path);
-	}
 	return (true);
 }
 
