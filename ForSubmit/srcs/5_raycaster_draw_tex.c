@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 00:23:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 13:11:41 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:21:34 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	tex_init(t_data *data)
 {
-	data->line_height = (int)(SCREEN_H / data->perp_wall_dist);
+	data->line_height = (int)((double)SCREEN_H / data->perp_wall_dist);
 	data->draw_start = SCREEN_H / 2 - data->line_height / 2;
 	if (data->draw_start < 0)
 		data->draw_start = 0;
