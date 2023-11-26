@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 02:12:21 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:15:29 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,18 +106,13 @@ bool	parse_read_data(t_data *data)
 	data->west_path = NULL;
 	data->east_path = NULL;
 	data->map_data.map = NULL;
-	data->num_of_identifer = 0;
+	data->num_of_id = 0;
 	parse_map(data);
 	convert_space_to_x(data->map_data.map);
 	if (parse_all_identifier(data) == false || \
 		data->north_path == NULL || data->south_path == NULL || \
 		data->west_path == NULL || data->east_path == NULL || \
-		data->num_of_identifer != 6)
-	{
-		free_map_data_and_path(data);
-		return (false);
-	}
-	if (check_valid_map(data) == false)
+		data->num_of_id != 6 || check_valid_map(data) == false)
 	{
 		free_map_data_and_path(data);
 		return (false);

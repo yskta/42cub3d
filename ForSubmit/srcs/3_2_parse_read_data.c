@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 02:06:45 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:19:09 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 {
+	ssize_t	fd;
+
 	while (data->map_data.read_data[i][j] != '.')
 		j++;
+	fd = open(&data->map_data.read_data[i][j], O_RDONLY);
+	if (fd == -1)
+		return (false);
 	if (id_num == 1 && data->north_path == NULL)
 		data->north_path = ft_strdup(&data->map_data.read_data[i][j]);
 	else if (id_num == 2 && data->south_path == NULL)
@@ -26,6 +31,7 @@ bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
 	else
 		return (false);
+	close(fd);
 	return (true);
 }
 
@@ -95,7 +101,7 @@ bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 	int		id_num;
 	bool	valid_flag;
 
-	data->num_of_identifer++;
+	data->num_of_id++;
 	id_num = juduge_identifer(&data->map_data.read_data[i][j]);
 	valid_flag = true;
 	if (1 <= id_num && id_num <= 4)
