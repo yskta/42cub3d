@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:41:22 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 10:43:21 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:07:17 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	key_draw(t_data *data)
 	row = 0;
 	while (row < SCREEN_W)
 	{
-		data->camera_x = 2 * row / (double)SCREEN_W - 1;
+		data->camera_x = 2.0 * row / (double)SCREEN_W - 1.0;
 		calc_init(data);
 		calc_side_dist(data);
 		calc_hit_wall(data);
