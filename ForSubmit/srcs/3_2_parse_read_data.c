@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 00:29:25 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:31:56 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,14 @@ bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 {
 	while (data->map_data.read_data[i][j] != '.')
 		j++;
-	if (id_num == 1 && data->north_path == NULL)
-	{
+	if (id_num == 1)
 		data->north_path = ft_strdup(&data->map_data.read_data[i][j]);
-		printf("data->north_path = %s\n", data->north_path);
-	}
-	else if (id_num == 2 && data->south_path == NULL)
-	{
+	else if (id_num == 2)
 		data->south_path = ft_strdup(&data->map_data.read_data[i][j]);
-		printf("data->south_path = %s\n", data->south_path);
-	}
-	else if (id_num == 3 && data->west_path == NULL)
-	{
+	else if (id_num == 3)
 		data->west_path = ft_strdup(&data->map_data.read_data[i][j]);
-		printf("data->west_path = %s\n", data->west_path);
-	}
 	else if (id_num == 4 && data->east_path == NULL)
-	{
 		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
-		printf("data->east_path = %s\n", data->east_path);
-	}
-	//else
-	//	return (false);
 	return (true);
 }
 
