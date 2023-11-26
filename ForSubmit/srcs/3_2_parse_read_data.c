@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 01:58:44 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 01:59:39 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ bool	parse_floor(t_data *data, size_t i, size_t j)
 		valid_flag = false;
 	free_two_dimensional_array(data->floor.after_split);
 	free(data->floor.before_split);
-	return (true);
+	return (valid_flag);
 }
 
 bool	parse_ceiling(t_data *data, size_t i, size_t j)
