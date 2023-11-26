@@ -6,11 +6,29 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 01:40:49 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:06:48 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int	juduge_identifer(char *str)
+{
+	if (ft_strncmp(str, "NO ", 3) == 0)
+		return (1);
+	else if (ft_strncmp(str, "SO ", 3) == 0)
+		return (2);
+	else if (ft_strncmp(str, "WE ", 3) == 0)
+		return (3);
+	else if (ft_strncmp(str, "EA ", 3) == 0)
+		return (4);
+	else if (ft_strncmp(str, "F ", 2) == 0)
+		return (5);
+	else if (ft_strncmp(str, "C ", 2) == 0)
+		return (6);
+	else
+		return (0);
+}
 
 bool	parse_all_identifier(t_data *data)
 {

@@ -6,29 +6,11 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 02:03:03 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:06:45 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-int	juduge_identifer(char *str)
-{
-	if (ft_strncmp(str, "NO ", 3) == 0)
-		return (1);
-	else if (ft_strncmp(str, "SO ", 3) == 0)
-		return (2);
-	else if (ft_strncmp(str, "WE ", 3) == 0)
-		return (3);
-	else if (ft_strncmp(str, "EA ", 3) == 0)
-		return (4);
-	else if (ft_strncmp(str, "F ", 2) == 0)
-		return (5);
-	else if (ft_strncmp(str, "C ", 2) == 0)
-		return (6);
-	else
-		return (0);
-}
 
 bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 {
@@ -81,7 +63,6 @@ bool	parse_floor(t_data *data, size_t i, size_t j)
 	if (data->map_data.read_data[i][j] == '\0')
 		return (false);
 	data->floor.before_split = ft_strdup(&data->map_data.read_data[i][j]);
-	printf("data->floor.before_split = %s\n", data->floor.before_split);
 	data->floor.after_split = ft_split(data->floor.before_split, ',');
 	if (set_and_check_color(&data->floor) == false)
 		valid_flag = false;
@@ -101,7 +82,6 @@ bool	parse_ceiling(t_data *data, size_t i, size_t j)
 	if (data->map_data.read_data[i][j] == '\0')
 		return (false);
 	data->ceiling.before_split = ft_strdup(&data->map_data.read_data[i][j]);
-	printf("data->ceiling.before_split = %s\n", data->ceiling.before_split);
 	data->ceiling.after_split = ft_split(data->ceiling.before_split, ',');
 	if (set_and_check_color(&data->ceiling) == false)
 		valid_flag = false;
