@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 01:38:19 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 01:58:44 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,45 +47,63 @@ bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 	return (true);
 }
 
+bool	set_and_check_color(t_floor_or_ceiling *floor_or_ceiling)
+{
+	int		size_of_after_split;
+
+	size_of_after_split = 0;
+	while (floor_or_ceiling->after_split[size_of_after_split] != NULL)
+		size_of_after_split++;
+	if (size_of_after_split != 3)
+		return (false);
+	floor_or_ceiling->r = ft_atoi(floor_or_ceiling->after_split[0]);
+	floor_or_ceiling->g = ft_atoi(floor_or_ceiling->after_split[1]);
+	floor_or_ceiling->b = ft_atoi(floor_or_ceiling->after_split[2]);
+	if (floor_or_ceiling->r < 0 || floor_or_ceiling->r > 255 || \
+		floor_or_ceiling->g < 0 || floor_or_ceiling->g > 255 || \
+		floor_or_ceiling->b < 0 || floor_or_ceiling->b > 255)
+		return (false);
+	else
+		floor_or_ceiling->color = floor_or_ceiling->r << 16 | \
+									floor_or_ceiling->g << 8 | \
+									floor_or_ceiling->b;
+	return (true);
+}
+
 bool	parse_floor(t_data *data, size_t i, size_t j)
 {
+	bool	valid_flag;
+
+	printf("data->map_data.read_data[i] = %s\n", data->map_data.read_data[i]);
+	valid_flag = true;
 	j++;
 	while (data->map_data.read_data[i][j] == 'X')
 		j++;
 	data->floor.before_split = ft_strdup(&data->map_data.read_data[i][j]);
 	data->floor.after_split = ft_split(data->floor.before_split, ',');
-	data->floor.r = ft_atoi(data->floor.after_split[0]);
-	data->floor.g = ft_atoi(data->floor.after_split[1]);
-	data->floor.b = ft_atoi(data->floor.after_split[2]);
+	if (set_and_check_color(&data->floor) == false)
+		valid_flag = false;
 	free_two_dimensional_array(data->floor.after_split);
 	free(data->floor.before_split);
-	if (data->floor.r < 0 || data->floor.r > 255 || data->floor.g < 0 || \
-		data->floor.g > 255 || data->floor.b < 0 || data->floor.b > 255)
-		return (false);
-	data->floor.color = data->floor.r << 16 | data->floor.g << 8 | \
-						data->floor.b;
 	return (true);
 }
 
 bool	parse_ceiling(t_data *data, size_t i, size_t j)
 {
+	bool	valid_flag;
+
+	printf("data->map_data.read_data[i] = %s\n", data->map_data.read_data[i]);
+	valid_flag = true;
 	j++;
 	while (data->map_data.read_data[i][j] == 'X')
 		j++;
 	data->ceiling.before_split = ft_strdup(&data->map_data.read_data[i][j]);
 	data->ceiling.after_split = ft_split(data->ceiling.before_split, ',');
-	data->ceiling.r = ft_atoi(data->ceiling.after_split[0]);
-	data->ceiling.g = ft_atoi(data->ceiling.after_split[1]);
-	data->ceiling.b = ft_atoi(data->ceiling.after_split[2]);
+	if (set_and_check_color(&data->ceiling) == false)
+		valid_flag = false;
 	free_two_dimensional_array(data->ceiling.after_split);
 	free(data->ceiling.before_split);
-	if (data->ceiling.r < 0 || data->ceiling.r > 255 || \
-		data->ceiling.g < 0 || data->ceiling.g > 255 || \
-		data->ceiling.b < 0 || data->ceiling.b > 255)
-		return (false);
-	data->ceiling.color = data->ceiling.r << 16 | data->ceiling.g << 8 | \
-						data->ceiling.b;
-	return (true);
+	return (valid_flag);
 }
 
 bool	parse_each_identifier(t_data *data, size_t i, size_t j)
