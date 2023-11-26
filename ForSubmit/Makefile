@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
+#    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/08 11:19:11 by yokitaga          #+#    #+#              #
-#    Updated: 2023/11/26 10:11:13 by snemoto          ###   ########.fr        #
+#    Updated: 2023/11/26 22:54:25 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address

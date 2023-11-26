@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 17:44:31 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 23:11:31 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 bool	juduge_identifer(char *str)
 {
-	if (ft_strncmp(str, "NO", 2) == 0)
+	if (ft_strncmp(str, "NO ", 3) == 0)
 		return (true);
-	else if (ft_strncmp(str, SO, 2) == 0)
+	else if (ft_strncmp(str, "SO ", 3) == 0)
 		return (true);
-	else if (ft_strncmp(str, WE, 2) == 0)
+	else if (ft_strncmp(str, "WE ", 3) == 0)
 		return (true);
-	else if (ft_strncmp(str, EA, 2) == 0)
+	else if (ft_strncmp(str, "EA ", 3) == 0)
 		return (true);
-	else if (ft_strncmp(str, F, 1) == 0)
+	else if (ft_strncmp(str, "F ", 2) == 0)
 		return (true);
-	else if (ft_strncmp(str, C, 1) == 0)
+	else if (ft_strncmp(str, "C ", 2) == 0)
 		return (true);
 	else
 		return (false);

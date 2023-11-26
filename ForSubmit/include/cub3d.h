@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 14:05:45 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/26 23:08:42 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 # include <X11/X.h>
 # include <X11/keysymdef.h>
 
-# define NO "NO"
-# define SO "SO"
-# define WE "WE"
-# define EA "EA"
-# define F "F"
-# define C "C"
+//# define NO "NO"
+//# define SO "SO"
+//# define WE "WE"
+//# define EA "EA"
+//# define F "F"
+//# define C "C"
 
 # define KEY_W 0x077
 # define KEY_S 0x073
