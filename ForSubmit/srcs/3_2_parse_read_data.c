@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 02:19:09 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 02:20:20 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 
 	while (data->map_data.read_data[i][j] != '.')
 		j++;
+	if (data->map_data.read_data[i][j] == '\0')
+		return (false);
 	fd = open(&data->map_data.read_data[i][j], O_RDONLY);
 	if (fd == -1)
 		return (false);
