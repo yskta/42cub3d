@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   5_raycaster_draw_tex.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 00:23:14 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 12:37:08 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 10:43:16 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	tex_init(t_data *data)
 		data->wall_x = data->cur_pos->x + \
 			data->perp_wall_dist * data->ray_dir->x;
 	data->wall_x -= floor(data->wall_x);
-	data->old_tex_x = data->tex_x;
 	data->tex_x = (int)(data->wall_x * (double)TEX_W);
 	if (data->side == false && data->ray_dir->x > 0)
 		data->tex_x = TEX_W - data->tex_x - 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 17:43:45 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 10:43:12 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,6 @@ typedef struct s_data{
 	double					wall_x;
 	int						tex_x;
 	int						tex_y;
-	int						old_tex_x;
 	double					tex_step;
 	double					tex_pos;
 	t_floor_or_ceiling		floor;
