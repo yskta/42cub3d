@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 23:08:42 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 23:17:44 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@
 # include "../minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysymdef.h>
-
-//# define NO "NO"
-//# define SO "SO"
-//# define WE "WE"
-//# define EA "EA"
-//# define F "F"
-//# define C "C"
 
 # define KEY_W 0x077
 # define KEY_S 0x073
@@ -197,7 +190,7 @@ bool		parse_all_identifier(t_data *data);
 void		parse_map(t_data *data);
 bool		parse_read_data(t_data *data);
 
-bool		juduge_identifer(char *str);
+int			juduge_identifer(char *str);
 bool		parse_path(t_data *data, size_t i, size_t j);
 bool		parse_floor(t_data *data, size_t i, size_t j);
 bool		parse_ceiling(t_data *data, size_t i, size_t j);

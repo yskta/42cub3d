@@ -6,56 +6,45 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 00:26:47 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 23:11:31 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:03:42 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-bool	juduge_identifer(char *str)
+int	juduge_identifer(char *str)
 {
 	if (ft_strncmp(str, "NO ", 3) == 0)
-		return (true);
+		return (1);
 	else if (ft_strncmp(str, "SO ", 3) == 0)
-		return (true);
+		return (2);
 	else if (ft_strncmp(str, "WE ", 3) == 0)
-		return (true);
+		return (3);
 	else if (ft_strncmp(str, "EA ", 3) == 0)
-		return (true);
+		return (4);
 	else if (ft_strncmp(str, "F ", 2) == 0)
-		return (true);
+		return (5);
 	else if (ft_strncmp(str, "C ", 2) == 0)
-		return (true);
+		return (6);
 	else
-		return (false);
+		return (0);
 }
 
-bool	parse_path(t_data *data, size_t i, size_t j)
+bool	parse_path(t_data *data, size_t i, size_t j, int id_num)
 {
-	if (data->map_data.read_data[i][j] == 'N')
-	{
-		while (data->map_data.read_data[i][j] != '.')
-			j++;
+	while (data->map_data.read_data[i][j] != '.')
+		j++;
+	printf("data->map_data.read_data[i][j] = %s\n", &data->map_data.read_data[i][j]);
+	if (id_num == 1 && data->north_path == NULL)
 		data->north_path = ft_strdup(&data->map_data.read_data[i][j]);
-	}
-	else if (data->map_data.read_data[i][j] == 'S')
-	{
-		while (data->map_data.read_data[i][j] != '.')
-			j++;
+	else if (id_num == 2 && data->south_path == NULL)
 		data->south_path = ft_strdup(&data->map_data.read_data[i][j]);
-	}
-	else if (data->map_data.read_data[i][j] == 'W')
-	{
-		while (data->map_data.read_data[i][j] != '.')
-			j++;
+	else if (id_num == 3 && data->west_path == NULL)
 		data->west_path = ft_strdup(&data->map_data.read_data[i][j]);
-	}
-	else if (data->map_data.read_data[i][j] == 'E')
-	{
-		while (data->map_data.read_data[i][j] != '.')
-			j++;
+	else if (id_num == 4 && data->east_path == NULL)
 		data->east_path = ft_strdup(&data->map_data.read_data[i][j]);
-	}
+	else
+		return (false);
 	return (true);
 }
 
@@ -102,14 +91,16 @@ bool	parse_ceiling(t_data *data, size_t i, size_t j)
 
 bool	parse_each_identifier(t_data *data, size_t i, size_t j)
 {
-	if (data->map_data.read_data[i][j] == 'N' || \
-		data->map_data.read_data[i][j] == 'S' || \
-		data->map_data.read_data[i][j] == 'W' || \
-		data->map_data.read_data[i][j] == 'E')
-		return (parse_path(data, i, j));
-	else if (data->map_data.read_data[i][j] == 'F')
-		return (parse_floor(data, i, j));
-	else if (data->map_data.read_data[i][j] == 'C')
-		return (parse_ceiling(data, i, j));
+	int		id_num;
+	bool	valid_flag;
+
+	id_num = juduge_identifer(&data->map_data.read_data[i][j]);
+	valid_flag = true;
+	if (1 <= id_num && id_num <= 4)
+		valid_flag = parse_path(data, i, j, id_num);
+	else if (id_num == 5)
+		valid_flag = parse_floor(data, i, j);
+	else if (id_num == 6)
+		valid_flag = parse_ceiling(data, i, j);
 	return (true);
 }
