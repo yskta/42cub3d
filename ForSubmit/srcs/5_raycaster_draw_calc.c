@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 00:17:30 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 13:18:11 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/26 14:06:04 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	calc_free(t_data *data)
 	free(data->side_dist);
 }
 
-void	calc_init(t_data	*data)
+bool	calc_init(t_data	*data)
 {
 	data->hit = false;
 	data->side = false;
@@ -42,6 +42,10 @@ void	calc_init(t_data	*data)
 		data->delta_dist->y = fabs(1.0 / data->ray_dir->y);
 	data->step = (t_step *)malloc(sizeof(t_step));
 	data->side_dist = (t_side_dist *)malloc(sizeof(t_side_dist));
+	if (data->box_pos == NULL || data->ray_dir == NULL || data->delta_dist \
+		== NULL || data->step == NULL || data->side_dist == NULL)
+		return (false);
+	return (true);
 }
 
 void	calc_side_dist(t_data	*data)

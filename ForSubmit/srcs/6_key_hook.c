@@ -6,29 +6,11 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 12:55:09 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/26 13:55:28 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-static void	key_draw_clear(t_data *data)
-{
-	unsigned int	row;
-	unsigned int	col;
-
-	row = 0;
-	while (row < SCREEN_W)
-	{
-		col = 0;
-		while (col < SCREEN_H)
-		{
-			mlx_pixel_put(data->mlx, data->mlx_win, row, col, BLACK);
-			++col;
-		}
-		++row;
-	}
-}
 
 static void	key_w_s(t_data *data, int keycode)
 {
@@ -99,8 +81,5 @@ int	key_hook(int keycode, t_data *data)
 		key_l_r(data, keycode);
 	else if (keycode == KEY_ESC)
 		close_program(data);
-	else
-		return (0);
-	key_draw_clear(data);
 	return (0);
 }

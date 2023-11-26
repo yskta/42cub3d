@@ -6,7 +6,7 @@
 /*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 13:12:53 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/26 14:05:45 by snemoto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,7 @@ bool		init_pos_dir_plane(t_data *data);
 int			key_draw(t_data *data);
 
 void		calc_free(t_data	*data);
-void		calc_init(t_data	*data);
+bool		calc_init(t_data	*data);
 void		calc_side_dist(t_data	*data);
 void		calc_hit_wall(t_data *data);
 
