@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 23:17:44 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 00:05:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ void		parse_map(t_data *data);
 bool		parse_read_data(t_data *data);
 
 int			juduge_identifer(char *str);
-bool		parse_path(t_data *data, size_t i, size_t j);
+bool		parse_path(t_data *data, size_t i, size_t j, int id_num);
 bool		parse_floor(t_data *data, size_t i, size_t j);
 bool		parse_ceiling(t_data *data, size_t i, size_t j);
 bool		parse_each_identifier(t_data *data, size_t i, size_t j);
