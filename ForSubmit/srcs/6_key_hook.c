@@ -6,29 +6,29 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 23:42:40 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 13:38:26 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/26 13:39:44 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	key_draw_clear(t_data *data)
-{
-	unsigned int	row;
-	unsigned int	col;
+//static void	key_draw_clear(t_data *data)
+//{
+//	unsigned int	row;
+//	unsigned int	col;
 
-	row = 0;
-	while (row < SCREEN_W)
-	{
-		col = 0;
-		while (col < SCREEN_H)
-		{
-			mlx_pixel_put(data->mlx, data->mlx_win, row, col, BLACK);
-			++col;
-		}
-		++row;
-	}
-}
+//	row = 0;
+//	while (row < SCREEN_W)
+//	{
+//		col = 0;
+//		while (col < SCREEN_H)
+//		{
+//			mlx_pixel_put(data->mlx, data->mlx_win, row, col, BLACK);
+//			++col;
+//		}
+//		++row;
+//	}
+//}
 
 static void	key_w_s(t_data *data, int keycode)
 {
