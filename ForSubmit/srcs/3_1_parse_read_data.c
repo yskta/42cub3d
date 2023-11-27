@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 13:22:06 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:30:53 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,15 @@ bool	parse_read_data(t_data *data)
 	data->west_path = NULL;
 	data->east_path = NULL;
 	data->map_data.map = NULL;
+	data->map_data.map_height = 0;
 	data->num_of_id = 0;
 	parse_map(data);
+	if (data->map_data.map_height < 3)
+	{
+		free_map_data_and_path(data);
+		return (false);
+	}
+	printf ("map_height = %d\n", data->map_data.map_height);
 	convert_space_to_x(data->map_data.map);
 	if (parse_all_identifier(data) == false || \
 		data->north_path == NULL || data->south_path == NULL || \
