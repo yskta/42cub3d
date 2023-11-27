@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 02:15:38 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 20:37:38 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ typedef struct s_floor_or_ceiling{
 	int		g;
 	int		b;
 	int		color;
+	bool	done_flag;
 }	t_floor_or_ceiling;
 
 typedef struct s_data{
