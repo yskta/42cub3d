@@ -6,11 +6,29 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 15:20:08 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 20:38:16 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+int	juduge_identifer(char *str)
+{
+	if (ft_strncmp(str, "NO ", 3) == 0)
+		return (1);
+	else if (ft_strncmp(str, "SO ", 3) == 0)
+		return (2);
+	else if (ft_strncmp(str, "WE ", 3) == 0)
+		return (3);
+	else if (ft_strncmp(str, "EA ", 3) == 0)
+		return (4);
+	else if (ft_strncmp(str, "F ", 2) == 0)
+		return (5);
+	else if (ft_strncmp(str, "C ", 2) == 0)
+		return (6);
+	else
+		return (0);
+}
 
 bool	parse_all_identifier(t_data *data)
 {
@@ -27,7 +45,7 @@ bool	parse_all_identifier(t_data *data)
 				j++;
 			if (data->map_data.read_data[i][j] == '\0')
 				break ;
-			if (juduge_identifer(&data->map_data.read_data[i][j]) == true)
+			if (juduge_identifer(&data->map_data.read_data[i][j]) > 0)
 			{
 				if (parse_each_identifier(data, i, j) == false)
 					return (false);
@@ -83,14 +101,21 @@ void	parse_map(t_data *data)
 
 bool	parse_read_data(t_data *data)
 {
-	if (parse_all_identifier(data) == false)
-	{
-		free_map_data_and_path(data);
-		return (false);
-	}
+	data->north_path = NULL;
+	data->south_path = NULL;
+	data->west_path = NULL;
+	data->east_path = NULL;
+	data->map_data.map = NULL;
+	data->num_of_id = 0;
+	data->ceiling.done_flag = false;
+	data->floor.done_flag = false;
 	parse_map(data);
 	convert_space_to_x(data->map_data.map);
-	if (check_valid_map(data) == false)
+	if (parse_all_identifier(data) == false || \
+		data->north_path == NULL || data->south_path == NULL || \
+		data->west_path == NULL || data->east_path == NULL || \
+		data->num_of_id != 6 || check_valid_map(data) == false || \
+		data->ceiling.done_flag == false || data->floor.done_flag == false)
 	{
 		free_map_data_and_path(data);
 		return (false);

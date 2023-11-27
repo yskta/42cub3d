@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/26 14:05:45 by snemoto          ###   ########.fr       */
+/*   Updated: 2023/11/27 20:37:38 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@
 # include "../minilibx-linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysymdef.h>
-
-# define NO "NO"
-# define SO "SO"
-# define WE "WE"
-# define EA "EA"
-# define F "F"
-# define C "C"
 
 # define KEY_W 0x077
 # define KEY_S 0x073
@@ -152,6 +145,7 @@ typedef struct s_floor_or_ceiling{
 	int		g;
 	int		b;
 	int		color;
+	bool	done_flag;
 }	t_floor_or_ceiling;
 
 typedef struct s_data{
@@ -188,6 +182,7 @@ typedef struct s_data{
 	double					tex_pos;
 	t_floor_or_ceiling		floor;
 	t_floor_or_ceiling		ceiling;
+	int						num_of_id;
 }t_data;
 
 bool		check_arg(int argc, char **argv);
@@ -197,8 +192,8 @@ bool		parse_all_identifier(t_data *data);
 void		parse_map(t_data *data);
 bool		parse_read_data(t_data *data);
 
-bool		juduge_identifer(char *str);
-bool		parse_path(t_data *data, size_t i, size_t j);
+int			juduge_identifer(char *str);
+bool		parse_path(t_data *data, size_t i, size_t j, int id_num);
 bool		parse_floor(t_data *data, size_t i, size_t j);
 bool		parse_ceiling(t_data *data, size_t i, size_t j);
 bool		parse_each_identifier(t_data *data, size_t i, size_t j);
