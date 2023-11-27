@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 13:22:55 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/27 13:53:13 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,6 @@ bool	check_valid_map(t_data *data)
 	char	**copied_map;
 
 	copied_map = copy_map_contents(data);
-	
-	int i = 0;
-	while (copied_map[i] != NULL)
-	{
-		printf("%s\n", copied_map[i]);
-		i++;
-	}
 	if (data->map_data.map[0] == NULL)
 		return (false);
 	if (check_top_line(copied_map) == false || \
