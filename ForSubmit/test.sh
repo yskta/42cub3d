@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    test.sh                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
+#    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:45:48 by snemoto           #+#    #+#              #
-#    Updated: 2023/11/27 18:27:10 by snemoto          ###   ########.fr        #
+#    Updated: 2023/11/28 14:57:45 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,13 +38,13 @@ VAL=id_color_6.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-# VAL=id_color_7.cub
-# echo ------------$VAL--------------
-# ./cub3D map/invalid_map/$VAL
+ VAL=id_color_7.cub
+ echo ------------$VAL--------------
+ ./cub3D map/invalid_map/$VAL
 
-# VAL=id_color_8.cub
-# echo ------------$VAL--------------
-# ./cub3D map/invalid_map/$VAL
+ VAL=id_color_8.cub
+ echo ------------$VAL--------------
+ ./cub3D map/invalid_map/$VAL
 
 VAL=id_color_9.cub
 echo ------------$VAL--------------
