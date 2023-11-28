@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:04:23 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/29 00:53:01 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/29 01:04:25 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ static size_t	ft_cnt(const char *s, char c)
 	return (cnt);
 }
 
+void	norminette(char **split_str, size_t i, size_t j, size_t index)
+{
+	j = i + 1;
+	while (s[j] != '\0' && s[j] != c)
+		j++;
+	split_str[index] = ft_substr(s, i, j - i);
+}
+
 static char	**ft_split_str(const char *s, char c, \
 		char **split_str, size_t split_cnt)
 {
@@ -55,20 +63,13 @@ static char	**ft_split_str(const char *s, char c, \
 			i++;
 		if (s[i] != c)
 		{
-			j = i + 1;
-			while (s[j] != '\0' && s[j] != c)
-				j++;
-			split_str[index] = ft_substr(s, i, j - i);
-			if (split_str[index] == NULL)
-				return (ft_free(split_str));
+			norminette(split_str, i, j, index);
 			index++;
 			i = j;
 		}
 		else if (s[i] == c && s[i - 1] == c)
 		{
 			split_str[index] = ft_strdup("X");
-			if (split_str[index] == NULL)
-				return (ft_free(split_str));
 			index++;
 		}
 	}
