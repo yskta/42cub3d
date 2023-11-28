@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:04:23 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/29 01:07:32 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/29 01:10:59 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,6 @@ static size_t	ft_cnt(const char *s, char c)
 	return (cnt);
 }
 
-void	norminette(char **split_str, size_t i, size_t j, \
-	size_t index, const char *s)
-{
-	j = i + 1;
-	while (s[j] != '\0' && s[j] != '\n')
-		j++;
-	split_str[index] = ft_substr(s, i, j - i);
-}
-
 static char	**ft_split_str(const char *s, char c, \
 		char **split_str, size_t split_cnt)
 {
@@ -64,7 +55,10 @@ static char	**ft_split_str(const char *s, char c, \
 			i++;
 		if (s[i] != c)
 		{
-			norminette(split_str, i, j, index, s);
+			j = i + 1;
+			while (s[j] != '\0' && s[j] != '\n')
+				j++;
+			split_str[index] = ft_substr(s, i, j - i);	
 			index++;
 			i = j;
 		}
