@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:45:48 by snemoto           #+#    #+#              #
-#    Updated: 2023/11/28 15:04:27 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/28 15:47:34 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,10 +80,6 @@ VAL=id_dir_6.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-VAL=id_dir_6.cub
-echo ------------$VAL--------------
-./cub3D map/invalid_map/$VAL
-
 # **************************************************************************** #
 
 VAL=id_duplicate_1.cub
@@ -91,6 +87,10 @@ echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
 VAL=id_duplicate_2.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=id_no_id.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
@@ -110,23 +110,63 @@ echo ------------$VAL--------------
 
 # **************************************************************************** #
 
-VAL=no_access.cub
+VAL=map_map-hight0.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-VAL=no_ext.txt
+VAL=map_map-hight1.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-VAL=no_id.cub
+VAL=map_map-hight2.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
- VAL=no_map.cub
- echo ------------$VAL--------------
- ./cub3D map/invalid_map/$VAL
+VAL=map_wall_bottomline.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_wall_leftside_1.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_wall_leftside_2.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_wall_leftside_3.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_wall_rightside_1.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_wall_rightside_2.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_wall_rightside_3.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_wall_topline.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_間にスペース.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_間に改行.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
 
 # **************************************************************************** #
+
+VAL=no_extention.txt
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
 
 VAL=pos_invalidchar.cub
 echo ------------$VAL--------------
@@ -137,10 +177,6 @@ echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
 VAL=pos_notplayable.cub
-echo ------------$VAL--------------
-./cub3D map/invalid_map/$VAL
-
-VAL=wall_bottomline.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
