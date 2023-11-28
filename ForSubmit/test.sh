@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:45:48 by snemoto           #+#    #+#              #
-#    Updated: 2023/11/28 14:57:45 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/28 15:04:27 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,9 +122,9 @@ VAL=no_id.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-# VAL=no_map.cub
-# echo ------------$VAL--------------
-# ./cub3D map/invalid_map/$VAL
+ VAL=no_map.cub
+ echo ------------$VAL--------------
+ ./cub3D map/invalid_map/$VAL
 
 # **************************************************************************** #
 
