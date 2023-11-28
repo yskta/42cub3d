@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:04:23 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/29 01:54:33 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/29 01:57:11 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static size_t	ft_cnt(const char *s, char c);
 static char		**ft_split_str(const char *s, char c, \
 			char **split_str, size_t split_cnt);
-//static char		**ft_free(char **list);
 
 static size_t	ft_cnt(const char *s, char c)
 {
@@ -73,47 +72,10 @@ void	set_split_str(const char *s, char c, \
 static char	**ft_split_str(const char *s, char c, \
 		char **split_str, size_t split_cnt)
 {
-	//while (s[i] != '\0' && index < split_cnt)
-	//{
-	//	if (s[i] == c)
-	//		i++;
-	//	if (s[i] != c)
-	//	{
-	//		j = i + 1;
-	//		while (s[j] != '\0' && s[j] != c)
-	//			j++;
-	//		split_str[index] = ft_substr(s, i, j - i);
-	//		if (split_str[index] == NULL)
-	//			return (ft_free(split_str));
-	//		index++;
-	//		i = j;
-	//	}
-	//	else if (s[i] == c && s[i - 1] == c)
-	//	{
-	//		split_str[index] = ft_strdup("X");
-	//		if (split_str[index] == NULL)
-	//			return (ft_free(split_str));
-	//		index++;
-	//	}
-	//}
 	set_split_str(s, c, split_str, split_cnt);
 	split_str[split_cnt] = NULL;
 	return (split_str);
 }
-
-//static char	**ft_free(char **list)
-//{
-//	size_t	i;
-
-//	i = 0;
-//	while (list[i] != NULL)
-//	{
-//		free(list[i]);
-//		i++;
-//	}
-//	free(list);
-//	return (NULL);
-//}
 
 char	**ft_split(char const *s, char c)
 {
