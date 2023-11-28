@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 13:52:54 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:46:40 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ bool	parse_read_data(t_data *data)
 	data->map_data.map = NULL;
 	data->map_data.map_height = 0;
 	data->num_of_id = 0;
+	data->ceiling.done_flag = false;
+	data->floor.done_flag = false;
 	parse_map(data);
 	if (data->map_data.map_height < 3)
 	{
@@ -118,7 +120,8 @@ bool	parse_read_data(t_data *data)
 	if (parse_all_identifier(data) == false || \
 		data->north_path == NULL || data->south_path == NULL || \
 		data->west_path == NULL || data->east_path == NULL || \
-		data->num_of_id != 6 || check_valid_map(data) == false)
+		data->num_of_id != 6 || check_valid_map(data) == false || \
+		data->ceiling.done_flag == false || data->floor.done_flag == false)
 	{
 		free_map_data_and_path(data);
 		return (false);
