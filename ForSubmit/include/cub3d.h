@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:58:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 20:37:38 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:13:13 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,11 +188,15 @@ typedef struct s_data{
 bool		check_arg(int argc, char **argv);
 
 bool		read_map(char *argv, t_data *data);
-bool		parse_all_identifier(t_data *data);
-void		parse_map(t_data *data);
+
 bool		parse_read_data(t_data *data);
 
 int			juduge_identifer(char *str);
+bool		parse_all_identifier(t_data *data);
+bool		judge_space_or_wall(char *line);
+void		parse_map(t_data *data);
+void		init_data_for_parse(t_data *data);
+
 bool		parse_path(t_data *data, size_t i, size_t j, int id_num);
 bool		parse_floor(t_data *data, size_t i, size_t j);
 bool		parse_ceiling(t_data *data, size_t i, size_t j);
