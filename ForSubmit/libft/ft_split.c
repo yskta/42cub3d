@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:04:23 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/29 01:10:59 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/29 01:11:49 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ static char	**ft_split_str(const char *s, char c, \
 			j = i + 1;
 			while (s[j] != '\0' && s[j] != '\n')
 				j++;
-			split_str[index] = ft_substr(s, i, j - i);	
+			split_str[index] = ft_substr(s, i, j - i);
+			if (split_str[index] == NULL)
+				return (ft_free(split_str));
 			index++;
 			i = j;
 		}
