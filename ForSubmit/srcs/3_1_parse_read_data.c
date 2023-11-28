@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:12:57 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/28 15:05:43 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:08:14 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	parse_map(t_data *data)
 	}
 }
 
-bool	parse_read_data(t_data *data)
+void	init_data_for_parse(t_data *data)
 {
 	data->north_path = NULL;
 	data->south_path = NULL;
@@ -110,6 +110,11 @@ bool	parse_read_data(t_data *data)
 	data->num_of_id = 0;
 	data->ceiling.done_flag = false;
 	data->floor.done_flag = false;
+}
+
+bool	parse_read_data(t_data *data)
+{
+	init_data_for_parse(data);
 	parse_map(data);
 	if (data->map_data.map_height < 3)
 	{
@@ -117,11 +122,6 @@ bool	parse_read_data(t_data *data)
 		return (false);
 	}
 	convert_space_to_x(data->map_data.map);
-	//if (data->map_data.map_height < 3)
-	//{
-	//	free_map_data_and_path(data);
-	//	return (false);
-	//}
 	if (parse_all_identifier(data) == false || \
 		data->north_path == NULL || data->south_path == NULL || \
 		data->west_path == NULL || data->east_path == NULL || \
