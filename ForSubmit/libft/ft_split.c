@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:04:23 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/25 23:17:59 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/11/29 01:57:11 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static size_t	ft_cnt(const char *s, char c);
 static char		**ft_split_str(const char *s, char c, \
 			char **split_str, size_t split_cnt);
-static char		**ft_free(char **list);
 
 static size_t	ft_cnt(const char *s, char c)
 {
@@ -25,7 +24,11 @@ static size_t	ft_cnt(const char *s, char c)
 	while (*s != '\0')
 	{
 		if (*(char *)s == c)
+		{
+			if (*(char *)(s + 1) != '\0' && *(char *)(s + 1) == c)
+				cnt++;
 			s++;
+		}
 		else
 		{
 			while (*s != '\0' && *(char *)s != c)
@@ -36,8 +39,8 @@ static size_t	ft_cnt(const char *s, char c)
 	return (cnt);
 }
 
-static char	**ft_split_str(const char *s, char c, \
-		char **split_str, size_t split_cnt)
+void	set_split_str(const char *s, char c, \
+			char **split_str, size_t split_cnt)
 {
 	size_t	i;
 	size_t	j;
@@ -55,28 +58,23 @@ static char	**ft_split_str(const char *s, char c, \
 			while (s[j] != '\0' && s[j] != c)
 				j++;
 			split_str[index] = ft_substr(s, i, j - i);
-			if (split_str[index] == NULL)
-				return (ft_free(split_str));
 			index++;
 			i = j;
 		}
+		else if (s[i] == c && s[i - 1] == c)
+		{
+			split_str[index] = ft_strdup("X");
+			index++;
+		}
 	}
-	split_str[split_cnt] = NULL;
-	return (split_str);
 }
 
-static char	**ft_free(char **list)
+static char	**ft_split_str(const char *s, char c, \
+		char **split_str, size_t split_cnt)
 {
-	size_t	i;
-
-	i = 0;
-	while (list[i] != NULL)
-	{
-		free(list[i]);
-		i++;
-	}
-	free(list);
-	return (NULL);
+	set_split_str(s, c, split_str, split_cnt);
+	split_str[split_cnt] = NULL;
+	return (split_str);
 }
 
 char	**ft_split(char const *s, char c)
