@@ -6,7 +6,7 @@
 #    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:45:48 by snemoto           #+#    #+#              #
-#    Updated: 2023/11/28 15:47:34 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/11/29 00:59:27 by yokitaga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,7 +158,11 @@ VAL=map_間にスペース.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-VAL=map_間に改行.cub
+VAL=map_間に改行_1.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_間に改行_2.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
