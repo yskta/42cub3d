@@ -6,7 +6,7 @@
 #    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:45:48 by snemoto           #+#    #+#              #
-#    Updated: 2023/12/03 19:29:29 by snemoto          ###   ########.fr        #
+#    Updated: 2023/12/03 19:45:42 by snemoto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -192,19 +192,35 @@ VAL=map_inside_s_8.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-VAL=map_inside_s_9.cub
+VAL=map_inside_s_9_1.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-VAL=map_inside_s_10.cub
+VAL=map_inside_s_9_2.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-VAL=map_inside_s_11.cub
+VAL=map_inside_s_9_3.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
-VAL=map_inside_s_12.cub
+VAL=map_inside_s_9_4.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_s_10_1.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_s_10_2.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_s_10_3.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_s_10_4.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
