@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    test.sh                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: snemoto <snemoto@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:45:48 by snemoto           #+#    #+#              #
-#    Updated: 2023/12/03 17:17:47 by yokitaga         ###   ########.fr        #
+#    Updated: 2023/12/03 19:11:09 by snemoto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,22 @@ VAL=id_color_10.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
+VAL=id_color_13.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=id_color_14.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=id_color_15.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=id_color_16.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
 # **************************************************************************** #
 
 VAL=id_dir_1.cub
@@ -77,6 +93,14 @@ echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
 VAL=id_dir_6.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=id_dir_7.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=id_dir_8.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
 
@@ -129,6 +153,34 @@ echo ------------$VAL--------------
 VAL=map_inside_5.cub
 echo ------------$VAL--------------
 ./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_6.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+# **************************************************************************** #
+
+VAL=map_inside_s_1.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_s_2.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_s_3.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_s_4.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+VAL=map_inside_s_6.cub
+echo ------------$VAL--------------
+./cub3D map/invalid_map/$VAL
+
+# **************************************************************************** #
 
 VAL=map_map-hight0.cub
 echo ------------$VAL--------------
