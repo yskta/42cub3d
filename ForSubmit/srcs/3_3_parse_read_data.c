@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/12/03 16:56:50 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/12/03 17:00:48 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,20 @@ bool	check_bottom_line(char	**map)
 
 bool	check_around(char **map, size_t i, size_t j)
 {
-	if (map[i - 1][j] == '1' || map[i - 1][j] == '0')
+	if (map[i - 1][j] == '1' || map[i - 1][j] == '0' || map[i - 1][j] == 'S' || \
+		map[i - 1][j] == 'N' || map[i - 1][j] == 'W' || map[i - 1][j] == 'E')
 	{
-		if (map[i + 1][j] == '1' || map[i + 1][j] == '0')
+		if (map[i + 1][j] == '1' || map[i + 1][j] == '0' || \
+			map[i + 1][j] == 'S' || map[i + 1][j] == 'N' || \
+			map[i + 1][j] == 'W' || map[i + 1][j] == 'E')
 		{
-			if (map[i][j - 1] == '1' || map[i][j - 1] == '0')
+			if (map[i][j - 1] == '1' || map[i][j - 1] == '0' || \
+				map[i][j - 1] == 'S' || map[i][j - 1] == 'N' || \
+				map[i][j - 1] == 'W' || map[i][j - 1] == 'E')
 			{
-				if (map[i][j + 1] == '1' || map[i][j + 1] == '0')
+				if (map[i][j + 1] == '1' || map[i][j + 1] == '0' || \
+					map[i][j + 1] == 'S' || map[i][j + 1] == 'N' || \
+					map[i][j + 1] == 'W' || map[i][j + 1] == 'E')
 					return (true);
 			}
 		}
@@ -126,16 +133,6 @@ bool	check_valid_map(t_data *data)
 	char	**copied_map;
 
 	copied_map = copy_map_contents(data);
-	
-	//debug
-	size_t	i;
-	i = 0;
-	while (copied_map[i] != NULL)
-	{
-		printf("%s\n", copied_map[i]);
-		i++;
-	}
-	
 	if (data->map_data.map[0] == NULL)
 		return (false);
 	if (check_top_line(copied_map) == false || \
