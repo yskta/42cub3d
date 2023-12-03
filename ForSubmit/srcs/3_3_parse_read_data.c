@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 13:53:13 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/12/03 16:52:41 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,59 @@ bool	check_bottom_line(char	**map)
 	return (true);
 }
 
+bool	check_around(char **map, size_t i, size_t j)
+{
+	if (map[i - 1][j] == '1' || map[i - 1][j] == '0')
+	{
+		if (map[i + 1][j] == '1' || map[i + 1][j] == '0')
+		{
+			if (map[i][j - 1] == '1' || map[i][j - 1] == '0')
+			{
+				if (map[i][j + 1] == '1' || map[i][j + 1] == '0')
+					return (true);
+			}
+		}
+	}
+	return (false);
+}
+
+bool	check_inside_wall(char **copied_map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 1;
+	while (copied_map[i] != NULL)
+	{
+		j = 1;
+		while (copied_map[i][j] != '\0')
+		{
+			if (copied_map[i][j] == '0')
+			{
+				if (check_around(copied_map, i, j) == false)
+					return (false);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 bool	check_valid_map(t_data *data)
 {
 	char	**copied_map;
 
 	copied_map = copy_map_contents(data);
+	
+	//debug
+	size_t	i;
+	i = 0;
+	while (copied_map[i] != NULL)
+	{
+		printf("%s\n", copied_map[i]);
+		i++;
+	}
+	
 	if (data->map_data.map[0] == NULL)
 		return (false);
 	if (check_top_line(copied_map) == false || \
@@ -94,7 +142,8 @@ bool	check_valid_map(t_data *data)
 		check_leftside_wall(copied_map) == false || \
 		check_rightside_wall(copied_map) == false || \
 		check_num_of_player_and_invalid_char(copied_map) == false || \
-		check_playable_map(copied_map) == false)
+		check_playable_map(copied_map) == false || \
+		check_inside_wall(copied_map) == false)
 	{
 		free_two_dimensional_array(copied_map);
 		return (false);
