@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 10:22:36 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/27 13:53:13 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/12/03 17:06:59 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ bool	check_valid_map(t_data *data)
 		check_leftside_wall(copied_map) == false || \
 		check_rightside_wall(copied_map) == false || \
 		check_num_of_player_and_invalid_char(copied_map) == false || \
-		check_playable_map(copied_map) == false)
+		check_playable_map(copied_map) == false || \
+		check_inside_wall(copied_map) == false)
 	{
 		free_two_dimensional_array(copied_map);
 		return (false);
