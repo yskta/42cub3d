@@ -6,7 +6,7 @@
 /*   By: yokitaga <yokitaga@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:09:55 by yokitaga          #+#    #+#             */
-/*   Updated: 2023/11/29 00:13:14 by yokitaga         ###   ########.fr       */
+/*   Updated: 2023/12/03 16:24:36 by yokitaga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	parse_read_data(t_data *data)
 		free_map_data_and_path(data);
 		return (false);
 	}
-	convert_space_to_x(data->map_data.map);
+	//convert_space_to_x(data->map_data.map);
 	if (parse_all_identifier(data) == false || \
 		data->north_path == NULL || data->south_path == NULL || \
 		data->west_path == NULL || data->east_path == NULL || \
